@@ -2,1415 +2,2526 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#d71920">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<title>SO MATERIAL BEANSPOT - KF33</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#c8102e">
+<title>SO Material BeanSpot KF33</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f3f5f8;
-    color:#202124;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f6f8;
+  color:#202124;
 }
+
 body.dark{
-    background:#111827;
-    color:#f5f5f5;
+  background:#101827;
+  color:#f5f5f5;
 }
-button,input,select{font:inherit}
+
+button,input,select{
+  font:inherit;
+}
 
 .header{
-    background:linear-gradient(135deg,#d71920,#b40000);
-    color:white;
-    padding:18px 15px;
-    position:sticky;
-    top:0;
-    z-index:20;
-    box-shadow:0 3px 12px #0003;
+  background:linear-gradient(135deg,#e21b2d,#a90014);
+  color:#fff;
+  padding:17px 15px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  box-shadow:0 4px 14px #0003;
 }
-.header-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+
+.head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
+
 .logo{
-    font-size:27px;
-    font-weight:900;
+  font-size:27px;
+  font-weight:900;
 }
-.logo span{color:#ffd400}
+
+.logo span{
+  color:#ffd400;
+}
+
 .store{
-    font-size:12px;
-    text-align:right;
-    line-height:1.4;
+  text-align:right;
+  font-size:11px;
+  line-height:1.4;
 }
-.subtitle{
-    margin-top:8px;
-    font-size:13px;
-    opacity:.95;
+
+.sub{
+  font-size:12px;
+  margin-top:7px;
+  opacity:.95;
 }
 
 .container{
-    max-width:900px;
-    margin:auto;
-    padding:15px;
+  max-width:920px;
+  margin:auto;
+  padding:14px;
+}
+
+.page{
+  padding-bottom:80px;
 }
 
 .card{
-    background:white;
-    border-radius:16px;
-    padding:15px;
-    margin-bottom:15px;
-    box-shadow:0 3px 12px #00000012;
+  background:#fff;
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:14px;
+  box-shadow:0 3px 14px #00000012;
 }
+
 .dark .card{
-    background:#1f2937;
-    box-shadow:0 3px 12px #0006;
+  background:#1d2939;
+  box-shadow:0 3px 14px #0006;
 }
 
 .login{
-    max-width:430px;
-    margin:45px auto;
-    text-align:center;
+  max-width:430px;
+  margin:40px auto;
+  text-align:center;
 }
+
 .login-logo{
-    width:85px;
-    height:85px;
-    margin:auto;
-    border-radius:22px;
-    background:#d71920;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:42px;
-    font-weight:900;
-    box-shadow:0 8px 20px #d7192040;
+  width:82px;
+  height:82px;
+  margin:auto;
+  border-radius:22px;
+  background:#d71920;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  font-weight:900;
 }
-.login h1{
-    margin:15px 0 5px;
-    font-size:24px;
+
+h1{
+  margin:13px 0 3px;
+  font-size:24px;
 }
-.login p{
-    color:#777;
-    font-size:13px;
-}
-.dark .login p{color:#bbb}
 
 label{
-    display:block;
-    font-size:12px;
-    font-weight:bold;
-    margin:12px 0 6px;
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin:11px 0 5px;
 }
+
 input,select{
-    width:100%;
-    border:1px solid #ddd;
-    border-radius:10px;
-    padding:12px;
-    background:white;
-    outline:none;
+  width:100%;
+  border:1px solid #d8dce2;
+  border-radius:10px;
+  padding:12px;
+  background:#fff;
+  outline:none;
 }
-input:focus,select:focus{
-    border-color:#d71920;
-    box-shadow:0 0 0 3px #d7192015;
-}
-.dark input,.dark select{
-    background:#111827;
-    color:white;
-    border-color:#374151;
+
+.dark input,
+.dark select{
+  background:#111827;
+  color:#fff;
+  border-color:#374151;
 }
 
 .btn{
-    border:0;
-    border-radius:10px;
-    padding:11px 15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-.btn-red{background:#d71920;color:white}
-.btn-yellow{background:#ffd400;color:#111}
-.btn-green{background:#16a34a;color:white}
-.btn-blue{background:#2563eb;color:white}
-.btn-gray{background:#e5e7eb;color:#222}
-.dark .btn-gray{background:#374151;color:white}
-
-.btn-full{
-    width:100%;
-    margin-top:15px;
+  border:0;
+  border-radius:10px;
+  padding:11px 14px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.top-actions{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-bottom:15px;
+.red{
+  background:#d71920;
+  color:#fff;
+}
+
+.blue{
+  background:#2563eb;
+  color:#fff;
+}
+
+.green{
+  background:#16a34a;
+  color:#fff;
+}
+
+.yellow{
+  background:#ffd400;
+  color:#111;
+}
+
+.gray{
+  background:#e5e7eb;
+  color:#222;
+}
+
+.dark .gray{
+  background:#374151;
+  color:#fff;
+}
+
+.full{
+  width:100%;
+  margin-top:10px;
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
 }
 
 .stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-}
-.stat{
-    border-radius:14px;
-    padding:13px;
-    background:#f8fafc;
-    border-left:5px solid #d71920;
-}
-.dark .stat{background:#111827}
-.stat small{
-    display:block;
-    font-size:11px;
-    color:#777;
-}
-.dark .stat small{color:#bbb}
-.stat strong{
-    display:block;
-    font-size:24px;
-    margin-top:5px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
 }
 
-.section-title{
-    font-size:17px;
-    font-weight:900;
-    margin:4px 0 12px;
+.stat{
+  background:#f8fafc;
+  border-radius:13px;
+  padding:12px;
+  border-left:5px solid #d71920;
 }
-.category{
-    margin-bottom:20px;
+
+.dark .stat{
+  background:#111827;
 }
-.category-head{
-    color:white;
-    padding:11px 13px;
-    border-radius:10px 10px 0 0;
-    font-weight:900;
+
+.stat small{
+  font-size:10px;
+  color:#777;
 }
+
+.dark .stat small{
+  color:#aaa;
+}
+
+.stat strong{
+  display:block;
+  font-size:23px;
+  margin-top:4px;
+}
+
+.title{
+  font-size:17px;
+  font-weight:900;
+  margin:2px 0 12px;
+}
+
+.toolbar{
+  display:grid;
+  grid-template-columns:1fr 180px;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+.cat{
+  margin-bottom:17px;
+}
+
+.cathead{
+  color:#fff;
+  padding:11px 13px;
+  border-radius:10px 10px 0 0;
+  font-weight:900;
+}
+
 .rpc{background:#d71920}
 .raw{background:#2563eb}
 .ori{background:#16a34a}
 .fresh{background:#9333ea}
+.rte{background:#ea580c}
+.ihb{background:#0891b2}
 
 .material{
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-top:0;
-    padding:12px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-top:0;
+  padding:11px;
 }
+
 .dark .material{
-    background:#1f2937;
-    border-color:#374151;
+  background:#1d2939;
+  border-color:#374151;
 }
+
 .material:last-child{
-    border-radius:0 0 10px 10px;
+  border-radius:0 0 10px 10px;
 }
-.material-name{
-    font-weight:bold;
-    font-size:13px;
-    margin-bottom:9px;
+
+.mname{
+  font-weight:bold;
+  font-size:13px;
+  margin-bottom:8px;
 }
-.material-inputs{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:8px;
+
+.inputs{
+  display:grid;
+  grid-template-columns:1fr 1fr 105px;
+  gap:7px;
 }
-.input-box small{
-    display:block;
-    font-size:10px;
-    color:#777;
-    margin-bottom:3px;
+
+.ibox small{
+  display:block;
+  font-size:10px;
+  color:#777;
+  margin-bottom:3px;
 }
-.dark .input-box small{color:#aaa}
 
 .diff{
-    padding:11px;
-    border-radius:9px;
-    text-align:center;
-    font-weight:900;
-    background:#dcfce7;
-    color:#15803d;
+  padding:10px 6px;
+  border-radius:9px;
+  text-align:center;
+  font-weight:900;
+  background:#dcfce7;
+  color:#15803d;
 }
+
 .diff.minus{
-    background:#fee2e2;
-    color:#dc2626;
+  background:#fee2e2;
+  color:#dc2626;
 }
+
 .diff.zero{
-    background:#e5e7eb;
-    color:#555;
+  background:#e5e7eb;
+  color:#555;
 }
 
-.search{
-    margin-bottom:12px;
+.diff small{
+  display:block;
 }
 
-.hidden{display:none!important}
+.row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:9px 0;
+  border-bottom:1px solid #eee;
+  font-size:13px;
+}
+
+.dark .row{
+  border-color:#374151;
+}
+
+.minus-text{
+  color:#dc2626;
+  font-weight:bold;
+}
+
+.plus-text{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+.minus-box{
+  border:2px solid #fecaca;
+  background:#fff7f7;
+  border-radius:13px;
+  padding:12px;
+  margin-top:12px;
+}
+
+.dark .minus-box{
+  background:#2a1518;
+  border-color:#7f1d1d;
+}
+
+.minus-title{
+  color:#dc2626;
+  font-weight:900;
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+.minus-item{
+  padding:10px 0;
+  border-bottom:1px solid #fecaca;
+}
+
+.minus-item:last-child{
+  border-bottom:0;
+}
+
+.minus-name{
+  font-weight:bold;
+  font-size:13px;
+}
+
+.minus-detail{
+  font-size:11px;
+  margin-top:4px;
+  color:#555;
+}
+
+.dark .minus-detail{
+  color:#ddd;
+}
 
 .nav{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    background:white;
-    border-top:1px solid #ddd;
-    display:flex;
-    justify-content:center;
-    z-index:30;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  z-index:30;
 }
+
 .dark .nav{
-    background:#1f2937;
-    border-color:#374151;
+  background:#1d2939;
+  border-color:#374151;
 }
+
 .nav button{
-    border:0;
-    background:none;
-    padding:9px 14px;
-    font-size:11px;
-    font-weight:bold;
-    color:#555;
-}
-.dark .nav button{color:#ddd}
-.nav button.active{color:#d71920}
-
-.page{
-    padding-bottom:75px;
+  border:0;
+  background:none;
+  padding:8px 15px;
+  font-size:11px;
+  font-weight:bold;
+  color:#555;
 }
 
-.report-row{
-    display:flex;
-    justify-content:space-between;
-    padding:9px 0;
-    border-bottom:1px solid #eee;
-    font-size:13px;
+.dark .nav button{
+  color:#ddd;
 }
-.dark .report-row{border-color:#374151}
 
-.minus-text{color:#dc2626;font-weight:bold}
-.plus-text{color:#16a34a;font-weight:bold}
+.nav button.active{
+  color:#d71920;
+}
 
-.empty{
-    text-align:center;
-    padding:30px;
-    color:#777;
+.hidden{
+  display:none!important;
 }
 
 .toast{
-    position:fixed;
-    left:50%;
-    bottom:80px;
-    transform:translateX(-50%);
-    background:#111827;
-    color:white;
-    padding:11px 17px;
-    border-radius:30px;
-    font-size:13px;
-    z-index:100;
-    opacity:0;
-    pointer-events:none;
-    transition:.25s;
+  position:fixed;
+  left:50%;
+  bottom:82px;
+  transform:translateX(-50%);
+  background:#111827;
+  color:#fff;
+  padding:11px 17px;
+  border-radius:25px;
+  font-size:13px;
+  z-index:100;
+  opacity:0;
+  transition:.2s;
 }
-.toast.show{opacity:1}
 
-.info{
-    background:#fff7cc;
-    border-left:5px solid #ffd400;
-    padding:11px;
-    border-radius:8px;
-    font-size:12px;
-    margin-bottom:15px;
+.toast.show{
+  opacity:1;
 }
-.dark .info{
-    background:#443b08;
-    color:#fff;
+
+.history-item{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:12px;
+  margin:8px 0;
+  background:#fafafa;
+}
+
+.dark .history-item{
+  background:#111827;
+  border-color:#374151;
+}
+
+.history-date{
+  font-weight:900;
+}
+
+.history-meta{
+  font-size:11px;
+  color:#777;
+  margin-top:4px;
+}
+
+.add-grid{
+  display:grid;
+  grid-template-columns:1fr 150px;
+  gap:8px;
+}
+
+.empty{
+  text-align:center;
+  color:#777;
+  padding:20px;
 }
 
 @media(max-width:650px){
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .material-inputs{
-        grid-template-columns:1fr 1fr;
-    }
-    .material-inputs .diff{
-        grid-column:1/-1;
-    }
-    .top-actions{
-        grid-template-columns:1fr 1fr 1fr;
-    }
-}
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-@media(max-width:400px){
-    .logo{font-size:22px}
-    .store{font-size:10px}
-    .nav button{
-        padding:9px 8px;
-        font-size:10px;
-    }
+  .inputs{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .inputs .diff{
+    grid-column:1/-1;
+  }
+
+  .toolbar{
+    grid-template-columns:1fr;
+  }
+
+  .add-grid{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    grid-template-columns:1fr 1fr 1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN -->
 <div id="loginPage">
-    <div class="container">
-        <div class="card login">
-            <div class="login-logo">☕</div>
-            <h1>SO MATERIAL</h1>
-            <h2 style="margin:0;color:#d71920">BEANSPOT</h2>
-            <p>KF33 • Karet Pedurenan</p>
+  <div class="container">
+    <div class="card login">
 
-            <label>NIK</label>
-            <input id="nik" placeholder="Masukkan NIK">
+      <div class="login-logo">☕</div>
 
-            <label>PIN</label>
-            <input id="pin" type="password" placeholder="Masukkan PIN">
+      <h1>SO MATERIAL</h1>
 
-            <button class="btn btn-red btn-full" onclick="login()">
-                LOGIN
-            </button>
+      <b style="color:#d71920;font-size:19px">
+        BEANSPOT
+      </b>
 
-            <p style="margin-top:20px">
-                Sistem Kontrol Material BeanSpot<br>
-                Versi 1.0
-            </p>
-        </div>
+      <p>KF33 • Karet Pedurenan</p>
+
+      <label>NIK</label>
+      <input id="nik" placeholder="Masukkan NIK">
+
+      <label>PIN</label>
+      <input id="pin" type="password" placeholder="Masukkan PIN">
+
+      <button class="btn red full" onclick="login()">
+        LOGIN
+      </button>
+
+      <p style="font-size:12px;color:#777;margin-top:18px">
+        Sistem Kontrol Stock Material
+      </p>
+
     </div>
+  </div>
 </div>
 
 
+<!-- APP -->
 <div id="app" class="hidden page">
 
 <header class="header">
-    <div class="header-top">
-        <div class="logo">bean<span>!</span>spot</div>
-        <div class="store">
-            <b>KF33</b><br>
-            Karet Pedurenan
-        </div>
+
+  <div class="head">
+
+    <div class="logo">
+      bean<span>!</span>spot
     </div>
-    <div class="subtitle">
-        SO MATERIAL BEANSPOT • Kontrol Stock Material
+
+    <div class="store">
+      <b>KF33</b><br>
+      Karet Pedurenan
     </div>
+
+  </div>
+
+  <div class="sub">
+    SO MATERIAL • Kontrol Stock & Rekap Harian
+  </div>
+
 </header>
+
 
 <div class="container">
 
-    <div class="card">
-        <div class="top-actions">
-            <button class="btn btn-red" onclick="showPage('dashboard')">🏠 Dashboard</button>
-            <button class="btn btn-blue" onclick="showPage('input')">➕ Input</button>
-            <button class="btn btn-green" onclick="showPage('report')">📊 Rekap</button>
-        </div>
+<!-- NAV ATAS -->
+<div class="card">
 
-        <label>Tanggal SO</label>
-        <input type="date" id="tanggal" onchange="saveDate()">
-    </div>
+  <div class="actions">
 
+    <button class="btn red"
+      onclick="showPage('dashboard')">
+      🏠 Dashboard
+    </button>
 
-    <!-- DASHBOARD -->
-    <div id="dashboardPage">
+    <button class="btn blue"
+      onclick="showPage('input')">
+      📝 Input SO
+    </button>
 
-        <div class="card">
-            <div class="section-title">📊 DASHBOARD MATERIAL</div>
+    <button class="btn green"
+      onclick="showPage('report')">
+      📊 Rekap
+    </button>
 
-            <div class="stats">
-                <div class="stat">
-                    <small>Total Item</small>
-                    <strong id="totalItem">0</strong>
-                </div>
+  </div>
 
-                <div class="stat" style="border-color:#dc2626">
-                    <small>Minus</small>
-                    <strong id="totalMinus">0</strong>
-                </div>
+  <label>Tanggal SO</label>
 
-                <div class="stat" style="border-color:#16a34a">
-                    <small>Plus</small>
-                    <strong id="totalPlus">0</strong>
-                </div>
-
-                <div class="stat" style="border-color:#2563eb">
-                    <small>Selisih</small>
-                    <strong id="totalSelisih">0</strong>
-                </div>
-            </div>
-        </div>
-
-        <div class="info">
-            💡 <b>Kontrol:</b> Masukkan stok Awal dan Akhir. 
-            Sistem otomatis menghitung <b>Selisih = Akhir − Awal</b>.
-            Jika minus akan ditandai ❌.
-        </div>
-
-        <div class="card">
-            <div class="section-title">📋 STATUS KATEGORI</div>
-
-            <div class="report-row">
-                <span>RPC</span>
-                <b id="rpcCount">0</b>
-            </div>
-            <div class="report-row">
-                <span>RAW</span>
-                <b id="rawCount">0</b>
-            </div>
-            <div class="report-row">
-                <span>ORI</span>
-                <b id="oriCount">0</b>
-            </div>
-            <div class="report-row">
-                <span>FRESH MILK</span>
-                <b id="freshCount">0</b>
-            </div>
-        </div>
-
-    </div>
-
-
-    <!-- INPUT -->
-    <div id="inputPage" class="hidden">
-
-        <div class="card">
-            <div class="section-title">📦 INPUT MATERIAL</div>
-
-            <input
-                class="search"
-                id="search"
-                placeholder="🔎 Cari nama material..."
-                oninput="renderMaterials()"
-            >
-
-            <select id="filter" onchange="renderMaterials()">
-                <option value="ALL">Semua Kategori</option>
-                <option value="RPC">RPC</option>
-                <option value="RAW">RAW</option>
-                <option value="ORI">ORI</option>
-                <option value="FRESH MILK">FRESH MILK</option>
-            </select>
-        </div>
-
-        <div id="materialList"></div>
-
-        <button class="btn btn-red btn-full" onclick="saveAll()">
-            💾 SIMPAN SO MATERIAL
-        </button>
-
-    </div>
-
-
-    <!-- REPORT -->
-    <div id="reportPage" class="hidden">
-
-        <div class="card">
-            <div class="section-title">📊 REKAP & LAPORAN</div>
-
-            <div id="reportSummary"></div>
-
-            <button class="btn btn-green btn-full" onclick="shareWhatsApp()">
-                📱 SHARE KE WHATSAPP
-            </button>
-
-            <button class="btn btn-blue btn-full" onclick="copyReport()">
-                📋 COPY LAPORAN
-            </button>
-
-            <button class="btn btn-yellow btn-full" onclick="exportCSV()">
-                📥 EXPORT CSV
-            </button>
-        </div>
-
-        <div class="card">
-            <div class="section-title">⚠️ MATERIAL MINUS</div>
-            <div id="minusList"></div>
-        </div>
-
-        <div class="card">
-            <button class="btn btn-gray btn-full" onclick="toggleDark()">
-                🌙 Mode Gelap
-            </button>
-
-            <button class="btn btn-red btn-full" onclick="resetData()">
-                🗑️ RESET DATA
-            </button>
-
-            <button class="btn btn-gray btn-full" onclick="logout()">
-                🚪 LOGOUT
-            </button>
-        </div>
-
-    </div>
+  <input
+    type="date"
+    id="tanggal"
+    onchange="loadDate()"
+  >
 
 </div>
 
+
+<!-- DASHBOARD -->
+<div id="dashboardPage">
+
+  <div class="card">
+
+    <div class="title">
+      📊 DASHBOARD
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <small>Total Item</small>
+        <strong id="totalItem">0</strong>
+      </div>
+
+      <div class="stat"
+        style="border-color:#dc2626">
+
+        <small>Minus</small>
+        <strong id="totalMinus">0</strong>
+
+      </div>
+
+      <div class="stat"
+        style="border-color:#16a34a">
+
+        <small>Plus</small>
+        <strong id="totalPlus">0</strong>
+
+      </div>
+
+      <div class="stat"
+        style="border-color:#2563eb">
+
+        <small>Selisih</small>
+        <strong id="totalSelisih">0</strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="title">
+      📅 REKAP TERSIMPAN
+    </div>
+
+    <div id="dashHistory"></div>
+
+  </div>
+
+</div>
+
+
+<!-- INPUT -->
+<div id="inputPage" class="hidden">
+
+  <div class="card">
+
+    <div class="title">
+      ➕ TAMBAH PRODUK / PLU
+    </div>
+
+    <div class="add-grid">
+
+      <input
+        id="newName"
+        placeholder="Nama produk / material / PLU"
+      >
+
+      <select id="newCat">
+
+        <option>RPC</option>
+        <option>RAW</option>
+        <option>ORI</option>
+        <option>FRESH MILK</option>
+        <option>RTE</option>
+        <option>IHB</option>
+
+      </select>
+
+    </div>
+
+    <button
+      class="btn yellow full"
+      onclick="addProduct()">
+
+      ➕ Tambah Produk
+
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="title">
+      📦 INPUT STOCK
+    </div>
+
+    <div class="toolbar">
+
+      <input
+        id="search"
+        placeholder="🔎 Cari produk..."
+        oninput="renderMaterials()"
+      >
+
+      <select
+        id="filter"
+        onchange="renderMaterials()">
+
+        <option>ALL</option>
+        <option>RPC</option>
+        <option>RAW</option>
+        <option>ORI</option>
+        <option>FRESH MILK</option>
+        <option>RTE</option>
+        <option>IHB</option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <div id="materialList"></div>
+
+  <button
+    class="btn red full"
+    onclick="saveSO()">
+
+    💾 SIMPAN SO TANGGAL INI
+
+  </button>
+
+</div>
+
+
+<!-- REPORT -->
+<div id="reportPage" class="hidden">
+
+  <div class="card">
+
+    <div class="title">
+      📚 RIWAYAT SO PER TANGGAL
+    </div>
+
+    <div id="historyList"></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="title">
+      📊 DETAIL TANGGAL
+    </div>
+
+    <div id="reportSummary"></div>
+
+  </div>
+
+
+  <!-- REKAP MINUS -->
+  <div class="card">
+
+    <div class="title">
+      🔴 REKAP BARANG MINUS
+    </div>
+
+    <div id="minusList"></div>
+
+    <button
+      class="btn red full"
+      onclick="shareMinusWhatsApp()">
+
+      📱 KIRIM REKAP MINUS KE WHATSAPP
+
+    </button>
+
+    <button
+      class="btn blue full"
+      onclick="copyMinusReport()">
+
+      📋 COPY REKAP MINUS
+
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <button
+      class="btn green full"
+      onclick="shareWhatsApp()">
+
+      📱 SHARE LAPORAN LENGKAP
+
+    </button>
+
+    <button
+      class="btn blue full"
+      onclick="copyReport()">
+
+      📋 COPY LAPORAN
+
+    </button>
+
+    <button
+      class="btn yellow full"
+      onclick="exportCSV()">
+
+      📥 EXPORT CSV
+
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <button
+      class="btn gray full"
+      onclick="toggleDark()">
+
+      🌙 Mode Gelap
+
+    </button>
+
+    <button
+      class="btn red full"
+      onclick="resetCurrentDate()">
+
+      🗑️ Hapus SO Tanggal Ini
+
+    </button>
+
+    <button
+      class="btn gray full"
+      onclick="logout()">
+
+      🚪 LOGOUT
+
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
 <nav class="nav">
-    <button id="navDashboard" class="active" onclick="showPage('dashboard')">
-        🏠<br>Dashboard
-    </button>
-    <button id="navInput" onclick="showPage('input')">
-        📝<br>Input
-    </button>
-    <button id="navReport" onclick="showPage('report')">
-        📊<br>Rekap
-    </button>
+
+  <button
+    id="nDash"
+    class="active"
+    onclick="showPage('dashboard')">
+
+    🏠<br>
+    Dashboard
+
+  </button>
+
+  <button
+    id="nInput"
+    onclick="showPage('input')">
+
+    📝<br>
+    Input
+
+  </button>
+
+  <button
+    id="nReport"
+    onclick="showPage('report')">
+
+    📊<br>
+    Rekap
+
+  </button>
+
 </nav>
 
 </div>
+
 
 <div id="toast" class="toast"></div>
 
 
 <script>
 
-/* ============================
-   DATA MATERIAL BEANSPOT
-============================ */
+/* =========================
+   DATA PRODUK
+========================= */
 
-const materials = {
+const defaultMaterials = {
 
-"RPC":[
-"Gula pasir",
-"Gula cair",
-"Coffee bean",
-"Ice cube",
-"Fresh milk",
-"Air mineral",
-"Carnation",
-"Monin Salt Crml",
-"Palm sugar",
-"Cheesecake syrup",
-"Monin Hazelnut",
-"Monin Lychee syrup",
-"Strawberry cheese syrup",
-"Monin Strawberry",
-"Bobaking Syrup Whtgrp",
-"Teh celup",
-"Roll plastic",
-"Max creamer"
-],
+  RPC:[
+    "Gula pasir",
+    "Gula cair",
+    "Coffee bean",
+    "Ice cube",
+    "Fresh milk",
+    "Air mineral",
+    "Carnation",
+    "Monin Salt Crml",
+    "Palm sugar",
+    "Cheesecake syrup",
+    "Monin Hazelnut",
+    "Monin Lychee syrup",
+    "Strawberry cheese syrup",
+    "Monin Strawberry",
+    "Bobaking Syrup Whtgrp",
+    "Teh celup",
+    "Roll plastic",
+    "Max creamer"
+  ],
 
-"RAW":[
-"Choco Hazelnut",
-"Dark Choco",
-"Choco Vanilla",
-"Green Tea Latte",
-"Creamer SAC 15g",
-"Jelly",
-"Cup Plastic PP Beans 16oz",
-"Cup Hot Beans 8oz",
-"Cup Plastic Injection Set 160oz",
-"Paper Bowl Beanspot Set 600ml",
-"Roll plastic",
-"Jblosom SAC 35g",
-"Powder Matcha SAC 45g"
-],
+  RAW:[
+    "Choco Hazelnut",
+    "Dark Choco",
+    "Choco Vanilla",
+    "Green Tea Latte",
+    "Creamer SAC 15g",
+    "Jelly",
+    "Cup Plastic PP Beans 16oz",
+    "Cup Hot Beans 8oz",
+    "Cup Plastic Injection Set 160oz",
+    "Paper Bowl Beanspot Set 600ml",
+    "Roll plastic",
+    "Jblosom SAC 35g",
+    "Powder Matcha SAC 45g"
+  ],
 
-"ORI":[
-"Gula pasir SAC 100×8g",
-"Gula cair SAC 100×20ml",
-"Ice cube",
-"Bobaking syrup 750ml",
-"Gula aren 1,3L",
-"Monin syrup Salt Caramel",
-"Monin Lychee syrup",
-"Monin Hazelnut syrup",
-"Monin Cheesecake syrup",
-"Strawberry Cream Cheese syrup",
-"Monin Strawberry 700ml",
-"Deli Fru Coco Mangi 1L",
-"Bobaking Syrup Whtgrp",
-"Krimer bag 1kg",
-"Pistachio",
-"Macchiato powder 30g",
-"Powder Thai tea 40g",
-"Frappe Base 500g",
-"Teh Sosro 30×26",
-"Krimer 40g",
-"Coffee beans"
-],
+  ORI:[
+    "Gula pasir SAC 100×8g",
+    "Gula cair SAC 100×20ml",
+    "Ice cube",
+    "Bobaking syrup 750ml",
+    "Gula aren 1,3L",
+    "Monin syrup Salt Caramel",
+    "Monin Lychee syrup",
+    "Monin Hazelnut syrup",
+    "Monin Cheesecake syrup",
+    "Strawberry Cream Cheese syrup",
+    "Monin Strawberry 700ml",
+    "Deli Fru Coco Mangi 1L",
+    "Bobaking Syrup Whtgrp",
+    "Krimer bag 1kg",
+    "Pistachio",
+    "Macchiato powder 30g",
+    "Powder Thai tea 40g",
+    "Frappe Base 500g",
+    "Teh Sosro 30×26",
+    "Krimer 40g",
+    "Coffee beans"
+  ],
 
-"FRESH MILK":[
-"Diamond UHT 1L",
-"Greenfield UHT 1L",
-"Omela",
-"Carnation 360g",
-"Max Creamer 500g"
-]
+  "FRESH MILK":[
+    "Diamond UHT 1L",
+    "Greenfield UHT 1L",
+    "Omela",
+    "Carnation 360g",
+    "Max Creamer 500g"
+  ],
+
+  RTE:[
+    "459379 • RTE Familyfood NS Aym Rica 320g",
+    "459380 • RTE NS Kng Aymijo",
+    "461140 • RTE Makeiz Cheesemelt",
+    "465761 • RTE Kimbo Bakso Pentol",
+    "459794 • RTE Nasindo Nasi Soto PCH 85g",
+    "460997 • RTE Nasgor Cakalang Kcmbrg MCD",
+    "460998 • RTE Nasgor Aym Cabe Ijo MCD",
+    "461251 • RTE Nasi Kucing Aym Bmb Bali",
+    "461252 • RTE Nasi Kucing Teri Cabe Ijo",
+    "461253 • RTE Nasi Kucing Ayam Suwir BLD MD",
+    "466251 • RTE Nasi RDG Dgng Box 20g",
+    "466253 • RTE Nasi Dgng Lada Hitam Box 320g",
+    "432960 • RTE Pisang Molen",
+    "412697 • RTE Pisang Psg Cklt",
+    "442098 • RTE Risol Bolognase",
+    "442099 • RTE Risol Mac N Cheese",
+    "411691 • RTE Sosis Solo",
+    "461250 • RTE Ubi Brullee",
+    "440646 • RTE Onigiri Salmon Mayo (MCD)",
+    "440647 • RTE Onigiri Spicy Salmon (MCD)",
+    "440648 • RTE Onigiri Tuna Mayo (MCD)"
+  ],
+
+  IHB:[
+    "438072 • IHB Grissini Sweet (A)",
+    "438073 • IHB Grissini Salty (A)",
+    "461142 • IHB Obalab Cake Chs 80g",
+    "461143 • IHB Obalab Cake Str 80g",
+    "465667 • IHB Macron 6s",
+    "466181 • IHB Roti Cklt Keju",
+    "466182 • IHB Roti Keju Manis",
+    "466183 • IHB Roti Babka Cklt Kcg",
+    "466184 • IHB Roti Aym Mayo",
+    "466185 • IHB Roti Baso Aym"
+  ]
 
 };
 
 
-/* ============================
+/* =========================
    STORAGE
-============================ */
+========================= */
 
-const STORAGE_KEY = "beanspot_so_kf33";
+const KEY =
+  "beanspot_so_kf33_v2";
 
-let data = JSON.parse(
-    localStorage.getItem(STORAGE_KEY) || "{}"
-);
+const PROD =
+  "beanspot_products_kf33";
+
+const HIST =
+  "beanspot_history_kf33";
 
 
-/* ============================
+let products =
+  JSON.parse(
+    localStorage.getItem(PROD) || "null"
+  ) || structuredClone(defaultMaterials);
+
+
+/* Tambahkan kategori baru tanpa
+   menghapus produk lama */
+
+Object.keys(defaultMaterials).forEach(c=>{
+
+  if(!products[c]){
+    products[c]=[
+      ...defaultMaterials[c]
+    ];
+  }
+
+});
+
+
+saveProducts();
+
+
+let current = {};
+
+let histories =
+  JSON.parse(
+    localStorage.getItem(HIST) || "{}"
+  );
+
+
+/* =========================
+   HELPER
+========================= */
+
+function today(){
+
+  return new Date()
+    .toISOString()
+    .slice(0,10);
+
+}
+
+
+function fmt(d){
+
+  if(!d) return "-";
+
+  let x =
+    new Date(d+"T00:00:00");
+
+  return String(x.getDate())
+    .padStart(2,"0")
+    + "-"
+    + String(x.getMonth()+1)
+      .padStart(2,"0")
+    + "-"
+    + x.getFullYear();
+
+}
+
+
+function key(c,n){
+
+  return c+"__"+n;
+
+}
+
+
+function saveProducts(){
+
+  localStorage.setItem(
+    PROD,
+    JSON.stringify(products)
+  );
+
+}
+
+
+function esc(s){
+
+  return s
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+
+function sid(s){
+
+  return btoa(
+    unescape(
+      encodeURIComponent(s)
+    )
+  ).replace(
+    /[^a-zA-Z0-9]/g,
+    ""
+  );
+
+}
+
+
+function fd(v){
+
+  v=Number(v||0);
+
+  if(v<0)
+    return "❌ "+v;
+
+  if(v>0)
+    return "➕ "+v;
+
+  return "0";
+
+}
+
+
+function dc(v){
+
+  v=Number(v||0);
+
+  if(v<0)
+    return "minus";
+
+  if(v===0)
+    return "zero";
+
+  return "";
+
+}
+
+
+/* =========================
    LOGIN
-============================ */
+========================= */
 
 function login(){
 
-    const nik =
-        document.getElementById("nik").value.trim();
+  if(
+    !nik.value.trim() ||
+    !pin.value.trim()
+  ){
 
-    const pin =
-        document.getElementById("pin").value.trim();
-
-    if(!nik || !pin){
-        toast("NIK dan PIN wajib diisi");
-        return;
-    }
-
-    localStorage.setItem(
-        "beanspot_login",
-        JSON.stringify({
-            nik:nik,
-            waktu:new Date().toISOString()
-        })
+    return toast(
+      "NIK dan PIN wajib diisi"
     );
 
-    openApp();
-    toast("Login berhasil ✅");
+  }
+
+  localStorage.setItem(
+    "beanspot_login",
+    "1"
+  );
+
+  openApp();
+
+  toast(
+    "Login berhasil ✅"
+  );
+
 }
 
 
 function logout(){
 
-    localStorage.removeItem("beanspot_login");
+  localStorage.removeItem(
+    "beanspot_login"
+  );
 
-    document.getElementById("app")
-        .classList.add("hidden");
+  app.classList.add(
+    "hidden"
+  );
 
-    document.getElementById("loginPage")
-        .classList.remove("hidden");
+  loginPage.classList.remove(
+    "hidden"
+  );
+
 }
 
-
-/* ============================
-   OPEN APP
-============================ */
 
 function openApp(){
 
-    document.getElementById("loginPage")
-        .classList.add("hidden");
+  loginPage.classList.add(
+    "hidden"
+  );
 
-    document.getElementById("app")
-        .classList.remove("hidden");
+  app.classList.remove(
+    "hidden"
+  );
 
-    const savedDate =
-        localStorage.getItem("beanspot_date");
+  tanggal.value =
+    localStorage.getItem(
+      "beanspot_date"
+    ) || today();
 
-    document.getElementById("tanggal").value =
-        savedDate || today();
+  loadDate();
 
-    renderMaterials();
-    updateDashboard();
-    renderReport();
 }
 
 
-function today(){
+/* =========================
+   TANGGAL
+========================= */
 
-    const d = new Date();
+function loadDate(){
 
-    return d.toISOString()
-        .split("T")[0];
-}
+  localStorage.setItem(
+    "beanspot_date",
+    tanggal.value
+  );
 
-
-function saveDate(){
-
-    localStorage.setItem(
-        "beanspot_date",
-        document.getElementById("tanggal").value
+  current =
+    JSON.parse(
+      JSON.stringify(
+        histories[
+          tanggal.value
+        ]?.items || {}
+      )
     );
 
-    toast("Tanggal disimpan");
+  renderMaterials();
+
+  update();
+
+  renderHistory();
+
+  renderReport();
+
 }
 
 
-/* ============================
-   PAGE NAVIGATION
-============================ */
+/* =========================
+   NAVIGASI
+========================= */
 
-function showPage(page){
+function showPage(p){
 
-    document.getElementById("dashboardPage")
-        .classList.add("hidden");
+  dashboardPage.classList.add(
+    "hidden"
+  );
 
-    document.getElementById("inputPage")
-        .classList.add("hidden");
+  inputPage.classList.add(
+    "hidden"
+  );
 
-    document.getElementById("reportPage")
-        .classList.add("hidden");
+  reportPage.classList.add(
+    "hidden"
+  );
 
-    document.getElementById(page+"Page")
-        .classList.remove("hidden");
 
-    document.querySelectorAll(".nav button")
-        .forEach(b=>b.classList.remove("active"));
+  document
+    .getElementById(
+      p+"Page"
+    )
+    .classList.remove(
+      "hidden"
+    );
 
-    if(page==="dashboard")
-        document.getElementById("navDashboard")
-            .classList.add("active");
 
-    if(page==="input")
-        document.getElementById("navInput")
-            .classList.add("active");
+  document
+    .querySelectorAll(".nav button")
+    .forEach(
+      x=>x.classList.remove(
+        "active"
+      )
+    );
 
-    if(page==="report")
-        document.getElementById("navReport")
-            .classList.add("active");
 
-    if(page==="dashboard")
-        updateDashboard();
+  ({
+    dashboard:nDash,
+    input:nInput,
+    report:nReport
+  }[p]).classList.add(
+    "active"
+  );
 
-    if(page==="report")
-        renderReport();
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+  update();
+
+
+  if(p==="report")
+    renderReport();
+
+
+  if(p==="dashboard")
+    renderHistory();
+
+
+  scrollTo(0,0);
+
 }
 
 
-/* ============================
+/* =========================
+   TAMBAH PRODUK
+========================= */
+
+function addProduct(){
+
+  let n =
+    newName.value.trim();
+
+  let c =
+    newCat.value;
+
+
+  if(!n){
+
+    return toast(
+      "Nama produk wajib diisi"
+    );
+
+  }
+
+
+  if(
+    products[c].some(
+      x =>
+      x.toLowerCase() ===
+      n.toLowerCase()
+    )
+  ){
+
+    return toast(
+      "Produk sudah ada"
+    );
+
+  }
+
+
+  products[c].push(n);
+
+  saveProducts();
+
+  newName.value="";
+
+  renderMaterials();
+
+  toast(
+    "Produk berhasil ditambahkan ✅"
+  );
+
+}
+
+
+/* =========================
    RENDER MATERIAL
-============================ */
+========================= */
 
 function renderMaterials(){
 
-    const list =
-        document.getElementById("materialList");
+  let list =
+    materialList;
 
-    const search =
-        (document.getElementById("search")?.value || "")
-        .toLowerCase();
+  let q =
+    (search?.value || "")
+      .toLowerCase();
 
-    const filter =
-        document.getElementById("filter")?.value || "ALL";
-
-    list.innerHTML="";
-
-    Object.keys(materials).forEach(category=>{
-
-        if(filter!=="ALL" && filter!==category)
-            return;
-
-        const filtered =
-            materials[category].filter(name =>
-                name.toLowerCase().includes(search)
-            );
-
-        if(!filtered.length)
-            return;
-
-        const wrapper =
-            document.createElement("div");
-
-        wrapper.className="category";
-
-        const cls =
-            category==="RPC" ? "rpc" :
-            category==="RAW" ? "raw" :
-            category==="ORI" ? "ori" : "fresh";
-
-        wrapper.innerHTML =
-            `<div class="category-head ${cls}">
-                ${category}
-            </div>`;
-
-        filtered.forEach(name=>{
-
-            const key =
-                category+"__"+name;
-
-            if(!data[key]){
-                data[key]={
-                    category:category,
-                    name:name,
-                    awal:"",
-                    akhir:"",
-                    selisih:0
-                };
-            }
-
-            const item=data[key];
-
-            const div =
-                document.createElement("div");
-
-            div.className="material";
-
-            div.innerHTML=`
-
-                <div class="material-name">
-                    ${name}
-                </div>
-
-                <div class="material-inputs">
-
-                    <div class="input-box">
-                        <small>AWAL</small>
-                        <input
-                            type="number"
-                            min="0"
-                            value="${item.awal}"
-                            oninput="changeItem('${escapeJS(key)}','awal',this.value)"
-                        >
-                    </div>
-
-                    <div class="input-box">
-                        <small>AKHIR</small>
-                        <input
-                            type="number"
-                            min="0"
-                            value="${item.akhir}"
-                            oninput="changeItem('${escapeJS(key)}','akhir',this.value)"
-                        >
-                    </div>
-
-                    <div class="diff ${getDiffClass(item.selisih)}">
-                        <small>SELISIH</small>
-                        <span id="diff_${safeId(key)}">
-                            ${formatDiff(item.selisih)}
-                        </span>
-                    </div>
-
-                </div>
-            `;
-
-            wrapper.appendChild(div);
-        });
-
-        list.appendChild(wrapper);
-
-    });
-
-    saveData();
-}
+  let f =
+    filter?.value || "ALL";
 
 
-function escapeJS(text){
-    return text.replace(/\\/g,"\\\\")
-               .replace(/'/g,"\\'");
-}
+  list.innerHTML="";
 
 
-function safeId(text){
-    return btoa(unescape(encodeURIComponent(text)))
-        .replace(/[^a-zA-Z0-9]/g,"");
-}
+  Object.keys(products)
+  .forEach(c=>{
+
+    if(
+      f!=="ALL" &&
+      f!==c
+    )
+      return;
 
 
-/* ============================
-   INPUT MATERIAL
-============================ */
+    let arr =
+      products[c].filter(
+        n =>
+        n.toLowerCase()
+          .includes(q)
+      );
 
-function changeItem(key,field,value){
 
-    if(!data[key]){
-        return;
-    }
+    if(!arr.length)
+      return;
 
-    data[key][field] =
-        value === "" ? "" : Number(value);
 
-    const awal =
-        Number(data[key].awal || 0);
+    let w =
+      document.createElement(
+        "div"
+      );
 
-    const akhir =
-        Number(data[key].akhir || 0);
 
-    data[key].selisih =
-        akhir-awal;
+    let cls =
+      c==="RPC"
+      ? "rpc"
+      : c==="RAW"
+      ? "raw"
+      : c==="ORI"
+      ? "ori"
+      : c==="FRESH MILK"
+      ? "fresh"
+      : c==="RTE"
+      ? "rte"
+      : "ihb";
 
-    const el =
-        document.getElementById(
-            "diff_"+safeId(key)
+
+    w.className="cat";
+
+
+    w.innerHTML =
+      '<div class="cathead '+cls+'">'
+      +c+
+      '</div>';
+
+
+    arr.forEach(n=>{
+
+      let k =
+        key(c,n);
+
+
+      if(!current[k]){
+
+        current[k]={
+          category:c,
+          name:n,
+          awal:"",
+          akhir:"",
+          selisih:0
+        };
+
+      }
+
+
+      let i =
+        current[k];
+
+
+      let d =
+        document.createElement(
+          "div"
         );
 
-    if(el){
 
-        el.parentElement.className =
-            "diff "+getDiffClass(
-                data[key].selisih
-            );
-
-        el.innerText =
-            formatDiff(data[key].selisih);
-    }
-
-    saveData();
-    updateDashboard();
-}
+      d.className=
+        "material";
 
 
-function formatDiff(value){
+      d.innerHTML=
+        '<div class="mname">'
+        +n+
+        '</div>'
+        +
+        '<div class="inputs">'
 
-    value=Number(value||0);
+        +
 
-    if(value<0)
-        return "❌ "+value;
+        '<div class="ibox">'
+        +
+        '<small>AWAL</small>'
+        +
+        '<input type="number" min="0" value="'
+        +(i.awal ?? "")+
+        '" oninput="changeItem(\''
+        +esc(k)+
+        '\',\'awal\',this.value)">'
+        +
+        '</div>'
 
-    if(value>0)
-        return "➕ "+value;
+        +
 
-    return "0";
-}
+        '<div class="ibox">'
+        +
+        '<small>AKHIR</small>'
+        +
+        '<input type="number" min="0" value="'
+        +(i.akhir ?? "")+
+        '" oninput="changeItem(\''
+        +esc(k)+
+        '\',\'akhir\',this.value)">'
+        +
+        '</div>'
 
+        +
 
-function getDiffClass(value){
+        '<div class="diff '
+        +dc(i.selisih)+
+        '">'
 
-    value=Number(value||0);
+        +
+        '<small>SELISIH</small>'
 
-    if(value<0)
-        return "minus";
+        +
+        '<span id="d_'
+        +sid(k)+
+        '">'
+        +fd(i.selisih)+
+        '</span>'
 
-    if(value===0)
-        return "zero";
+        +
+        '</div>'
 
-    return "";
-}
-
-
-/* ============================
-   SAVE
-============================ */
-
-function saveData(){
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
-    );
-}
-
-
-function saveAll(){
-
-    saveData();
-
-    updateDashboard();
-    renderReport();
-
-    toast("SO Material berhasil disimpan ✅");
-}
+        +
+        '</div>';
 
 
-/* ============================
-   DASHBOARD
-============================ */
+      w.appendChild(d);
 
-function updateDashboard(){
-
-    let total=0;
-    let minus=0;
-    let plus=0;
-    let selisih=0;
-
-    let counts={
-        RPC:0,
-        RAW:0,
-        ORI:0,
-        "FRESH MILK":0
-    };
-
-    Object.values(data).forEach(item=>{
-
-        total++;
-
-        const s =
-            Number(item.selisih||0);
-
-        selisih+=s;
-
-        if(s<0) minus++;
-        if(s>0) plus++;
-
-        if(counts[item.category]!==undefined)
-            counts[item.category]++;
     });
 
-    document.getElementById("totalItem")
-        .innerText=total;
 
-    document.getElementById("totalMinus")
-        .innerText=minus;
+    list.appendChild(w);
 
-    document.getElementById("totalPlus")
-        .innerText=plus;
+  });
 
-    document.getElementById("totalSelisih")
-        .innerText=selisih;
 
-    document.getElementById("rpcCount")
-        .innerText=counts.RPC;
+  saveCurrentDraft();
 
-    document.getElementById("rawCount")
-        .innerText=counts.RAW;
-
-    document.getElementById("oriCount")
-        .innerText=counts.ORI;
-
-    document.getElementById("freshCount")
-        .innerText=counts["FRESH MILK"];
 }
 
 
-/* ============================
+/* =========================
+   INPUT STOCK
+========================= */
+
+function changeItem(
+  k,
+  f,
+  v
+){
+
+  if(!current[k])
+    return;
+
+
+  current[k][f] =
+    v===""
+    ? ""
+    : Number(v);
+
+
+  current[k].selisih =
+    Number(
+      current[k].akhir || 0
+    )
+    -
+    Number(
+      current[k].awal || 0
+    );
+
+
+  let e =
+    document.getElementById(
+      "d_"+sid(k)
+    );
+
+
+  if(e){
+
+    e.parentElement.className =
+      "diff "
+      +dc(
+        current[k].selisih
+      );
+
+
+    e.textContent =
+      fd(
+        current[k].selisih
+      );
+
+  }
+
+
+  saveCurrentDraft();
+
+  update();
+
+  renderMinus();
+
+}
+
+
+/* =========================
+   DRAFT
+========================= */
+
+function saveCurrentDraft(){
+
+  localStorage.setItem(
+    KEY,
+    tanggal.value
+    ?
+    JSON.stringify({
+      date:tanggal.value,
+      items:current
+    })
+    :
+    ""
+  );
+
+}
+
+
+/* =========================
+   SIMPAN SO
+========================= */
+
+function saveSO(){
+
+  histories[
+    tanggal.value
+  ]={
+    date:tanggal.value,
+    items:current,
+    savedAt:
+      new Date().toISOString()
+  };
+
+
+  localStorage.setItem(
+    HIST,
+    JSON.stringify(histories)
+  );
+
+
+  toast(
+    "SO "+fmt(tanggal.value)
+    +" tersimpan ✅"
+  );
+
+
+  renderHistory();
+
+  renderReport();
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function update(){
+
+  let a =
+    Object.values(current);
+
+
+  let mi =
+    a.filter(
+      x=>x.selisih<0
+    ).length;
+
+
+  let pl =
+    a.filter(
+      x=>x.selisih>0
+    ).length;
+
+
+  let s =
+    a.reduce(
+      (z,x)=>
+      z+Number(
+        x.selisih||0
+      ),
+      0
+    );
+
+
+  totalItem.textContent =
+    a.length;
+
+  totalMinus.textContent =
+    mi;
+
+  totalPlus.textContent =
+    pl;
+
+  totalSelisih.textContent =
+    s;
+
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+function renderHistory(){
+
+  let dates =
+    Object.keys(
+      histories
+    )
+    .sort()
+    .reverse();
+
+
+  dashHistory.innerHTML =
+    dates.length
+
+    ?
+
+    dates
+    .slice(0,8)
+    .map(
+      d=>
+      '<div class="history-item">'
+      +
+      '<div class="history-date">'
+      +'📅 '+fmt(d)
+      +'</div>'
+      +
+      '<div class="history-meta">'
+      +
+      Object.keys(
+        histories[d].items
+      ).length
+      +
+      ' item • tersimpan'
+      +
+      '</div>'
+      +
+      '<button class="btn blue full" onclick="openHistory(\''
+      +d+
+      '\')">'
+      +
+      'Lihat SO'
+      +
+      '</button>'
+      +
+      '</div>'
+    )
+    .join("")
+
+    :
+
+    '<div class="empty">'
+    +'Belum ada SO tersimpan'
+    +'</div>';
+
+}
+
+
+/* =========================
+   BUKA HISTORY
+========================= */
+
+function openHistory(d){
+
+  tanggal.value=d;
+
+  current =
+    JSON.parse(
+      JSON.stringify(
+        histories[d].items
+      )
+    );
+
+
+  localStorage.setItem(
+    "beanspot_date",
+    d
+  );
+
+
+  showPage(
+    "report"
+  );
+
+
+  renderReport();
+
+}
+
+
+/* =========================
    REPORT
-============================ */
+========================= */
+
+function getCurrentItems(){
+
+  return Object.values(
+    histories[
+      tanggal.value
+    ]?.items || current
+  );
+
+}
+
 
 function renderReport(){
 
-    const summary =
-        document.getElementById("reportSummary");
+  let h =
+    histories[
+      tanggal.value
+    ];
 
-    const minusList =
-        document.getElementById("minusList");
 
-    if(!summary || !minusList)
-        return;
+  let a =
+    Object.values(
+      h?.items || current
+    );
 
-    let total=0;
-    let minus=0;
-    let plus=0;
-    let selisih=0;
 
-    let minusItems=[];
+  let mi =
+    a.filter(
+      x=>x.selisih<0
+    );
 
-    Object.values(data).forEach(item=>{
 
-        total++;
+  let total =
+    a.reduce(
+      (z,x)=>
+      z+Number(
+        x.selisih||0
+      ),
+      0
+    );
 
-        const s =
-            Number(item.selisih||0);
 
-        selisih+=s;
+  reportSummary.innerHTML=
 
-        if(s<0){
-            minus++;
+    '<div class="row">'
+    +
+    '<span>Tanggal</span>'
+    +
+    '<b>'+fmt(
+      tanggal.value
+    )+'</b>'
+    +
+    '</div>'
 
-            minusItems.push(item);
-        }
+    +
 
-        if(s>0)
-            plus++;
-    });
+    '<div class="row">'
+    +
+    '<span>Total Item</span>'
+    +
+    '<b>'+a.length+'</b>'
+    +
+    '</div>'
 
-    summary.innerHTML=`
+    +
 
-        <div class="report-row">
-            <span>Total Item</span>
-            <b>${total}</b>
-        </div>
+    '<div class="row">'
+    +
+    '<span>Minus</span>'
+    +
+    '<b class="minus-text">'
+    +mi.length+
+    '</b>'
+    +
+    '</div>'
 
-        <div class="report-row">
-            <span>Minus</span>
-            <b class="minus-text">${minus}</b>
-        </div>
+    +
 
-        <div class="report-row">
-            <span>Plus</span>
-            <b class="plus-text">${plus}</b>
-        </div>
+    '<div class="row">'
+    +
+    '<span>Plus</span>'
+    +
+    '<b class="plus-text">'
+    +
+    a.filter(
+      x=>x.selisih>0
+    ).length
+    +
+    '</b>'
+    +
+    '</div>'
 
-        <div class="report-row">
-            <span>Total Selisih</span>
-            <b>${selisih}</b>
-        </div>
+    +
 
-    `;
+    '<div class="row">'
+    +
+    '<span>Total Selisih</span>'
+    +
+    '<b>'+total+'</b>'
+    +
+    '</div>';
 
-    if(!minusItems.length){
 
-        minusList.innerHTML=
-            `<div class="empty">
-                ✅ Tidak ada material minus
-            </div>`;
+  historyList.innerHTML =
+    Object.keys(
+      histories
+    )
+    .sort()
+    .reverse()
+    .map(
+      d=>
+      '<div class="history-item">'
+      +
+      '<div class="history-date">'
+      +'📅 '+fmt(d)
+      +'</div>'
+      +
+      '<div class="history-meta">'
+      +
+      Object.keys(
+        histories[d].items
+      ).length
+      +' item'
+      +
+      '</div>'
+      +
+      '<button class="btn blue full" onclick="openHistory(\''
+      +d+
+      '\')">'
+      +'Buka'
+      +'</button>'
+      +
+      '</div>'
+    )
+    .join("")
 
-    }else{
+    ||
 
-        minusList.innerHTML =
-            minusItems.map(item=>`
+    '<div class="empty">'
+    +'Belum ada riwayat'
+    +'</div>';
 
-                <div class="report-row">
 
-                    <span>
-                        <b>${item.category}</b><br>
-                        ${item.name}
-                    </span>
+  renderMinus();
 
-                    <span class="minus-text">
-                        ❌ ${item.selisih}
-                    </span>
-
-                </div>
-
-            `).join("");
-    }
 }
 
 
-/* ============================
-   WHATSAPP
-============================ */
+/* =========================
+   REKAP MINUS
+========================= */
+
+function renderMinus(){
+
+  let a =
+    getCurrentItems();
+
+
+  let minus =
+    a.filter(
+      x=>Number(
+        x.selisih||0
+      )<0
+    );
+
+
+  if(!minus.length){
+
+    minusList.innerHTML =
+      '<div class="minus-box">'
+      +
+      '<div style="text-align:center;font-weight:bold;color:#16a34a;padding:10px">'
+      +
+      '✅ Tidak ada barang minus pada tanggal ini'
+      +
+      '</div>'
+      +
+      '</div>';
+
+    return;
+
+  }
+
+
+  let totalMinus =
+    minus.reduce(
+      (z,x)=>
+      z+Number(
+        x.selisih||0
+      ),
+      0
+    );
+
+
+  minusList.innerHTML =
+
+    '<div class="minus-box">'
+
+    +
+
+    '<div class="minus-title">'
+    +
+    '🔴 '+minus.length+
+    ' BARANG MINUS'
+    +
+    '</div>'
+
+    +
+
+    minus
+    .map(
+      (x,i)=>
+      '<div class="minus-item">'
+
+      +
+
+      '<div class="minus-name">'
+      +
+      (i+1)+'. '+x.name
+      +
+      '</div>'
+
+      +
+
+      '<div class="minus-detail">'
+      +
+      'Kategori: '+x.category
+      +
+      '<br>'
+      +
+      'Awal: '+(
+        x.awal===""
+        ? "-"
+        : x.awal
+      )
+      +
+      ' | Akhir: '+(
+        x.akhir===""
+        ? "-"
+        : x.akhir
+      )
+      +
+      ' | Selisih: '
+      +
+      '<b style="color:#dc2626">'
+      +
+      x.selisih
+      +
+      '</b>'
+      +
+      '</div>'
+
+      +
+
+      '</div>'
+    )
+    .join("")
+
+    +
+
+    '<div style="margin-top:12px;padding-top:10px;border-top:2px solid #fecaca;font-weight:900">'
+    +
+    'TOTAL SELISIH MINUS: '
+    +
+    '<span style="color:#dc2626">'
+    +
+    totalMinus
+    +
+    '</span>'
+    +
+    '</div>'
+
+    +
+
+    '</div>';
+
+}
+
+
+/* =========================
+   LAPORAN LENGKAP
+========================= */
 
 function buildReport(){
 
-    const tanggal =
-        document.getElementById("tanggal").value;
+  let a =
+    getCurrentItems();
 
-    let text=
-`*SO MATERIAL BEANSPOT*
-*${formatDate(tanggal)}*
 
-*KF33 / KARET PEDURENAN*
+  let t =
+    '*SO MATERIAL BEANSPOT*'
+    +
+    '\n*KF33 / KARET PEDURENAN*'
+    +
+    '\nTanggal: *'
+    +
+    fmt(tanggal.value)
+    +
+    '*\n\n';
 
-`;
 
-    ["RPC","RAW","ORI","FRESH MILK"]
-    .forEach(category=>{
+  Object.keys(products)
+  .forEach(c=>{
 
-        text+=`\n*${category}*\n`;
+    t +=
+      '*'+c+'*\n';
 
-        materials[category].forEach(name=>{
 
-            const key =
-                category+"__"+name;
+    products[c]
+    .forEach(n=>{
 
-            const item=data[key] || {};
+      let i =
+        a.find(
+          x=>
+          x.name===n &&
+          x.category===c
+        )
+        || {};
 
-            const awal =
-                item.awal==="" ? "-" : item.awal;
 
-            const akhir =
-                item.akhir==="" ? "-" : item.akhir;
+      t +=
+        '[ ] '
+        +n
+        +' : '
+        +(i.awal ?? '-')
+        +' / '
+        +(i.akhir ?? '-')
+        +' / Selisih: '
+        +(Number(
+          i.selisih||0
+        )<0
+          ? '❌ '
+          : ''
+        )
+        +(i.selisih ?? 0)
+        +'\n';
 
-            const s =
-                Number(item.selisih||0);
-
-            let status =
-                s<0 ? "❌ "+s : s;
-
-            text+=
-`[ ] ${name} : ${awal} / ${akhir} / Selisih: ${status}
-`;
-        });
     });
 
-    text+=`
-*Catatan:*
-Awal / Akhir / Selisih
-Selisih = Akhir - Awal
-❌ = Selisih minus
+  });
 
-*Kontrol • Akurasi • Tanggung Jawab*
-`;
 
-    return text;
+  return t
+    +
+    '\nAwal / Akhir / Selisih'
+    +
+    '\nSelisih = Akhir - Awal';
+
 }
 
+
+/* =========================
+   LAPORAN MINUS
+========================= */
+
+function buildMinusReport(){
+
+  let a =
+    getCurrentItems();
+
+
+  let minus =
+    a.filter(
+      x=>Number(
+        x.selisih||0
+      )<0
+    );
+
+
+  let t =
+    '*🔴 REKAP BARANG MINUS*'
+    +
+    '\n*BEANSPOT KF33*'
+    +
+    '\nKaret Pedurenan'
+    +
+    '\nTanggal: *'
+    +
+    fmt(tanggal.value)
+    +
+    '*\n\n';
+
+
+  if(!minus.length){
+
+    return t
+      +
+      '✅ Tidak ada barang minus pada tanggal ini.';
+
+  }
+
+
+  t +=
+    '*BARANG MINUS:*\n\n';
+
+
+  minus.forEach(
+    (x,i)=>{
+
+      t +=
+        (i+1)+'. *'
+        +x.name
+        +'*\n'
+        +
+        'Kategori: '
+        +x.category
+        +'\n'
+        +
+        'Awal: '
+        +(x.awal===""
+          ? "-"
+          : x.awal)
+        +
+        ' | Akhir: '
+        +(x.akhir===""
+          ? "-"
+          : x.akhir)
+        +
+        '\nSelisih: *'
+        +x.selisih
+        +'*\n\n';
+
+    }
+  );
+
+
+  let total =
+    minus.reduce(
+      (z,x)=>
+      z+Number(
+        x.selisih||0
+      ),
+      0
+    );
+
+
+  t +=
+    'Total item minus: *'
+    +minus.length+
+    '*\n'
+    +
+    'Total selisih minus: *'
+    +total+
+    '*';
+
+
+  return t;
+
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
 
 function shareWhatsApp(){
 
-    const text =
-        buildReport();
+  open(
+    "https://wa.me/?text="
+    +
+    encodeURIComponent(
+      buildReport()
+    ),
+    "_blank"
+  );
 
-    const url =
-        "https://wa.me/?text="+
-        encodeURIComponent(text);
-
-    window.open(url,"_blank");
 }
 
+
+function shareMinusWhatsApp(){
+
+  open(
+    "https://wa.me/?text="
+    +
+    encodeURIComponent(
+      buildMinusReport()
+    ),
+    "_blank"
+  );
+
+}
+
+
+/* =========================
+   COPY
+========================= */
 
 function copyReport(){
 
-    navigator.clipboard.writeText(
-        buildReport()
-    ).then(()=>{
+  navigator.clipboard
+    .writeText(
+      buildReport()
+    )
+    .then(
+      ()=>
+      toast(
+        "Laporan dicopy 📋"
+      )
+    );
 
-        toast("Laporan berhasil dicopy 📋");
-
-    }).catch(()=>{
-
-        toast("Gagal copy otomatis");
-
-    });
 }
 
 
-/* ============================
+function copyMinusReport(){
+
+  navigator.clipboard
+    .writeText(
+      buildMinusReport()
+    )
+    .then(
+      ()=>
+      toast(
+        "Rekap minus dicopy 📋"
+      )
+    );
+
+}
+
+
+/* =========================
    EXPORT CSV
-============================ */
+========================= */
 
 function exportCSV(){
 
-    let csv=
-`Kategori,Nama Material,Awal,Akhir,Selisih\n`;
+  let a =
+    getCurrentItems();
 
-    Object.values(data).forEach(item=>{
 
-        csv+=
-`"${item.category}","${item.name}",${item.awal},${item.akhir},${item.selisih}\n`;
+  let csv =
+    "Tanggal,Kategori,Nama Material,Awal,Akhir,Selisih\n"
 
-    });
 
-    const blob =
-        new Blob([csv],{
-            type:"text/csv;charset=utf-8;"
-        });
+    +
 
-    const url =
-        URL.createObjectURL(blob);
+    a.map(
+      x=>
+      `"${tanggal.value}",`
+      +
+      `"${x.category}",`
+      +
+      `"${x.name}",`
+      +
+      `"${x.awal}",`
+      +
+      `"${x.akhir}",`
+      +
+      `"${x.selisih}"`
+    )
+    .join("\n");
 
-    const a =
-        document.createElement("a");
 
-    a.href=url;
+  let u =
+    URL.createObjectURL(
+      new Blob(
+        [csv],
+        {
+          type:"text/csv"
+        }
+      )
+    );
 
-    a.download=
-        "SO_MATERIAL_BEANSPOT_KF33.csv";
 
-    a.click();
+  let ael =
+    document.createElement("a");
 
-    URL.revokeObjectURL(url);
 
-    toast("CSV berhasil dibuat 📥");
+  ael.href=u;
+
+  ael.download =
+    "SO_BEANSPOT_KF33_"
+    +
+    tanggal.value
+    +
+    ".csv";
+
+
+  ael.click();
+
+
+  URL.revokeObjectURL(u);
+
 }
 
 
-/* ============================
-   RESET
-============================ */
+/* =========================
+   HAPUS TANGGAL
+========================= */
 
-function resetData(){
+function resetCurrentDate(){
 
-    if(!confirm(
-        "Yakin ingin menghapus seluruh data SO?"
-    )){
-        return;
-    }
+  if(
+    !confirm(
+      "Hapus SO tersimpan untuk "
+      +
+      fmt(tanggal.value)
+      +
+      "?"
+    )
+  )
+    return;
 
-    data={};
 
-    saveData();
+  delete histories[
+    tanggal.value
+  ];
 
-    renderMaterials();
-    updateDashboard();
-    renderReport();
 
-    toast("Data berhasil direset");
+  localStorage.setItem(
+    HIST,
+    JSON.stringify(
+      histories
+    )
+  );
+
+
+  current={};
+
+
+  renderMaterials();
+
+  renderHistory();
+
+  renderReport();
+
+  update();
+
+
+  toast(
+    "SO tanggal ini dihapus"
+  );
+
 }
 
 
-/* ============================
+/* =========================
    DARK MODE
-============================ */
+========================= */
 
 function toggleDark(){
 
-    document.body.classList.toggle("dark");
+  document.body
+    .classList
+    .toggle("dark");
 
-    localStorage.setItem(
-        "beanspot_dark",
-        document.body.classList.contains("dark")
-    );
+
+  localStorage.setItem(
+    "dark",
+    document.body
+      .classList
+      .contains("dark")
+  );
+
 }
 
 
-function loadTheme(){
+/* =========================
+   TOAST
+========================= */
+
+function toast(m){
+
+  let e =
+    document.getElementById(
+      "toast"
+    );
+
+
+  e.textContent=m;
+
+  e.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    window.tt
+  );
+
+
+  window.tt =
+    setTimeout(
+      ()=>
+      e.classList.remove(
+        "show"
+      ),
+      2200
+    );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+window.addEventListener(
+  "load",
+  ()=>{
 
     if(
-        localStorage.getItem("beanspot_dark")
-        ==="true"
+      localStorage.getItem(
+        "dark"
+      )==="true"
     ){
-        document.body.classList.add("dark");
-    }
-}
 
-
-/* ============================
-   DATE
-============================ */
-
-function formatDate(date){
-
-    if(!date)
-        return "-";
-
-    const d =
-        new Date(date+"T00:00:00");
-
-    const day =
-        String(d.getDate()).padStart(2,"0");
-
-    const month =
-        String(d.getMonth()+1).padStart(2,"0");
-
-    const year =
-        d.getFullYear();
-
-    return `${day}-${month}-${year}`;
-}
-
-
-/* ============================
-   TOAST
-============================ */
-
-let toastTimer;
-
-function toast(message){
-
-    const el =
-        document.getElementById("toast");
-
-    el.innerText=message;
-
-    el.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer=setTimeout(()=>{
-
-        el.classList.remove("show");
-
-    },2200);
-}
-
-
-/* ============================
-   INIT
-============================ */
-
-window.addEventListener("load",()=>{
-
-    loadTheme();
-
-    const logged =
-        localStorage.getItem(
-            "beanspot_login"
-        );
-
-    if(logged){
-
-        openApp();
+      document.body
+        .classList
+        .add("dark");
 
     }
 
-});
+
+    if(
+      localStorage.getItem(
+        "beanspot_login"
+      )
+    ){
+
+      openApp();
+
+    }
+
+  }
+);
 
 </script>
 
