@@ -2,490 +2,318 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#c8102e">
 <title>SO Material BeanSpot KF33</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f5f7;
-  color:#222;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;color:#202124}
+body.dark{background:#101827;color:#f5f5f5}
 button,input,select{font:inherit}
-button{cursor:pointer;border:0}
-.hidden{display:none!important}
 
-.login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(145deg,#d71920,#9d0010);
+.header{
+  background:linear-gradient(135deg,#e21b2d,#a90014);
+  color:#fff;padding:17px 15px;position:sticky;top:0;
+  z-index:20;box-shadow:0 4px 14px #0003
 }
-.login-box{
-  width:100%;
-  max-width:390px;
-  background:white;
-  padding:30px 24px;
-  border-radius:22px;
-  box-shadow:0 15px 45px #0005;
-}
-.logo{
-  text-align:center;
-  font-size:42px;
-  font-weight:900;
-  color:#d71920;
-}
-.logo span{color:#222}
-.login-title{text-align:center;font-size:24px;font-weight:900;margin:5px 0}
-.login-sub{text-align:center;color:#777;margin-bottom:25px}
-.input{
-  width:100%;
-  padding:14px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  margin-bottom:12px;
-  outline:none;
-}
-.input:focus{border-color:#d71920}
-.btn{
-  padding:13px 17px;
-  border-radius:11px;
-  font-weight:800;
-}
-.btn-red{background:#d71920;color:white}
-.btn-yellow{background:#ffd400;color:#111}
-.btn-gray{background:#e9e9e9;color:#222}
-.btn-green{background:#14833b;color:white}
-.btn-danger{background:#b00020;color:white}
+.head{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:900}
+.logo span{color:#ffd400}
+.store{text-align:right;font-size:11px;line-height:1.4}
+.sub{font-size:12px;margin-top:7px;opacity:.95}
 
-.app{display:none;min-height:100vh}
-header{
-  background:linear-gradient(135deg,#d71920,#a40010);
-  color:white;
-  padding:15px;
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-.header-inner{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-.brand{font-size:20px;font-weight:900}
-.brand small{display:block;font-size:11px;font-weight:500;opacity:.85}
-.user-info{text-align:right;font-size:12px}
-.nav{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  gap:7px;
-  overflow-x:auto;
-  padding:10px 0 0;
-}
-.nav button{
-  background:#ffffff22;
-  color:white;
-  padding:9px 14px;
-  border-radius:9px;
-  white-space:nowrap;
-}
-.nav button.active{background:#ffd400;color:#111}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:18px;
-}
-.page{display:none}
-.page.active{display:block}
+.container{max-width:920px;margin:auto;padding:14px}
+.page{padding-bottom:80px}
 
 .card{
-  background:white;
-  border-radius:16px;
-  padding:17px;
-  margin-bottom:15px;
-  box-shadow:0 2px 10px #0000000b;
+  background:#fff;border-radius:16px;padding:15px;margin-bottom:14px;
+  box-shadow:0 3px 14px #00000012
 }
-.card h2,.card h3{margin-top:0}
+.dark .card{background:#1d2939;box-shadow:0 3px 14px #0006}
 
+.login{max-width:430px;margin:40px auto;text-align:center}
+.login-logo{
+  width:82px;height:82px;margin:auto;border-radius:22px;
+  background:#d71920;color:#fff;display:flex;
+  align-items:center;justify-content:center;
+  font-size:40px;font-weight:900
+}
+
+h1{margin:13px 0 3px;font-size:24px}
+label{display:block;font-size:12px;font-weight:bold;margin:11px 0 5px}
+
+input,select{
+  width:100%;border:1px solid #d8dce2;border-radius:10px;
+  padding:12px;background:#fff;outline:none
+}
+.dark input,.dark select{
+  background:#111827;color:#fff;border-color:#374151
+}
+
+.btn{
+  border:0;border-radius:10px;padding:11px 14px;
+  font-weight:bold;cursor:pointer
+}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.red{background:#d71920;color:#fff}
+.blue{background:#2563eb;color:#fff}
+.green{background:#16a34a;color:#fff}
+.yellow{background:#ffd400;color:#111}
+.gray{background:#e5e7eb;color:#222}
+.dark .gray{background:#374151;color:#fff}
+.full{width:100%;margin-top:10px}
+
+.actions{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px
+}
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:9px
 }
 .stat{
-  background:white;
-  padding:17px;
-  border-radius:15px;
-  box-shadow:0 2px 10px #0000000b;
+  background:#f8fafc;border-radius:13px;padding:12px;
+  border-left:5px solid #d71920
 }
-.stat b{font-size:27px;display:block;margin-top:6px}
-.minus{color:#c40018}
-.plus{color:#16833b}
+.dark .stat{background:#111827}
+.stat small{font-size:10px;color:#777}
+.dark .stat small{color:#aaa}
+.stat strong{display:block;font-size:23px;margin-top:4px}
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+.title{font-size:17px;font-weight:900;margin:2px 0 12px}
+.toolbar{
+  display:grid;grid-template-columns:1fr 180px;
+  gap:8px;margin-bottom:10px
 }
+
+.cat{margin-bottom:17px}
+.cathead{
+  color:#fff;padding:11px 13px;
+  border-radius:10px 10px 0 0;font-weight:900
+}
+.rpc{background:#d71920}
+.raw{background:#2563eb}
+.ori{background:#16a34a}
+.fresh{background:#9333ea}
+.rte{background:#ea580c}
+.ihb{background:#0891b2}
+
+.material{
+  background:#fff;border:1px solid #e5e7eb;
+  border-top:0;padding:11px
+}
+.dark .material{
+  background:#1d2939;border-color:#374151
+}
+.material:last-child{border-radius:0 0 10px 10px}
+.mname{font-weight:bold;font-size:13px;margin-bottom:8px}
+
+.inputs{
+  display:grid;grid-template-columns:1fr 1fr 105px;gap:7px
+}
+.ibox small{
+  display:block;font-size:10px;color:#777;margin-bottom:3px
+}
+.diff{
+  padding:10px 6px;border-radius:9px;text-align:center;
+  font-weight:900;background:#dcfce7;color:#15803d
+}
+.diff.minus{background:#fee2e2;color:#dc2626}
+.diff.zero{background:#e5e7eb;color:#555}
+.diff small{display:block}
+
 .row{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap;
+  display:flex;justify-content:space-between;gap:10px;
+  padding:9px 0;border-bottom:1px solid #eee;font-size:13px
 }
-.row>*{flex:1}
-.row .fit{flex:0 0 auto}
+.dark .row{border-color:#374151}
+.minus-text{color:#dc2626;font-weight:bold}
+.plus-text{color:#16a34a;font-weight:bold}
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:760px;
+.nav{
+  position:fixed;bottom:0;left:0;right:0;background:#fff;
+  border-top:1px solid #ddd;display:flex;
+  justify-content:center;z-index:30
 }
-.table-wrap{overflow:auto}
-th,td{
-  padding:9px 8px;
-  border-bottom:1px solid #eee;
-  text-align:left;
-  font-size:13px;
+.dark .nav{background:#1d2939;border-color:#374151}
+.nav button{
+  border:0;background:none;padding:8px 15px;
+  font-size:11px;font-weight:bold;color:#555
 }
-th{background:#f5f5f5}
-.qty{width:90px;padding:9px;border:1px solid #ddd;border-radius:8px}
-.diff{font-weight:900}
+.dark .nav button{color:#ddd}
+.nav button.active{color:#d71920}
 
-.category{
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:7px;
-  font-size:11px;
-  font-weight:900;
-  background:#eee;
-}
-
-.product-item{
-  border:1px solid #eee;
-  border-radius:12px;
-  padding:12px;
-  margin-bottom:8px;
-}
-.product-name{font-weight:800}
-.product-meta{font-size:12px;color:#777;margin-top:4px}
-
-.notice{
-  padding:12px;
-  border-radius:10px;
-  background:#fff3cd;
-  margin-bottom:12px;
-}
-.loading{
-  text-align:center;
-  padding:30px;
-  color:#777;
-}
+.hidden{display:none!important}
 
 .toast{
-  position:fixed;
-  bottom:20px;
-  left:50%;
+  position:fixed;left:50%;bottom:82px;
   transform:translateX(-50%);
-  background:#222;
-  color:white;
-  padding:12px 18px;
-  border-radius:10px;
-  z-index:100;
-  display:none;
+  background:#111827;color:#fff;padding:11px 17px;
+  border-radius:25px;font-size:13px;z-index:100;
+  opacity:0;transition:.2s
+}
+.toast.show{opacity:1}
+
+.history-item{
+  border:1px solid #e5e7eb;border-radius:12px;
+  padding:12px;margin:8px 0;background:#fafafa
+}
+.dark .history-item{
+  background:#111827;border-color:#374151
+}
+.history-date{font-weight:900}
+.history-meta{font-size:11px;color:#777;margin-top:4px}
+
+.add-grid{
+  display:grid;grid-template-columns:1fr 150px;gap:8px
 }
 
-@media(max-width:700px){
+.connection-box{
+  margin-top:10px;padding:10px;border-radius:10px;
+  background:#f8fafc;font-size:12px;word-break:break-word
+}
+.dark .connection-box{background:#111827}
+
+@media(max-width:650px){
   .stats{grid-template-columns:repeat(2,1fr)}
-  .grid{grid-template-columns:1fr}
-  .container{padding:12px}
-  .header-inner{align-items:flex-start}
+  .inputs{grid-template-columns:1fr 1fr}
+  .inputs .diff{grid-column:1/-1}
+  .toolbar{grid-template-columns:1fr}
+  .add-grid{grid-template-columns:1fr}
+  .actions{grid-template-columns:1fr 1fr 1fr}
 }
-
-body.dark{
-  background:#151515;
-  color:#eee;
-}
-body.dark .card,
-body.dark .stat,
-body.dark .login-box{background:#222;color:#eee}
-body.dark .input{
-  background:#333;color:#fff;border-color:#555
-}
-body.dark th{background:#333}
-body.dark td{border-color:#444}
-body.dark .btn-gray{background:#444;color:#fff}
 </style>
 </head>
 
 <body>
 
 <!-- ================= LOGIN ================= -->
+<div id="loginPage">
+  <div class="container">
+    <div class="card login">
 
-<section id="loginPage" class="login">
-  <div class="login-box">
-    <div class="logo">bean<span>!</span>spot</div>
+      <div class="login-logo">☕</div>
 
-    <div class="login-title">SO MATERIAL</div>
-    <div class="login-sub">KF33 • Karet Pedurenan</div>
+      <h1>SO MATERIAL</h1>
+      <b style="color:#d71920;font-size:19px">BEANSPOT</b>
+      <p>KF33 • Karet Pedurenan</p>
 
-    <input id="loginNik"
-           class="input"
-           inputmode="numeric"
-           placeholder="NIK">
+      <label>NIK</label>
+      <input id="nik" placeholder="Masukkan NIK" autocomplete="username">
 
-    <input id="loginPin"
-           class="input"
-           type="password"
-           inputmode="numeric"
-           placeholder="PIN">
+      <label>PIN</label>
+      <input id="pin" type="password" placeholder="Masukkan PIN" autocomplete="current-password">
 
-    <button id="loginBtn"
-            class="btn btn-red"
-            style="width:100%"
-            onclick="login()">
-      MASUK
-    </button>
+      <button id="loginBtn" class="btn red full" onclick="login()">
+        LOGIN
+      </button>
 
-    <div id="loginError"
-         style="color:#c40018;text-align:center;margin-top:12px;font-size:13px">
+      <button id="connectionBtn" class="btn gray full" onclick="checkConnection()">
+        🔌 CEK KONEKSI DATABASE
+      </button>
+
+      <p id="connectionStatus"
+         style="font-size:12px;font-weight:bold;margin:12px 0 0;color:#777">
+        Belum dicek
+      </p>
+
+      <p style="font-size:12px;color:#777;margin-top:12px">
+        Sistem Kontrol Stock Material • Supabase Online
+      </p>
+
+      <p style="font-size:10px;color:#999">
+        Versi koneksi diperbaiki • API RPC diagnostic
+      </p>
+
     </div>
   </div>
-</section>
+</div>
 
 
 <!-- ================= APP ================= -->
+<div id="app" class="hidden page">
 
-<section id="app" class="app">
+<header class="header">
+  <div class="head">
+    <div class="logo">bean<span>!</span>spot</div>
 
-<header>
-  <div class="header-inner">
-
-    <div class="brand">
-      bean!spot • SO MATERIAL
-      <small>KF33 • Karet Pedurenan</small>
+    <div class="store">
+      <b>KF33</b><br>
+      Karet Pedurenan
     </div>
-
-    <div class="user-info">
-      <b id="userName">-</b>
-      <br>
-      <span id="userRole">-</span>
-    </div>
-
   </div>
 
-  <div class="nav">
-    <button id="navDashboard" onclick="showPage('dashboard')">
-      Dashboard
-    </button>
-
-    <button id="navInput" onclick="showPage('input')">
-      Input SO
-    </button>
-
-    <button id="navReport" onclick="showPage('report')">
-      Rekap
-    </button>
-
-    <button id="navProducts"
-            onclick="showPage('products')">
-      Produk
-    </button>
+  <div class="sub">
+    SO MATERIAL • Kontrol Stock & Rekap Harian
   </div>
 </header>
 
 
-<main class="container">
+<div class="container">
 
-<!-- ================= DASHBOARD ================= -->
+<!-- NAV ATAS -->
+<div class="card">
 
-<section id="page-dashboard" class="page">
+  <div class="actions">
 
-  <div class="card">
-    <div class="row">
-      <div>
-        <h2 style="margin-bottom:3px">DASHBOARD</h2>
-        <div style="color:#777">
-          SO Material • Kontrol Stock & Rekap Harian
-        </div>
-      </div>
+    <button class="btn red"
+            onclick="showPage('dashboard')">
+      🏠 Dashboard
+    </button>
 
-      <div class="fit">
-        <input id="dashDate"
-               type="date"
-               class="input"
-               style="margin:0"
-               onchange="loadDashboard()">
-      </div>
-    </div>
-  </div>
+    <button class="btn blue"
+            onclick="showPage('input')">
+      📝 Input SO
+    </button>
 
-  <div class="stats">
-
-    <div class="stat">
-      Total Item
-      <b id="statTotal">0</b>
-    </div>
-
-    <div class="stat">
-      Minus
-      <b id="statMinus" class="minus">0</b>
-    </div>
-
-    <div class="stat">
-      Plus
-      <b id="statPlus" class="plus">0</b>
-    </div>
-
-    <div class="stat">
-      Selisih
-      <b id="statDiff">0</b>
-    </div>
-
-  </div>
-
-  <div class="card" style="margin-top:15px">
-    <h3>REKAP TERSIMPAN</h3>
-    <div id="dashboardHistory">
-      <div class="loading">Memuat...</div>
-    </div>
-  </div>
-
-</section>
-
-
-<!-- ================= INPUT SO ================= -->
-
-<section id="page-input" class="page">
-
-  <div class="card">
-
-    <div class="row">
-      <div>
-        <h2 style="margin-bottom:3px">INPUT STOCK</h2>
-        <div style="color:#777">
-          Masukkan stock awal dan stock akhir.
-        </div>
-      </div>
-
-      <div class="fit">
-        <input id="soDate"
-               type="date"
-               class="input"
-               style="margin:0"
-               onchange="loadSO()">
-      </div>
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h3>TAMBAH PRODUK / PLU</h3>
-
-    <div class="grid">
-
-      <input id="newPLU"
-             class="input"
-             placeholder="PLU (opsional)">
-
-      <input id="newName"
-             class="input"
-             placeholder="Nama produk / material / PLU">
-
-    </div>
-
-    <div class="row">
-
-      <select id="newCategory" class="input">
-        <option value="RPC">RPC</option>
-        <option value="RAW">RAW</option>
-        <option value="ORI">ORI</option>
-        <option value="FRESH MILK">FRESH MILK</option>
-        <option value="RTE">RTE</option>
-        <option value="IHB">IHB</option>
-      </select>
-
-      <button class="btn btn-red fit"
-              onclick="addProductFromInput()">
-        + TAMBAH PRODUK
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="row">
-
-      <input id="searchInput"
-             class="input"
-             placeholder="Cari produk / PLU..."
-             oninput="renderSO()">
-
-      <select id="filterCategory"
-              class="input"
-              onchange="renderSO()">
-
-        <option value="">SEMUA KATEGORI</option>
-        <option value="RPC">RPC</option>
-        <option value="RAW">RAW</option>
-        <option value="ORI">ORI</option>
-        <option value="FRESH MILK">FRESH MILK</option>
-        <option value="RTE">RTE</option>
-        <option value="IHB">IHB</option>
-
-      </select>
-
-    </div>
-
-    <div id="soTable">
-      <div class="loading">Memuat produk...</div>
-    </div>
-
-    <button class="btn btn-red"
-            style="width:100%;margin-top:15px"
-            onclick="saveSO()">
-      SIMPAN SO TANGGAL INI
+    <button class="btn green"
+            onclick="showPage('report')">
+      📊 Rekap
     </button>
 
   </div>
 
-</section>
+  <label>Tanggal SO</label>
+
+  <input type="date"
+         id="tanggal"
+         onchange="loadDate()">
+
+</div>
 
 
-<!-- ================= REPORT ================= -->
-
-<section id="page-report" class="page">
+<!-- ================= DASHBOARD ================= -->
+<div id="dashboardPage">
 
   <div class="card">
 
-    <h2>RIWAYAT SO PER TANGGAL</h2>
+    <div class="title">
+      📊 DASHBOARD
+    </div>
 
-    <div class="row">
+    <div class="stats">
 
-      <input id="reportDate"
-             type="date"
-             class="input">
+      <div class="stat">
+        <small>Total Item</small>
+        <strong id="totalItem">0</strong>
+      </div>
 
-      <button class="btn btn-red fit"
-              onclick="loadReport()">
-        TAMPILKAN
-      </button>
+      <div class="stat"
+           style="border-color:#dc2626">
+        <small>Minus</small>
+        <strong id="totalMinus">0</strong>
+      </div>
+
+      <div class="stat"
+           style="border-color:#16a34a">
+        <small>Plus</small>
+        <strong id="totalPlus">0</strong>
+      </div>
+
+      <div class="stat"
+           style="border-color:#2563eb">
+        <small>Selisih</small>
+        <strong id="totalSelisih">0</strong>
+      </div>
 
     </div>
 
@@ -494,1623 +322,2343 @@ body.dark .btn-gray{background:#444;color:#fff}
 
   <div class="card">
 
-    <h3>DETAIL TANGGAL</h3>
-
-    <div id="reportDetail">
-      Pilih tanggal.
+    <div class="title">
+      📅 REKAP TERSIMPAN
     </div>
+
+    <div id="dashHistory"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= INPUT SO ================= -->
+<div id="inputPage" class="hidden">
+
+  <div class="card">
+
+    <div class="title">
+      ➕ TAMBAH PRODUK / PLU
+    </div>
+
+    <div class="add-grid">
+
+      <input id="newName"
+             placeholder="Nama produk / material">
+
+      <select id="newCat">
+        <option>RPC</option>
+        <option>RAW</option>
+        <option>ORI</option>
+        <option>FRESH MILK</option>
+        <option>RTE</option>
+        <option>IHB</option>
+      </select>
+
+    </div>
+
+    <button class="btn yellow full"
+            onclick="addProduct()">
+      ➕ Tambah Produk
+    </button>
 
   </div>
 
 
   <div class="card">
 
-    <h3>REKAP BARANG MINUS</h3>
-
-    <div id="minusReport">
-      Pilih tanggal.
+    <div class="title">
+      📦 INPUT STOCK
     </div>
 
-    <div class="row" style="margin-top:12px">
+    <div class="toolbar">
 
-      <button class="btn btn-green"
-              onclick="sendMinusWA()">
-        KIRIM REKAP MINUS KE WHATSAPP
-      </button>
+      <input id="search"
+             placeholder="🔎 Cari produk..."
+             oninput="renderMaterials()">
 
-      <button class="btn btn-gray"
-              onclick="copyMinus()">
-        COPY REKAP MINUS
-      </button>
+      <select id="filter"
+              onchange="renderMaterials()">
 
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h3>LAPORAN</h3>
-
-    <div class="row">
-
-      <button class="btn btn-green"
-              onclick="shareFullReport()">
-        SHARE LAPORAN LENGKAP
-      </button>
-
-      <button class="btn btn-gray"
-              onclick="copyFullReport()">
-        COPY LAPORAN
-      </button>
-
-      <button class="btn btn-yellow"
-              onclick="exportCSV()">
-        EXPORT CSV
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="row">
-
-      <button class="btn btn-gray"
-              onclick="toggleDark()">
-        MODE GELAP
-      </button>
-
-      <button class="btn btn-danger"
-              onclick="deleteCurrentDate()">
-        HAPUS SO TANGGAL INI
-      </button>
-
-      <button class="btn btn-gray"
-              onclick="logout()">
-        LOGOUT
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= PRODUCTS ================= -->
-
-<section id="page-products" class="page">
-
-  <div class="card">
-
-    <h2>MASTER PRODUK</h2>
-
-    <div id="adminWarning"
-         class="notice hidden">
-      Hanya ADMIN yang dapat menambah, mengubah, atau menonaktifkan produk.
-    </div>
-
-    <div class="row">
-
-      <input id="productSearch"
-             class="input"
-             placeholder="Cari PLU / nama..."
-             oninput="renderProducts()">
-
-      <select id="productFilter"
-              class="input"
-              onchange="renderProducts()">
-
-        <option value="">SEMUA</option>
-        <option value="RPC">RPC</option>
-        <option value="RAW">RAW</option>
-        <option value="ORI">ORI</option>
-        <option value="FRESH MILK">FRESH MILK</option>
-        <option value="RTE">RTE</option>
-        <option value="IHB">IHB</option>
+        <option>ALL</option>
+        <option>RPC</option>
+        <option>RAW</option>
+        <option>ORI</option>
+        <option>FRESH MILK</option>
+        <option>RTE</option>
+        <option>IHB</option>
 
       </select>
 
     </div>
 
-    <div id="productsList">
-      <div class="loading">Memuat...</div>
+  </div>
+
+
+  <div id="materialList"></div>
+
+
+  <button class="btn red full"
+          onclick="saveSO()">
+    💾 SIMPAN SO TANGGAL INI
+  </button>
+
+</div>
+
+
+<!-- ================= REPORT ================= -->
+<div id="reportPage" class="hidden">
+
+  <div class="card">
+
+    <div class="title">
+      📚 RIWAYAT SO PER TANGGAL
     </div>
+
+    <div id="historyList"></div>
 
   </div>
 
-</section>
 
-</main>
-</section>
+  <div class="card">
+
+    <div class="title">
+      📊 DETAIL TANGGAL
+    </div>
+
+    <div id="reportSummary"></div>
+
+    <button class="btn green full"
+            onclick="shareWhatsApp()">
+      📱 SHARE WHATSAPP
+    </button>
+
+
+    <div class="card"
+         style="margin-top:12px;border:2px solid #fee2e2">
+
+      <div class="title">
+        🔴 REKAP BARANG MINUS
+      </div>
+
+      <div id="minusList"></div>
+
+      <button class="btn red full"
+              onclick="shareMinusWhatsApp()">
+        📱 KIRIM REKAP MINUS KE WHATSAPP
+      </button>
+
+      <button class="btn blue full"
+              onclick="copyMinusReport()">
+        📋 COPY REKAP MINUS
+      </button>
+
+    </div>
+
+
+    <button class="btn blue full"
+            onclick="copyReport()">
+      📋 COPY LAPORAN
+    </button>
+
+    <button class="btn yellow full"
+            onclick="exportCSV()">
+      📥 EXPORT CSV
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <button class="btn gray full"
+            onclick="toggleDark()">
+      🌙 Mode Gelap
+    </button>
+
+    <button class="btn red full"
+            onclick="resetCurrentDate()">
+      🗑️ Hapus SO Tanggal Ini
+    </button>
+
+    <button class="btn gray full"
+            onclick="logout()">
+      🚪 LOGOUT
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+<nav class="nav">
+
+  <button id="nDash"
+          class="active"
+          onclick="showPage('dashboard')">
+    🏠<br>Dashboard
+  </button>
+
+  <button id="nInput"
+          onclick="showPage('input')">
+    📝<br>Input
+  </button>
+
+  <button id="nReport"
+          onclick="showPage('report')">
+    📊<br>Rekap
+  </button>
+
+</nav>
+
+</div>
 
 
 <div id="toast" class="toast"></div>
 
 
+<!-- ================= SUPABASE ================= -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-/* =====================================================
-   SUPABASE
-===================================================== */
 
 const SUPABASE_URL =
   "https://dhubnshxivounhyexeu.supabase.co";
 
-const SUPABASE_KEY =
+const SUPABASE_ANON_KEY =
   "sb_publishable_3w_q0jD-bG7zAtMhRaT7rw_821WQV9W";
 
-const sb =
+const db =
   window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_KEY
+    SUPABASE_ANON_KEY
   );
 
 
-/* =====================================================
-   STATE
-===================================================== */
+/* ================= DEFAULT MATERIAL ================= */
 
+const defaultMaterials = {
+
+RPC:[
+"Gula pasir",
+"Gula cair",
+"Coffee bean",
+"Ice cube",
+"Fresh milk",
+"Air mineral",
+"Carnation",
+"Monin Salt Crml",
+"Palm sugar",
+"Cheesecake syrup",
+"Monin Hazelnut",
+"Monin Lychee syrup",
+"Strawberry cheese syrup",
+"Monin Strawberry",
+"Bobaking Syrup Whtgrp",
+"Teh celup",
+"Roll plastic",
+"Max creamer"
+],
+
+RAW:[
+"Choco Hazelnut",
+"Dark Choco",
+"Choco Vanilla",
+"Green Tea Latte",
+"Creamer SAC 15g",
+"Jelly",
+"Cup Plastic PP Beans 16oz",
+"Cup Hot Beans 8oz",
+"Cup Plastic Injection Set 160oz",
+"Paper Bowl Beanspot Set 600ml",
+"Roll plastic",
+"Jblosom SAC 35g",
+"Powder Matcha SAC 45g"
+],
+
+ORI:[
+"Gula pasir SAC 100×8g",
+"Gula cair SAC 100×20ml",
+"Ice cube",
+"Bobaking syrup 750ml",
+"Gula aren 1,3L",
+"Monin syrup Salt Caramel",
+"Monin Lychee syrup",
+"Monin Hazelnut syrup",
+"Monin Cheesecake syrup",
+"Strawberry Cream Cheese syrup",
+"Monin Strawberry 700ml",
+"Deli Fru Coco Mangi 1L",
+"Bobaking Syrup Whtgrp",
+"Krimer bag 1kg",
+"Pistachio",
+"Macchiato powder 30g",
+"Powder Thai tea 40g",
+"Frappe Base 500g",
+"Teh Sosro 30×26",
+"Krimer 40g",
+"Coffee beans"
+],
+
+"FRESH MILK":[
+"Diamond UHT 1L",
+"Greenfield UHT 1L",
+"Omela",
+"Carnation 360g",
+"Max Creamer 500g"
+],
+
+RTE:[
+"459379 • RTE Familyfood NS Aym Rica 320g",
+"459380 • RTE NS Kng Aymijo",
+"461140 • RTE Makeiz Cheesemelt",
+"465761 • RTE Kimbo Bakso Pentol",
+"459794 • RTE Nasindo Nasi Soto PCH 85g",
+"460997 • RTE Nasgor Cakalang Kcmbrg MCD",
+"460998 • RTE Nasgor Aym Cabe Ijo MCD",
+"461251 • RTE Nasi Kucing Aym Bmb Bali",
+"461252 • RTE Nasi Kucing Teri Cabe Ijo",
+"461253 • RTE Nasi Kucing Ayam Suwir BLD MD",
+"466251 • RTE Nasi RDG Dgng Box 20g",
+"466253 • RTE Nasi Dgng Lada Hitam Box 320g",
+"432960 • RTE Pisang Molen",
+"412697 • RTE Pisang Psg Cklt",
+"442098 • RTE Risol Bolognase",
+"442099 • RTE Risol Mac N Cheese",
+"411691 • RTE Sosis Solo",
+"461250 • RTE Ubi Brullee",
+"440646 • RTE Onigiri Salmon Mayo (MCD)",
+"440647 • RTE Onigiri Spicy Salmon (MCD)",
+"440648 • RTE Onigiri Tuna Mayo (MCD)"
+],
+
+IHB:[
+"438072 • IHB Grissini Sweet (A)",
+"438073 • IHB Grissini Salty (A)",
+"461142 • IHB Obalab Cake Chs 80g",
+"461143 • IHB Obalab Cake Str 80g",
+"465667 • IHB Macron 6s",
+"466181 • IHB Roti Cklt Keju",
+"466182 • IHB Roti Keju Manis",
+"466183 • IHB Roti Babka Cklt Kcg",
+"466184 • IHB Roti Aym Mayo",
+"466185 • IHB Roti Baso Aym"
+]
+
+};
+
+
+/* ================= STATE ================= */
+
+let products = {};
+let productRows = [];
+let current = {};
+let histories = {};
 let currentUser = null;
-let products = [];
-let soRows = [];
-let reportRows = [];
-
-const categories = [
-  "RPC",
-  "RAW",
-  "ORI",
-  "FRESH MILK",
-  "RTE",
-  "IHB"
-];
 
 
-/* =====================================================
-   HELPER
-===================================================== */
+/* ================= SHORTCUT ================= */
+
+const $ = id =>
+  document.getElementById(id);
+
+const loginPage = $("loginPage");
+const app = $("app");
+const nik = $("nik");
+const pin = $("pin");
+
+const tanggal = $("tanggal");
+const materialList = $("materialList");
+const search = $("search");
+const filter = $("filter");
+
+const newName = $("newName");
+const newCat = $("newCat");
+const dashHistory = $("dashHistory");
+
+const historyList = $("historyList");
+const reportSummary = $("reportSummary");
+const minusList = $("minusList");
+
+const totalItem = $("totalItem");
+const totalMinus = $("totalMinus");
+const totalPlus = $("totalPlus");
+const totalSelisih = $("totalSelisih");
+
+
+/* ================= UTIL ================= */
 
 function today(){
+
   const d = new Date();
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,"0");
-  const day = String(d.getDate()).padStart(2,"0");
-  return `${y}-${m}-${day}`;
-}
 
-function esc(value){
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
+  return d.getFullYear()
+    + "-"
+    + String(d.getMonth()+1).padStart(2,"0")
+    + "-"
+    + String(d.getDate()).padStart(2,"0");
 
-function toast(msg){
-  const el = document.getElementById("toast");
-  el.textContent = msg;
-  el.style.display = "block";
-
-  setTimeout(()=>{
-    el.style.display = "none";
-  },2500);
-}
-
-function errorMessage(error){
-  console.error(error);
-  return error?.message || "Terjadi kesalahan.";
 }
 
 
-/* =====================================================
-   LOGIN NIK + PIN
-===================================================== */
+function fmt(d){
 
-async function login(){
+  if(!d) return "-";
 
-  const nik =
-    document.getElementById("loginNik").value.trim();
+  const x =
+    new Date(d+"T00:00:00");
 
-  const pin =
-    document.getElementById("loginPin").value.trim();
+  return String(x.getDate()).padStart(2,"0")
+    + "-"
+    + String(x.getMonth()+1).padStart(2,"0")
+    + "-"
+    + x.getFullYear();
 
-  const err =
-    document.getElementById("loginError");
+}
 
-  err.textContent = "";
 
-  if(!nik || !pin){
-    err.textContent = "NIK dan PIN wajib diisi.";
-    return;
-  }
+function key(c,n){
+  return c+"__"+n;
+}
 
-  const btn =
-    document.getElementById("loginBtn");
 
-  btn.disabled = true;
-  btn.textContent = "MEMERIKSA...";
+function fd(v){
+
+  v=Number(v||0);
+
+  return v<0
+    ?"❌ "+v
+    :v>0
+      ?"➕ "+v
+      :"0";
+
+}
+
+
+function dc(v){
+
+  v=Number(v||0);
+
+  return v<0
+    ?"minus"
+    :v===0
+      ?"zero"
+      :"";
+
+}
+
+
+function esc(s){
+
+  return String(s)
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+
+function sid(s){
 
   try{
 
-    const {data,error} =
-      await sb.rpc(
-        "login_so_user",
+    return btoa(
+      unescape(
+        encodeURIComponent(s)
+      )
+    ).replace(/[^a-zA-Z0-9]/g,"");
+
+  }catch(e){
+
+    return String(s)
+      .replace(/\W/g,"");
+
+  }
+
+}
+
+
+function toast(m){
+
+  const e=$("toast");
+
+  e.textContent=m;
+  e.classList.add("show");
+
+  clearTimeout(window.tt);
+
+  window.tt =
+    setTimeout(
+      ()=>e.classList.remove("show"),
+      2800
+    );
+
+}
+
+
+function setConnectionStatus(
+  msg,
+  ok=false
+){
+
+  const e =
+    $("connectionStatus");
+
+  if(!e)return;
+
+  e.textContent=msg;
+
+  e.style.color =
+    ok
+      ?"#15803d"
+      :"#dc2626";
+
+}
+
+
+/* =====================================================
+   LOGIN RPC
+   ===================================================== */
+
+async function rpcLogin(n,p){
+
+  const url =
+    SUPABASE_URL+
+    "/rest/v1/rpc/login_so_user";
+
+  let response;
+
+  try{
+
+    response =
+      await fetch(
+        url,
         {
-          p_nik:nik,
-          p_pin:pin
+          method:"POST",
+
+          headers:{
+            "apikey":SUPABASE_ANON_KEY,
+            "Content-Type":"application/json"
+          },
+
+          body:JSON.stringify({
+            p_nik:n,
+            p_pin:p
+          })
         }
       );
 
-    if(error) throw error;
+  }catch(networkErr){
 
-    if(!data || data.length === 0){
-      throw new Error(
-        "NIK atau PIN salah / user tidak aktif."
+    const e =
+      new Error(
+        "Tidak bisa terhubung ke Supabase. "+
+        "Cek internet, URL project, atau akses API. "+
+        "Detail: "+
+        (networkErr?.message||"Failed to fetch")
       );
+
+    e.code="NETWORK";
+
+    throw e;
+
+  }
+
+
+  const raw =
+    await response.text();
+
+
+  if(!response.ok){
+
+    let detail=raw;
+
+    try{
+
+      const j =
+        JSON.parse(raw);
+
+      detail =
+        j?.message ||
+        j?.error_description ||
+        j?.hint ||
+        raw;
+
+    }catch(e){}
+
+    throw new Error(
+      "HTTP "+
+      response.status+
+      ": "+
+      detail
+    );
+
+  }
+
+
+  try{
+
+    return JSON.parse(raw);
+
+  }catch(e){
+
+    throw new Error(
+      "Respons login Supabase tidak valid: "+
+      raw.slice(0,200)
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   CEK KONEKSI
+   ===================================================== */
+
+async function checkConnection(
+  showToast=true
+){
+
+  setConnectionStatus(
+    "⏳ Mengecek API Supabase..."
+  );
+
+
+  try{
+
+    /*
+      Kita panggil RPC dengan NIK/PIN palsu.
+      Kalau API hidup, RPC akan merespons.
+      Karena datanya palsu, hasil kosong = NORMAL.
+    */
+
+    const data =
+      await rpcLogin(
+        "__connection_test__",
+        "__connection_test__"
+      );
+
+
+    setConnectionStatus(
+      "🟢 API Supabase terhubung",
+      true
+    );
+
+
+    if(showToast){
+
+      toast(
+        "Supabase terhubung ✅"
+      );
+
     }
 
-    currentUser = data[0];
+    return true;
+
+
+  }catch(err){
+
+    console.error(
+      "SUPABASE CONNECTION ERROR:",
+      err
+    );
+
+
+    const msg =
+      err?.message ||
+      "Gagal terhubung";
+
+
+    setConnectionStatus(
+      "🔴 "+msg
+    );
+
+
+    if(showToast){
+
+      toast(
+        "Database tidak terhubung ❌"
+      );
+
+    }
+
+    return false;
+
+  }
+
+}
+
+
+/* =====================================================
+   LOGIN
+   ===================================================== */
+
+async function login(){
+
+  const n =
+    nik.value.trim();
+
+  const p =
+    pin.value.trim();
+
+
+  if(!n || !p){
+
+    return toast(
+      "NIK dan PIN wajib diisi"
+    );
+
+  }
+
+
+  const btn =
+    document.querySelector(
+      '#loginPage button[onclick="login()"]'
+    );
+
+
+  if(btn){
+
+    btn.disabled=true;
+    btn.textContent="MEMERIKSA...";
+
+  }
+
+
+  setConnectionStatus(
+    "⏳ Memeriksa NIK dan PIN..."
+  );
+
+
+  try{
+
+    const data =
+      await rpcLogin(n,p);
+
+
+    if(
+      !Array.isArray(data) ||
+      data.length===0
+    ){
+
+      setConnectionStatus(
+        "🔴 NIK atau PIN salah / user tidak aktif"
+      );
+
+      toast(
+        "NIK atau PIN salah ❌"
+      );
+
+      return;
+
+    }
+
+
+    currentUser =
+      data[0];
+
 
     localStorage.setItem(
-      "beanspot_current_user",
+      "beanspot_user",
       JSON.stringify(currentUser)
     );
 
+
+    setConnectionStatus(
+      "🟢 Login berhasil",
+      true
+    );
+
+
+    await loadProducts();
+
     openApp();
 
-  }catch(e){
 
-    err.textContent =
-      errorMessage(e);
+    toast(
+      "Login berhasil, "+
+      currentUser.nama+
+      " ✅"
+    );
+
+
+  }catch(err){
+
+    console.error(
+      "LOGIN ERROR:",
+      err
+    );
+
+
+    setConnectionStatus(
+      "🔴 "+
+      (
+        err?.message ||
+        "Unknown error"
+      )
+    );
+
+
+    toast(
+      "Gagal login: "+
+      (
+        err?.message ||
+        "Unknown error"
+      )
+    );
+
 
   }finally{
 
-    btn.disabled = false;
-    btn.textContent = "MASUK";
-  }
-}
+    if(btn){
 
-
-/* =====================================================
-   OPEN APP
-===================================================== */
-
-async function openApp(){
-
-  document.getElementById("loginPage")
-    .style.display="none";
-
-  document.getElementById("app")
-    .style.display="block";
-
-  document.getElementById("userName")
-    .textContent=currentUser.nama;
-
-  document.getElementById("userRole")
-    .textContent=(currentUser.role || "")
-      .toUpperCase();
-
-  document.getElementById("soDate")
-    .value=today();
-
-  document.getElementById("dashDate")
-    .value=today();
-
-  document.getElementById("reportDate")
-    .value=today();
-
-  const isAdmin =
-    String(currentUser.role).toLowerCase()==="admin";
-
-  if(!isAdmin){
-    document.getElementById("navProducts")
-      .style.display="none";
-  }
-
-  await loadProducts();
-  await loadSO();
-
-  showPage("dashboard");
-}
-
-
-/* =====================================================
-   RESTORE LOGIN
-===================================================== */
-
-async function restoreLogin(){
-
-  const saved =
-    localStorage.getItem(
-      "beanspot_current_user"
-    );
-
-  if(!saved) return;
-
-  try{
-    currentUser=JSON.parse(saved);
-
-    if(
-      currentUser &&
-      currentUser.id &&
-      currentUser.nik
-    ){
-      /*
-       * Cek ulang user ke database
-       */
-      const {data,error} =
-        await sb
-        .from("so_users")
-        .select("id,nik,nama,role,aktif")
-        .eq("id",currentUser.id)
-        .eq("aktif",true)
-        .maybeSingle();
-
-      if(!error && data){
-        currentUser=data;
-        openApp();
-      }else{
-        logout();
-      }
+      btn.disabled=false;
+      btn.textContent="LOGIN";
 
     }
 
-  }catch(e){
-    logout();
   }
+
 }
 
 
 /* =====================================================
    LOGOUT
-===================================================== */
+   ===================================================== */
 
 function logout(){
 
   currentUser=null;
 
   localStorage.removeItem(
-    "beanspot_current_user"
+    "beanspot_user"
   );
 
-  document.getElementById("app")
-    .style.display="none";
+  app.classList.add(
+    "hidden"
+  );
 
-  document.getElementById("loginPage")
-    .style.display="flex";
+  loginPage.classList.remove(
+    "hidden"
+  );
 
-  document.getElementById("loginNik")
-    .value="";
+  nik.value="";
+  pin.value="";
 
-  document.getElementById("loginPin")
-    .value="";
-}
+  setConnectionStatus(
+    "Belum login"
+  );
 
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function showPage(page){
-
-  document.querySelectorAll(".page")
-    .forEach(x=>x.classList.remove("active"));
-
-  const target =
-    document.getElementById("page-"+page);
-
-  if(!target) return;
-
-  target.classList.add("active");
-
-  document.querySelectorAll(".nav button")
-    .forEach(x=>x.classList.remove("active"));
-
-  if(page==="dashboard")
-    document.getElementById("navDashboard")
-      .classList.add("active");
-
-  if(page==="input")
-    document.getElementById("navInput")
-      .classList.add("active");
-
-  if(page==="report")
-    document.getElementById("navReport")
-      .classList.add("active");
-
-  if(page==="products"){
-    document.getElementById("navProducts")
-      .classList.add("active");
-
-    renderProducts();
-  }
-
-  if(page==="dashboard")
-    loadDashboard();
-
-  if(page==="report")
-    loadReport();
 }
 
 
 /* =====================================================
    LOAD PRODUCTS
-===================================================== */
+   ===================================================== */
 
 async function loadProducts(){
 
-  const {data,error} =
-    await sb
-    .from("so_products")
-    .select("*")
-    .eq("aktif",true)
-    .order("kategori",{ascending:true})
-    .order("nama",{ascending:true});
+  const {
+    data,
+    error
+  } =
+    await db
+      .from("so_products")
+      .select(
+        "id,plu,nama,kategori,aktif"
+      )
+      .eq("aktif",true)
+      .order("kategori")
+      .order("nama");
+
 
   if(error){
-    toast("Gagal memuat produk: "+errorMessage(error));
-    return;
+
+    throw new Error(
+      "Produk: "+
+      (
+        error.message ||
+        "Gagal membaca so_products"
+      )
+    );
+
   }
 
-  products=data || [];
 
-  renderProducts();
+  productRows =
+    data || [];
+
+  products={};
+
+
+  productRows.forEach(p=>{
+
+    if(!products[p.kategori]){
+
+      products[p.kategori]=[];
+
+    }
+
+    products[p.kategori]
+      .push(p.nama);
+
+  });
+
+
+  /*
+    Fallback hanya jika
+    tabel produk kosong.
+  */
+
+  if(!productRows.length){
+
+    products =
+      structuredClone(
+        defaultMaterials
+      );
+
+    productRows=[];
+
+
+    Object.keys(products)
+      .forEach(c=>{
+
+        products[c].forEach(n=>{
+
+          productRows.push({
+
+            id:null,
+            nama:n,
+            kategori:c,
+            aktif:true,
+            plu:null
+
+          });
+
+        });
+
+      });
+
+  }
+
 }
 
 
 /* =====================================================
-   RENDER PRODUCTS
-===================================================== */
+   OPEN APP
+   ===================================================== */
 
-function renderProducts(){
+function openApp(){
 
-  const box =
-    document.getElementById("productsList");
+  loginPage.classList.add(
+    "hidden"
+  );
 
-  if(!box) return;
+  app.classList.remove(
+    "hidden"
+  );
 
-  const search =
-    (document.getElementById("productSearch")
-      ?.value || "")
-      .toLowerCase();
 
-  const category =
-    document.getElementById("productFilter")
-      ?.value || "";
+  tanggal.value =
+    localStorage.getItem(
+      "beanspot_date"
+    ) ||
+    today();
 
-  const filtered =
-    products.filter(p=>{
 
-      const text =
-        `${p.plu || ""} ${p.nama || ""}`
-          .toLowerCase();
+  loadDate();
 
-      return(
-        (!search || text.includes(search)) &&
-        (!category || p.kategori===category)
-      );
+}
+
+
+/* =====================================================
+   LOAD DATE
+   ===================================================== */
+
+async function loadDate(){
+
+  localStorage.setItem(
+    "beanspot_date",
+    tanggal.value
+  );
+
+
+  current={};
+
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await db
+        .from("stock_opname")
+        .select(
+          "id,tanggal,product_id,awal,akhir,selisih,user_id"
+        )
+        .eq(
+          "tanggal",
+          tanggal.value
+        );
+
+
+    if(error)throw error;
+
+
+    (data||[]).forEach(r=>{
+
+      const p =
+        productRows.find(
+          x=>x.id===r.product_id
+        );
+
+
+      if(!p)return;
+
+
+      current[
+        key(
+          p.kategori,
+          p.nama
+        )
+      ]={
+
+        id:r.id,
+
+        productId:p.id,
+
+        category:p.kategori,
+
+        name:p.nama,
+
+        awal:r.awal??"",
+
+        akhir:r.akhir??"",
+
+        selisih:
+          Number(r.selisih||0)
+
+      };
 
     });
 
-  if(!filtered.length){
-    box.innerHTML=
-      `<div class="loading">Produk tidak ditemukan.</div>`;
-    return;
+
+    renderMaterials();
+
+    update();
+
+    await loadHistory();
+
+    renderReport();
+
+
+  }catch(err){
+
+    console.error(
+      "LOAD DATE ERROR:",
+      err
+    );
+
+
+    toast(
+      "Gagal mengambil SO: "+
+      (
+        err?.message ||
+        "Unknown error"
+      )
+    );
+
   }
 
-  const isAdmin =
-    String(currentUser?.role).toLowerCase()==="admin";
+}
 
-  box.innerHTML =
-    filtered.map(p=>`
 
-      <div class="product-item">
+/* =====================================================
+   LOAD HISTORY
+   ===================================================== */
 
-        <div class="row">
+async function loadHistory(){
 
-          <div>
-            <div class="product-name">
-              ${esc(p.nama)}
-            </div>
+  try{
 
-            <div class="product-meta">
-              PLU: ${esc(p.plu || "-")}
-              &nbsp; • &nbsp;
-              <span class="category">
-                ${esc(p.kategori)}
-              </span>
-            </div>
-          </div>
+    const {
+      data,
+      error
+    } =
+      await db
+        .from("stock_opname")
+        .select(
+          "id,tanggal,product_id,awal,akhir,selisih,user_id"
+        )
+        .order(
+          "tanggal",
+          {ascending:false}
+        );
 
-          ${
-            isAdmin
-            ? `
-              <button
-                class="btn btn-yellow fit"
-                onclick="editProduct('${p.id}')">
-                EDIT
-              </button>
 
-              <button
-                class="btn btn-danger fit"
-                onclick="deactivateProduct('${p.id}')">
-                HAPUS
-              </button>
-            `
-            : ""
-          }
+    if(error)throw error;
 
-        </div>
 
-      </div>
+    histories={};
 
-    `).join("");
+
+    (data||[]).forEach(r=>{
+
+      const p =
+        productRows.find(
+          x=>x.id===r.product_id
+        );
+
+
+      if(!p)return;
+
+
+      if(
+        !histories[r.tanggal]
+      ){
+
+        histories[r.tanggal]={
+          date:r.tanggal,
+          items:{}
+        };
+
+      }
+
+
+      const k =
+        key(
+          p.kategori,
+          p.nama
+        );
+
+
+      histories[
+        r.tanggal
+      ].items[k]={
+
+        id:r.id,
+
+        productId:p.id,
+
+        category:p.kategori,
+
+        name:p.nama,
+
+        awal:r.awal??0,
+
+        akhir:r.akhir??0,
+
+        selisih:
+          Number(r.selisih||0)
+
+      };
+
+    });
+
+
+    renderHistory();
+
+
+  }catch(err){
+
+    console.error(
+      "HISTORY ERROR:",
+      err
+    );
+
+
+    toast(
+      "Gagal mengambil riwayat: "+
+      (
+        err?.message ||
+        "Unknown error"
+      )
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   SHOW PAGE
+   ===================================================== */
+
+function showPage(p){
+
+  $("dashboardPage")
+    .classList.add("hidden");
+
+  $("inputPage")
+    .classList.add("hidden");
+
+  $("reportPage")
+    .classList.add("hidden");
+
+
+  $(p+"Page")
+    .classList.remove("hidden");
+
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(
+      x=>x.classList.remove("active")
+    );
+
+
+  ({
+    dashboard:$("nDash"),
+    input:$("nInput"),
+    report:$("nReport")
+  }[p])
+    .classList.add("active");
+
+
+  update();
+
+
+  if(p==="report")
+    renderReport();
+
+
+  if(p==="dashboard")
+    renderHistory();
+
+
+  scrollTo(0,0);
+
 }
 
 
 /* =====================================================
    ADD PRODUCT
-===================================================== */
+   ===================================================== */
 
-async function addProductFromInput(){
+async function addProduct(){
 
-  if(String(currentUser?.role).toLowerCase()!=="admin"){
-    toast("Hanya ADMIN yang boleh menambah produk.");
-    return;
-  }
+  const n =
+    newName.value.trim();
 
-  const plu =
-    document.getElementById("newPLU")
-      .value.trim();
-
-  const nama =
-    document.getElementById("newName")
-      .value.trim();
-
-  const kategori =
-    document.getElementById("newCategory")
-      .value;
-
-  if(!nama){
-    toast("Nama produk wajib diisi.");
-    return;
-  }
-
-  const {error} =
-    await sb
-    .from("so_products")
-    .insert({
-      plu:plu || null,
-      nama:nama,
-      kategori:kategori,
-      aktif:true
-    });
-
-  if(error){
-    toast("Gagal tambah: "+errorMessage(error));
-    return;
-  }
-
-  document.getElementById("newPLU").value="";
-  document.getElementById("newName").value="";
-
-  toast("Produk berhasil ditambahkan.");
-
-  await loadProducts();
-}
+  const c =
+    newCat.value;
 
 
-/* =====================================================
-   EDIT PRODUCT
-===================================================== */
+  if(!n){
 
-async function editProduct(id){
-
-  if(String(currentUser?.role).toLowerCase()!=="admin"){
-    toast("Hanya ADMIN.");
-    return;
-  }
-
-  const p =
-    products.find(x=>x.id===id);
-
-  if(!p) return;
-
-  const nama =
-    prompt("Nama produk:",p.nama);
-
-  if(nama===null) return;
-
-  const plu =
-    prompt("PLU:",p.plu || "");
-
-  if(plu===null) return;
-
-  let kategori =
-    prompt(
-      "Kategori (RPC / RAW / ORI / FRESH MILK / RTE / IHB):",
-      p.kategori
+    return toast(
+      "Nama produk wajib diisi"
     );
 
-  if(kategori===null) return;
-
-  kategori=kategori.toUpperCase();
-
-  if(!categories.includes(kategori)){
-    toast("Kategori tidak valid.");
-    return;
   }
 
-  const {error} =
-    await sb
-    .from("so_products")
-    .update({
-      nama:nama.trim(),
-      plu:plu.trim() || null,
-      kategori:kategori
-    })
-    .eq("id",id);
-
-  if(error){
-    toast("Gagal edit: "+errorMessage(error));
-    return;
-  }
-
-  toast("Produk berhasil diubah.");
-
-  await loadProducts();
-  await loadSO();
-}
-
-
-/* =====================================================
-   DEACTIVATE PRODUCT
-===================================================== */
-
-async function deactivateProduct(id){
-
-  if(String(currentUser?.role).toLowerCase()!=="admin"){
-    toast("Hanya ADMIN.");
-    return;
-  }
-
-  const p =
-    products.find(x=>x.id===id);
-
-  if(!p) return;
-
-  if(!confirm(
-    `Nonaktifkan produk "${p.nama}"?`
-  )) return;
-
-  const {error} =
-    await sb
-    .from("so_products")
-    .update({aktif:false})
-    .eq("id",id);
-
-  if(error){
-    toast("Gagal hapus: "+errorMessage(error));
-    return;
-  }
-
-  toast("Produk dinonaktifkan.");
-
-  await loadProducts();
-  await loadSO();
-}
-
-
-/* =====================================================
-   LOAD SO
-===================================================== */
-
-async function loadSO(){
-
-  const tanggal =
-    document.getElementById("soDate")
-      .value || today();
-
-  if(!products.length)
-    await loadProducts();
-
-  const {data,error} =
-    await sb
-    .from("stock_opname")
-    .select("*")
-    .eq("tanggal",tanggal);
-
-  if(error){
-    toast("Gagal memuat SO: "+errorMessage(error));
-    return;
-  }
-
-  soRows=data || [];
-
-  renderSO();
-}
-
-
-/* =====================================================
-   RENDER SO
-===================================================== */
-
-function renderSO(){
-
-  const box =
-    document.getElementById("soTable");
-
-  if(!box) return;
-
-  const search =
-    (document.getElementById("searchInput")
-      ?.value || "")
-      .toLowerCase();
-
-  const category =
-    document.getElementById("filterCategory")
-      ?.value || "";
-
-  const filtered =
-    products.filter(p=>{
-
-      const text =
-        `${p.plu || ""} ${p.nama || ""}`
-          .toLowerCase();
-
-      return(
-        (!search || text.includes(search)) &&
-        (!category || p.kategori===category)
-      );
-
-    });
-
-  if(!filtered.length){
-    box.innerHTML=
-      `<div class="loading">Produk tidak ditemukan.</div>`;
-    return;
-  }
-
-  let html=`
-    <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>PLU</th>
-          <th>Produk</th>
-          <th>Kategori</th>
-          <th>Awal</th>
-          <th>Akhir</th>
-          <th>Selisih</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  filtered.forEach((p,i)=>{
-
-    const row =
-      soRows.find(x=>x.product_id===p.id);
-
-    const awal =
-      row?.awal ?? "";
-
-    const akhir =
-      row?.akhir ?? "";
-
-    const selisih =
-      (awal!=="" && akhir!=="")
-      ? Number(akhir)-Number(awal)
-      : "";
-
-    html+=`
-      <tr>
-
-        <td>${i+1}</td>
-
-        <td>${esc(p.plu || "-")}</td>
-
-        <td><b>${esc(p.nama)}</b></td>
-
-        <td>
-          <span class="category">
-            ${esc(p.kategori)}
-          </span>
-        </td>
-
-        <td>
-          <input
-            class="qty awal-input"
-            type="number"
-            step="any"
-            value="${awal}"
-            data-id="${p.id}"
-            onchange="updateDiff('${p.id}')">
-        </td>
-
-        <td>
-          <input
-            class="qty akhir-input"
-            type="number"
-            step="any"
-            value="${akhir}"
-            data-id="${p.id}"
-            onchange="updateDiff('${p.id}')">
-        </td>
-
-        <td>
-          <span
-            id="diff-${p.id}"
-            class="diff ${
-              selisih<0
-              ?"minus"
-              :selisih>0
-              ?"plus"
-              :""
-            }">
-            ${selisih==="" ? "-" : selisih}
-          </span>
-        </td>
-
-      </tr>
-    `;
-
-  });
-
-  html+=`
-      </tbody>
-    </table>
-    </div>
-  `;
-
-  box.innerHTML=html;
-}
-
-
-/* =====================================================
-   UPDATE DIFFERENCE
-===================================================== */
-
-function updateDiff(id){
-
-  const awalEl =
-    document.querySelector(
-      `.awal-input[data-id="${id}"]`
-    );
-
-  const akhirEl =
-    document.querySelector(
-      `.akhir-input[data-id="${id}"]`
-    );
-
-  const diffEl =
-    document.getElementById("diff-"+id);
-
-  if(!awalEl || !akhirEl || !diffEl)
-    return;
 
   if(
-    awalEl.value==="" ||
-    akhirEl.value===""
+    (products[c]||[])
+      .some(
+        x=>
+          x.toLowerCase()===
+          n.toLowerCase()
+      )
   ){
-    diffEl.textContent="-";
-    diffEl.className="diff";
-    return;
+
+    return toast(
+      "Produk sudah ada"
+    );
+
   }
 
-  const diff =
-    Number(akhirEl.value)-
-    Number(awalEl.value);
 
-  diffEl.textContent=diff;
+  try{
 
-  diffEl.className=
-    "diff "+
-    (
-      diff<0
-      ?"minus"
-      :diff>0
-      ?"plus"
-      :""
+    const {
+      data,
+      error
+    } =
+      await db
+        .from("so_products")
+        .insert({
+          nama:n,
+          kategori:c,
+          aktif:true
+        })
+        .select(
+          "id,plu,nama,kategori,aktif"
+        )
+        .single();
+
+
+    if(error)throw error;
+
+
+    productRows.push(data);
+
+
+    if(!products[c])
+      products[c]=[];
+
+
+    products[c].push(n);
+
+
+    newName.value="";
+
+
+    renderMaterials();
+
+
+    toast(
+      "Produk berhasil ditambahkan ke database ✅"
     );
+
+
+  }catch(err){
+
+    console.error(
+      "ADD PRODUCT ERROR:",
+      err
+    );
+
+
+    toast(
+      "Gagal tambah produk: "+
+      (
+        err?.message ||
+        "Unknown error"
+      )
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER MATERIALS
+   ===================================================== */
+
+function renderMaterials(){
+
+  const list =
+    materialList;
+
+  const q =
+    (
+      search?.value ||
+      ""
+    ).toLowerCase();
+
+  const f =
+    filter?.value ||
+    "ALL";
+
+
+  list.innerHTML="";
+
+
+  Object.keys(products)
+    .forEach(c=>{
+
+      if(
+        f!=="ALL" &&
+        f!==c
+      )return;
+
+
+      const arr =
+        products[c]
+          .filter(
+            n=>
+              n.toLowerCase()
+               .includes(q)
+          );
+
+
+      if(!arr.length)return;
+
+
+      const w =
+        document.createElement(
+          "div"
+        );
+
+
+      w.className="cat";
+
+
+      const cls =
+        c==="RPC"
+          ?"rpc"
+          :c==="RAW"
+            ?"raw"
+            :c==="ORI"
+              ?"ori"
+              :c==="FRESH MILK"
+                ?"fresh"
+                :c==="RTE"
+                  ?"rte"
+                  :"ihb";
+
+
+      w.innerHTML =
+        '<div class="cathead '+
+        cls+
+        '">'+
+        c+
+        '</div>';
+
+
+      arr.forEach(n=>{
+
+        const k =
+          key(c,n);
+
+
+        if(!current[k]){
+
+          current[k]={
+
+            productId:
+              productRows.find(
+                x=>
+                  x.nama===n &&
+                  x.kategori===c
+              )?.id ||
+              null,
+
+            category:c,
+
+            name:n,
+
+            awal:"",
+
+            akhir:"",
+
+            selisih:0
+
+          };
+
+        }
+
+
+        const i =
+          current[k];
+
+
+        const d =
+          document.createElement(
+            "div"
+          );
+
+
+        d.className="material";
+
+
+        d.innerHTML =
+          '<div class="mname">'+
+          n+
+          '</div>'+
+          '<div class="inputs">'+
+
+          '<div class="ibox">'+
+          '<small>AWAL</small>'+
+          '<input type="number" min="0" value="'+
+          (i.awal??"")+
+          '" oninput="changeItem(\''+
+          esc(k)+
+          '\',\'awal\',this.value)">'+
+          '</div>'+
+
+          '<div class="ibox">'+
+          '<small>AKHIR</small>'+
+          '<input type="number" min="0" value="'+
+          (i.akhir??"")+
+          '" oninput="changeItem(\''+
+          esc(k)+
+          '\',\'akhir\',this.value)">'+
+          '</div>'+
+
+          '<div class="diff '+
+          dc(i.selisih)+
+          '">'+
+          '<small>SELISIH</small>'+
+          '<span id="d_'+
+          sid(k)+
+          '">'+
+          fd(i.selisih)+
+          '</span>'+
+          '</div>'+
+
+          '</div>';
+
+
+        w.appendChild(d);
+
+      });
+
+
+      list.appendChild(w);
+
+    });
+
+}
+
+
+/* =====================================================
+   CHANGE ITEM
+   ===================================================== */
+
+function changeItem(k,f,v){
+
+  if(!current[k])return;
+
+
+  current[k][f] =
+    v===""
+      ?""
+      :Number(v);
+
+
+  current[k].selisih =
+    Number(current[k].akhir||0) -
+    Number(current[k].awal||0);
+
+
+  const e =
+    $("d_"+sid(k));
+
+
+  if(e){
+
+    e.parentElement.className =
+      "diff "+
+      dc(current[k].selisih);
+
+
+    e.textContent =
+      fd(
+        current[k].selisih
+      );
+
+  }
+
+
+  update();
+
 }
 
 
 /* =====================================================
    SAVE SO
-===================================================== */
+   ===================================================== */
 
 async function saveSO(){
 
-  const tanggal =
-    document.getElementById("soDate")
-      .value || today();
-
-  const rows=[];
-
-  for(const p of products){
-
-    const awalEl =
-      document.querySelector(
-        `.awal-input[data-id="${p.id}"]`
+  const rows =
+    Object.values(current)
+      .filter(
+        x=>x.productId
       );
 
-    const akhirEl =
-      document.querySelector(
-        `.akhir-input[data-id="${p.id}"]`
-      );
-
-    if(!awalEl || !akhirEl) continue;
-
-    const awal =
-      awalEl.value.trim();
-
-    const akhir =
-      akhirEl.value.trim();
-
-    /*
-     * Produk yang belum diisi dilewati.
-     */
-    if(awal==="" && akhir==="")
-      continue;
-
-    if(awal==="" || akhir===""){
-      toast(
-        `Lengkapi Awal/Akhir: ${p.nama}`
-      );
-      return;
-    }
-
-    const awalNum=Number(awal);
-    const akhirNum=Number(akhir);
-
-    if(!Number.isFinite(awalNum) ||
-       !Number.isFinite(akhirNum)){
-      toast("Jumlah tidak valid.");
-      return;
-    }
-
-    const selisih =
-      akhirNum-awalNum;
-
-    rows.push({
-      tanggal:tanggal,
-      product_id:p.id,
-      awal:awalNum,
-      akhir:akhirNum,
-      selisih:selisih,
-
-      user_id:currentUser.id,
-
-      kode_barang:p.plu || null,
-      nama_barang:p.nama,
-      qty:akhirNum
-    });
-
-  }
 
   if(!rows.length){
-    toast("Belum ada stock yang diisi.");
-    return;
-  }
 
-  /*
-   * Hapus SO lama tanggal tersebut untuk produk
-   * yang sedang disimpan, lalu insert data terbaru.
-   */
-  for(const row of rows){
-
-    const {error:delError} =
-      await sb
-      .from("stock_opname")
-      .delete()
-      .eq("tanggal",row.tanggal)
-      .eq("product_id",row.product_id);
-
-    if(delError){
-      toast(
-        "Gagal update SO: "+
-        errorMessage(delError)
-      );
-      return;
-    }
-  }
-
-  const {error} =
-    await sb
-    .from("stock_opname")
-    .insert(rows);
-
-  if(error){
-    toast(
-      "Gagal menyimpan SO: "+
-      errorMessage(error)
+    return toast(
+      "Belum ada produk untuk disimpan"
     );
-    return;
+
   }
 
-  toast(
-    `SO ${tanggal} berhasil disimpan online.`
-  );
 
-  await loadSO();
-  await loadDashboard();
+  try{
+
+    const payload =
+      rows.map(x=>({
+
+        tanggal:
+          tanggal.value,
+
+        product_id:
+          x.productId,
+
+        awal:
+          Number(x.awal||0),
+
+        akhir:
+          Number(x.akhir||0),
+
+        selisih:
+          Number(x.akhir||0) -
+          Number(x.awal||0),
+
+        user_id:
+          currentUser?.id ||
+          null,
+
+        updated_at:
+          new Date().toISOString()
+
+      }));
+
+
+    const {
+      error
+    } =
+      await db
+        .from("stock_opname")
+        .upsert(
+          payload,
+          {
+            onConflict:
+              "tanggal,product_id"
+          }
+        );
+
+
+    if(error)throw error;
+
+
+    await loadDate();
+
+
+    toast(
+      "SO "+
+      fmt(tanggal.value)+
+      " tersimpan ONLINE ☁️✅"
+    );
+
+
+  }catch(err){
+
+    console.error(
+      "SAVE SO ERROR:",
+      err
+    );
+
+
+    toast(
+      "Gagal simpan SO: "+
+      (
+        err?.message ||
+        "Unknown error"
+      )
+    );
+
+  }
+
 }
 
 
 /* =====================================================
-   DASHBOARD
-===================================================== */
+   DASHBOARD UPDATE
+   ===================================================== */
 
-async function loadDashboard(){
+function update(){
 
-  const tanggal =
-    document.getElementById("dashDate")
-      .value || today();
+  const a =
+    Object.values(current);
 
-  const {data,error} =
-    await sb
-    .from("stock_opname")
-    .select("*")
-    .eq("tanggal",tanggal);
 
-  if(error){
-    toast(errorMessage(error));
-    return;
-  }
+  const mi =
+    a.filter(
+      x=>Number(x.selisih)<0
+    ).length;
 
-  const rows=data || [];
 
-  const minus =
-    rows.filter(x=>Number(x.selisih)<0).length;
+  const pl =
+    a.filter(
+      x=>Number(x.selisih)>0
+    ).length;
 
-  const plus =
-    rows.filter(x=>Number(x.selisih)>0).length;
 
-  const diff =
-    rows.reduce(
-      (sum,x)=>sum+Number(x.selisih||0),
+  const s =
+    a.reduce(
+      (z,x)=>
+        z+
+        Number(x.selisih||0),
       0
     );
 
-  document.getElementById("statTotal")
-    .textContent=rows.length;
 
-  document.getElementById("statMinus")
-    .textContent=minus;
+  totalItem.textContent =
+    a.length;
 
-  document.getElementById("statPlus")
-    .textContent=plus;
+  totalMinus.textContent =
+    mi;
 
-  document.getElementById("statDiff")
-    .textContent=diff;
+  totalPlus.textContent =
+    pl;
 
-  loadHistoryDates();
+  totalSelisih.textContent =
+    s;
+
 }
 
 
 /* =====================================================
-   HISTORY DATES
-===================================================== */
+   HISTORY
+   ===================================================== */
 
-async function loadHistoryDates(){
-
-  const box =
-    document.getElementById(
-      "dashboardHistory"
-    );
-
-  const {data,error} =
-    await sb
-    .from("stock_opname")
-    .select("tanggal");
-
-  if(error){
-    box.textContent=errorMessage(error);
-    return;
-  }
+function renderHistory(){
 
   const dates =
-    [...new Set(
-      (data||[]).map(x=>x.tanggal)
-    )].sort().reverse();
+    Object.keys(histories)
+      .sort()
+      .reverse();
 
-  if(!dates.length){
-    box.innerHTML=
-      `<div class="loading">
-        Belum ada SO tersimpan.
-      </div>`;
-    return;
-  }
 
-  box.innerHTML=
-    dates.slice(0,30).map(d=>`
-      <button
-        class="btn btn-gray"
-        style="margin:4px"
-        onclick="
-          document.getElementById('reportDate').value='${d}';
-          showPage('report');
-          loadReport();
-        ">
-        ${d}
-      </button>
-    `).join("");
+  dashHistory.innerHTML =
+    dates.length
+
+      ?
+
+      dates
+        .slice(0,8)
+        .map(
+          d=>
+            '<div class="history-item">'+
+
+            '<div class="history-date">'+
+            '📅 '+
+            fmt(d)+
+            '</div>'+
+
+            '<div class="history-meta">'+
+            Object.keys(
+              histories[d].items
+            ).length+
+            ' item • tersimpan ONLINE'+
+            '</div>'+
+
+            '<button class="btn blue full" '+
+            'onclick="openHistory(\''+
+            d+
+            '\')">'+
+            'Lihat SO'+
+            '</button>'+
+
+            '</div>'
+        )
+        .join("")
+
+      :
+
+      '<div style="text-align:center;color:#777;padding:20px">'+
+      'Belum ada SO tersimpan'+
+      '</div>';
+
+}
+
+
+/* =====================================================
+   OPEN HISTORY
+   ===================================================== */
+
+async function openHistory(d){
+
+  tanggal.value=d;
+
+  localStorage.setItem(
+    "beanspot_date",
+    d
+  );
+
+
+  await loadDate();
+
+  showPage("report");
+
 }
 
 
 /* =====================================================
    REPORT
-===================================================== */
+   ===================================================== */
 
-async function loadReport(){
+function renderReport(){
 
-  const tanggal =
-    document.getElementById("reportDate")
-      .value || today();
+  const h =
+    histories[
+      tanggal.value
+    ];
 
-  const {data,error} =
-    await sb
-    .from("stock_opname")
-    .select("*")
-    .eq("tanggal",tanggal)
-    .order("nama_barang",{ascending:true});
 
-  if(error){
-    toast("Gagal laporan: "+errorMessage(error));
-    return;
-  }
+  const a =
+    Object.values(
+      h?.items ||
+      current
+    );
 
-  reportRows=data || [];
 
-  const total=reportRows.length;
-
-  const minusRows =
-    reportRows.filter(
+  const mi =
+    a.filter(
       x=>Number(x.selisih)<0
     );
 
-  const plusRows =
-    reportRows.filter(
+
+  reportSummary.innerHTML =
+
+    '<div class="row">'+
+    '<span>Tanggal</span>'+
+    '<b>'+
+    fmt(tanggal.value)+
+    '</b>'+
+    '</div>'+
+
+    '<div class="row">'+
+    '<span>Total Item</span>'+
+    '<b>'+
+    a.length+
+    '</b>'+
+    '</div>'+
+
+    '<div class="row">'+
+    '<span>Minus</span>'+
+    '<b class="minus-text">'+
+    mi.length+
+    '</b>'+
+    '</div>'+
+
+    '<div class="row">'+
+    '<span>Plus</span>'+
+    '<b class="plus-text">'+
+    a.filter(
       x=>Number(x.selisih)>0
-    );
+    ).length+
+    '</b>'+
+    '</div>'+
 
-  const diff =
-    reportRows.reduce(
-      (s,x)=>s+Number(x.selisih||0),
+    '<div class="row">'+
+    '<span>Total Selisih</span>'+
+    '<b>'+
+    a.reduce(
+      (z,x)=>
+        z+
+        Number(x.selisih||0),
       0
-    );
-
-  document.getElementById("reportDetail")
-    .innerHTML=`
-      <div class="stats">
-
-        <div class="stat">
-          Total
-          <b>${total}</b>
-        </div>
-
-        <div class="stat">
-          Minus
-          <b class="minus">
-            ${minusRows.length}
-          </b>
-        </div>
-
-        <div class="stat">
-          Plus
-          <b class="plus">
-            ${plusRows.length}
-          </b>
-        </div>
-
-        <div class="stat">
-          Selisih
-          <b>${diff}</b>
-        </div>
-
-      </div>
-
-      <div class="table-wrap"
-           style="margin-top:15px">
-
-        <table>
-
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>PLU</th>
-              <th>Barang</th>
-              <th>Awal</th>
-              <th>Akhir</th>
-              <th>Selisih</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            ${
-              reportRows.map((r,i)=>`
-
-                <tr>
-                  <td>${i+1}</td>
-                  <td>${esc(r.kode_barang || "-")}</td>
-                  <td>${esc(r.nama_barang || "-")}</td>
-                  <td>${r.awal}</td>
-                  <td>${r.akhir}</td>
-                  <td class="${
-                    Number(r.selisih)<0
-                    ?"minus"
-                    :Number(r.selisih)>0
-                    ?"plus"
-                    :""
-                  }">
-                    <b>${r.selisih}</b>
-                  </td>
-                </tr>
-
-              `).join("")
-            }
-
-          </tbody>
-
-        </table>
-
-      </div>
-    `;
+    )+
+    '</b>'+
+    '</div>';
 
 
-  if(!minusRows.length){
+  renderMinus();
 
-    document.getElementById("minusReport")
-      .innerHTML=
-      `<div class="notice">
-        Tidak ada barang MINUS pada tanggal ini.
-      </div>`;
 
-  }else{
+  historyList.innerHTML =
+    Object.keys(histories)
+      .sort()
+      .reverse()
+      .map(
+        d=>
+          '<div class="history-item">'+
 
-    document.getElementById("minusReport")
-      .innerHTML=
-      `<div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>PLU</th>
-              <th>Barang</th>
-              <th>Awal</th>
-              <th>Akhir</th>
-              <th>Minus</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${
-              minusRows.map(r=>`
-                <tr>
-                  <td>${esc(r.kode_barang||"-")}</td>
-                  <td>${esc(r.nama_barang||"-")}</td>
-                  <td>${r.awal}</td>
-                  <td>${r.akhir}</td>
-                  <td class="minus">
-                    <b>${r.selisih}</b>
-                  </td>
-                </tr>
-              `).join("")
-            }
-          </tbody>
-        </table>
-      </div>`;
+          '<div class="history-date">'+
+          '📅 '+
+          fmt(d)+
+          '</div>'+
 
-  }
+          '<div class="history-meta">'+
+          Object.keys(
+            histories[d].items
+          ).length+
+          ' item'+
+          '</div>'+
+
+          '<button class="btn blue full" '+
+          'onclick="openHistory(\''+
+          d+
+          '\')">'+
+          'Buka'+
+          '</button>'+
+
+          '</div>'
+      )
+      .join("")
+
+      ||
+
+      '<div class="empty">'+
+      'Belum ada riwayat'+
+      '</div>';
+
 }
 
 
 /* =====================================================
-   MINUS TEXT
-===================================================== */
+   FULL REPORT
+   ===================================================== */
 
-function makeMinusText(){
+function buildReport(){
 
-  const tanggal =
-    document.getElementById("reportDate")
-      .value || today();
+  const a =
+    Object.values(
+      histories[
+        tanggal.value
+      ]?.items ||
+      current
+    );
 
-  const rows =
-    reportRows.filter(
+
+  let t =
+    '*SO MATERIAL BEANSPOT*\\n'+
+    '*KF33 / KARET PEDURENAN*\\n'+
+    'Tanggal: *'+
+    fmt(tanggal.value)+
+    '*\\n\\n';
+
+
+  Object.keys(products)
+    .forEach(c=>{
+
+      t +=
+        '*'+
+        c+
+        '*\\n';
+
+
+      products[c]
+        .forEach(n=>{
+
+          const i =
+            a.find(
+              x=>
+                x.name===n &&
+                x.category===c
+            ) ||
+            {};
+
+
+          t +=
+            '[ ] '+
+            n+
+            ' : '+
+            (i.awal??'-')+
+            ' / '+
+            (i.akhir??'-')+
+            ' / Selisih: '+
+            (
+              Number(i.selisih||0)<0
+                ?"❌ "
+                :""
+            )+
+            (i.selisih??0)+
+            '\\n';
+
+        });
+
+    });
+
+
+  return t+
+    '\\nAwal / Akhir / Selisih'+
+    '\\nSelisih = Akhir - Awal';
+
+}
+
+
+/* =====================================================
+   MINUS REPORT
+   ===================================================== */
+
+function buildMinusReport(){
+
+  const a =
+    Object.values(
+      histories[
+        tanggal.value
+      ]?.items ||
+      current
+    );
+
+
+  const mi =
+    a.filter(
       x=>Number(x.selisih)<0
     );
 
-  let text=
-    `REKAP BARANG MINUS\n`+
-    `BEANSPOT KF33\n`+
-    `Tanggal: ${tanggal}\n\n`;
 
-  if(!rows.length){
-    text+="Tidak ada barang minus.";
-    return text;
+  let t =
+    '*🔴 REKAP BARANG MINUS*\\n'+
+    '*BEANSPOT KF33 / KARET PEDURENAN*\\n'+
+    'Tanggal: *'+
+    fmt(tanggal.value)+
+    '*\\n\\n';
+
+
+  if(!mi.length){
+
+    return t+
+      '✅ Tidak ada barang minus pada tanggal ini';
+
   }
 
-  rows.forEach((r,i)=>{
 
-    text+=
-      `${i+1}. `+
-      `${r.kode_barang || "-"} | `+
-      `${r.nama_barang} | `+
-      `Awal ${r.awal} | `+
-      `Akhir ${r.akhir} | `+
-      `Minus ${r.selisih}\n`;
+  mi.forEach(
+    (x,i)=>{
 
-  });
+      t +=
+        (i+1)+
+        '. '+
+        x.name+
+        '\\n   Awal: '+
+        (x.awal??'-')+
+        ' | Akhir: '+
+        (x.akhir??'-')+
+        ' | Selisih: '+
+        x.selisih+
+        '\\n';
 
-  return text;
+    }
+  );
+
+
+  return t+
+    '\\n*Total item minus: '+
+    mi.length+
+    '*'+
+    '\\n*Total selisih: '+
+    mi.reduce(
+      (z,x)=>
+        z+
+        Number(x.selisih||0),
+      0
+    )+
+    '*';
+
 }
 
 
 /* =====================================================
-   FULL REPORT TEXT
-===================================================== */
+   RENDER MINUS
+   ===================================================== */
 
-function makeFullReport(){
+function renderMinus(){
 
-  const tanggal =
-    document.getElementById("reportDate")
-      .value || today();
-
-  let text=
-    `SO MATERIAL BEANSPOT KF33\n`+
-    `Tanggal: ${tanggal}\n`+
-    `PIC: ${currentUser?.nama || "-"}\n\n`;
-
-  if(!reportRows.length){
-    text+="Tidak ada data.";
-    return text;
-  }
-
-  reportRows.forEach((r,i)=>{
-
-    text+=
-      `${i+1}. `+
-      `${r.kode_barang || "-"} | `+
-      `${r.nama_barang} | `+
-      `Awal: ${r.awal} | `+
-      `Akhir: ${r.akhir} | `+
-      `Selisih: ${r.selisih}\n`;
-
-  });
-
-  return text;
-}
+  const a =
+    Object.values(
+      histories[
+        tanggal.value
+      ]?.items ||
+      current
+    );
 
 
-/* =====================================================
-   COPY
-===================================================== */
+  const mi =
+    a.filter(
+      x=>Number(x.selisih)<0
+    );
 
-async function copyText(text){
 
-  try{
+  minusList.innerHTML =
+    mi.length
 
-    await navigator.clipboard.writeText(text);
-    toast("Berhasil dicopy.");
+      ?
 
-  }catch(e){
+      mi.map(
+        (x,i)=>
 
-    const ta=document.createElement("textarea");
-    ta.value=text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand("copy");
-    ta.remove();
+          '<div class="row">'+
 
-    toast("Berhasil dicopy.");
-  }
-}
+          '<span>'+
+          '<b>'+
+          (i+1)+
+          '. '+
+          x.name+
+          '</b>'+
+          '<br>'+
+          '<small>'+
+          'Awal: '+
+          (x.awal??'-')+
+          ' | Akhir: '+
+          (x.akhir??'-')+
+          '</small>'+
+          '</span>'+
 
-function copyMinus(){
-  copyText(makeMinusText());
-}
+          '<b class="minus-text">'+
+          x.selisih+
+          '</b>'+
 
-function copyFullReport(){
-  copyText(makeFullReport());
+          '</div>'
+      ).join("")
+
+      :
+
+      '<div style="text-align:center;color:#16a34a;padding:12px">'+
+      '✅ Tidak ada barang minus'+
+      '</div>';
+
 }
 
 
 /* =====================================================
    WHATSAPP
-===================================================== */
+   ===================================================== */
 
-function sendMinusWA(){
+function shareMinusWhatsApp(){
 
-  const text =
+  open(
+    "https://wa.me/?text="+
     encodeURIComponent(
-      makeMinusText()
-    );
-
-  window.open(
-    "https://wa.me/?text="+text,
+      buildMinusReport()
+    ),
     "_blank"
   );
+
+}
+
+
+function shareWhatsApp(){
+
+  open(
+    "https://wa.me/?text="+
+    encodeURIComponent(
+      buildReport()
+    ),
+    "_blank"
+  );
+
 }
 
 
 /* =====================================================
-   SHARE
-===================================================== */
+   COPY
+   ===================================================== */
 
-async function shareFullReport(){
+function copyMinusReport(){
 
-  const text=makeFullReport();
+  navigator.clipboard
+    .writeText(
+      buildMinusReport()
+    )
+    .then(
+      ()=>
+        toast(
+          "Rekap minus dicopy 📋"
+        )
+    );
 
-  if(navigator.share){
+}
 
-    try{
-      await navigator.share({
-        title:"SO Material BeanSpot KF33",
-        text:text
-      });
-    }catch(e){}
 
-  }else{
+function copyReport(){
 
-    copyText(text);
+  navigator.clipboard
+    .writeText(
+      buildReport()
+    )
+    .then(
+      ()=>
+        toast(
+          "Laporan dicopy 📋"
+        )
+    );
 
-  }
 }
 
 
 /* =====================================================
-   EXPORT CSV
-===================================================== */
+   CSV
+   ===================================================== */
 
 function exportCSV(){
 
-  if(!reportRows.length){
-    toast("Tidak ada data untuk diexport.");
-    return;
-  }
-
-  const rows=[
-    [
-      "Tanggal",
-      "PLU",
-      "Nama Barang",
-      "Kategori",
-      "Awal",
-      "Akhir",
-      "Selisih",
-      "Qty"
-    ]
-  ];
-
-  reportRows.forEach(r=>{
-
-    const p =
-      products.find(
-        x=>x.id===r.product_id
-      );
-
-    rows.push([
-      r.tanggal,
-      r.kode_barang || "",
-      r.nama_barang || "",
-      p?.kategori || "",
-      r.awal,
-      r.akhir,
-      r.selisih,
-      r.qty
-    ]);
-
-  });
-
-  const csv =
-    rows.map(row=>
-      row.map(v=>
-        `"${String(v??"")
-          .replaceAll('"','""')}"`
-      ).join(",")
-    ).join("\n");
-
-  const blob=
-    new Blob(
-      ["\ufeff"+csv],
-      {type:"text/csv;charset=utf-8"}
+  const a =
+    Object.values(
+      histories[
+        tanggal.value
+      ]?.items ||
+      current
     );
 
-  const url=
-    URL.createObjectURL(blob);
 
-  const a=
+  const csv =
+    "Tanggal,Kategori,Nama Material,Awal,Akhir,Selisih\n"+
+    a.map(
+      x=>
+        `"${tanggal.value}","${x.category}","${x.name}","${x.awal}","${x.akhir}","${x.selisih}"`
+    ).join("\n");
+
+
+  const u =
+    URL.createObjectURL(
+      new Blob(
+        [csv],
+        {type:"text/csv"}
+      )
+    );
+
+
+  const ael =
     document.createElement("a");
 
-  a.href=url;
-  a.download=
-    `SO_BeanSpot_KF33_${
-      document.getElementById("reportDate").value
-    }.csv`;
 
-  a.click();
+  ael.href=u;
 
-  URL.revokeObjectURL(url);
+  ael.download =
+    "SO_BEANSPOT_KF33_"+
+    tanggal.value+
+    ".csv";
+
+
+  ael.click();
+
+
+  URL.revokeObjectURL(u);
+
 }
 
 
 /* =====================================================
-   DELETE SO CURRENT DATE
-===================================================== */
+   DELETE SO
+   ===================================================== */
 
-async function deleteCurrentDate(){
+async function resetCurrentDate(){
 
-  const tanggal =
-    document.getElementById("reportDate")
-      .value || today();
+  if(
+    !confirm(
+      "Hapus SO tersimpan untuk "+
+      fmt(tanggal.value)+
+      " dari database?"
+    )
+  )return;
 
-  if(!confirm(
-    `Hapus SEMUA SO tanggal ${tanggal}?`
-  )) return;
 
-  const {error} =
-    await sb
-    .from("stock_opname")
-    .delete()
-    .eq("tanggal",tanggal);
+  try{
 
-  if(error){
+    const {
+      error
+    } =
+      await db
+        .from("stock_opname")
+        .delete()
+        .eq(
+          "tanggal",
+          tanggal.value
+        );
+
+
+    if(error)throw error;
+
+
+    current={};
+
+
+    await loadDate();
+
+
     toast(
-      "Gagal hapus: "+
-      errorMessage(error)
+      "SO tanggal ini dihapus dari database ✅"
     );
-    return;
+
+
+  }catch(err){
+
+    console.error(
+      "DELETE SO ERROR:",
+      err
+    );
+
+
+    toast(
+      "Gagal hapus SO: "+
+      (
+        err?.message ||
+        "Unknown error"
+      )
+    );
+
   }
 
-  toast("SO tanggal tersebut berhasil dihapus.");
-
-  await loadReport();
-  await loadSO();
-  await loadDashboard();
 }
 
 
 /* =====================================================
    DARK MODE
-===================================================== */
+   ===================================================== */
 
 function toggleDark(){
 
-  document.body.classList.toggle("dark");
+  document.body
+    .classList
+    .toggle("dark");
+
 
   localStorage.setItem(
-    "beanspot_dark",
-    document.body.classList.contains("dark")
-      ? "1"
-      : "0"
+    "dark",
+    document.body.classList.contains(
+      "dark"
+    )
   );
+
 }
 
 
 /* =====================================================
-   INIT
-===================================================== */
+   START APP
+   ===================================================== */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  ()=>{
+window.addEventListener(
+  "load",
+  async()=>{
 
     if(
       localStorage.getItem(
-        "beanspot_dark"
-      )==="1"
+        "dark"
+      )==="true"
     ){
-      document.body.classList.add("dark");
+
+      document.body
+        .classList
+        .add("dark");
+
     }
 
-    restoreLogin();
+
+    setConnectionStatus(
+      "⏳ Mengecek koneksi..."
+    );
+
+
+    await checkConnection(false);
+
+
+    const saved =
+      localStorage.getItem(
+        "beanspot_user"
+      );
+
+
+    if(saved){
+
+      try{
+
+        currentUser =
+          JSON.parse(saved);
+
+
+        await loadProducts();
+
+        openApp();
+
+
+      }catch(e){
+
+        console.error(e);
+
+        logout();
+
+      }
+
+    }
 
   }
 );
+
 </script>
 
 </body>
