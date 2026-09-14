@@ -2,2527 +2,2115 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<meta name="theme-color" content="#c8102e">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SO Material BeanSpot KF33</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{box-sizing:border-box}
-
 body{
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f6f8;
-  color:#202124;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f5f7;
+  color:#222;
 }
-
-body.dark{
-  background:#101827;
-  color:#f5f5f5;
-}
-
-button,input,select{
-  font:inherit;
-}
-
-.header{
-  background:linear-gradient(135deg,#e21b2d,#a90014);
-  color:#fff;
-  padding:17px 15px;
-  position:sticky;
-  top:0;
-  z-index:20;
-  box-shadow:0 4px 14px #0003;
-}
-
-.head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{
-  font-size:27px;
-  font-weight:900;
-}
-
-.logo span{
-  color:#ffd400;
-}
-
-.store{
-  text-align:right;
-  font-size:11px;
-  line-height:1.4;
-}
-
-.sub{
-  font-size:12px;
-  margin-top:7px;
-  opacity:.95;
-}
-
-.container{
-  max-width:920px;
-  margin:auto;
-  padding:14px;
-}
-
-.page{
-  padding-bottom:80px;
-}
-
-.card{
-  background:#fff;
-  border-radius:16px;
-  padding:15px;
-  margin-bottom:14px;
-  box-shadow:0 3px 14px #00000012;
-}
-
-.dark .card{
-  background:#1d2939;
-  box-shadow:0 3px 14px #0006;
-}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+.hidden{display:none!important}
 
 .login{
-  max-width:430px;
-  margin:40px auto;
-  text-align:center;
-}
-
-.login-logo{
-  width:82px;
-  height:82px;
-  margin:auto;
-  border-radius:22px;
-  background:#d71920;
-  color:#fff;
+  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:40px;
-  font-weight:900;
+  padding:20px;
+  background:linear-gradient(145deg,#d71920,#9d0010);
 }
-
-h1{
-  margin:13px 0 3px;
-  font-size:24px;
-}
-
-label{
-  display:block;
-  font-size:12px;
-  font-weight:bold;
-  margin:11px 0 5px;
-}
-
-input,select{
+.login-box{
   width:100%;
-  border:1px solid #d8dce2;
-  border-radius:10px;
-  padding:12px;
-  background:#fff;
+  max-width:390px;
+  background:white;
+  padding:30px 24px;
+  border-radius:22px;
+  box-shadow:0 15px 45px #0005;
+}
+.logo{
+  text-align:center;
+  font-size:42px;
+  font-weight:900;
+  color:#d71920;
+}
+.logo span{color:#222}
+.login-title{text-align:center;font-size:24px;font-weight:900;margin:5px 0}
+.login-sub{text-align:center;color:#777;margin-bottom:25px}
+.input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  margin-bottom:12px;
   outline:none;
 }
-
-.dark input,
-.dark select{
-  background:#111827;
-  color:#fff;
-  border-color:#374151;
-}
-
+.input:focus{border-color:#d71920}
 .btn{
-  border:0;
-  border-radius:10px;
-  padding:11px 14px;
-  font-weight:bold;
-  cursor:pointer;
+  padding:13px 17px;
+  border-radius:11px;
+  font-weight:800;
 }
+.btn-red{background:#d71920;color:white}
+.btn-yellow{background:#ffd400;color:#111}
+.btn-gray{background:#e9e9e9;color:#222}
+.btn-green{background:#14833b;color:white}
+.btn-danger{background:#b00020;color:white}
 
-.red{
-  background:#d71920;
-  color:#fff;
+.app{display:none;min-height:100vh}
+header{
+  background:linear-gradient(135deg,#d71920,#a40010);
+  color:white;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.brand{font-size:20px;font-weight:900}
+.brand small{display:block;font-size:11px;font-weight:500;opacity:.85}
+.user-info{text-align:right;font-size:12px}
+.nav{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:10px 0 0;
+}
+.nav button{
+  background:#ffffff22;
+  color:white;
+  padding:9px 14px;
+  border-radius:9px;
+  white-space:nowrap;
+}
+.nav button.active{background:#ffd400;color:#111}
 
-.blue{
-  background:#2563eb;
-  color:#fff;
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:18px;
 }
+.page{display:none}
+.page.active{display:block}
 
-.green{
-  background:#16a34a;
-  color:#fff;
+.card{
+  background:white;
+  border-radius:16px;
+  padding:17px;
+  margin-bottom:15px;
+  box-shadow:0 2px 10px #0000000b;
 }
-
-.yellow{
-  background:#ffd400;
-  color:#111;
-}
-
-.gray{
-  background:#e5e7eb;
-  color:#222;
-}
-
-.dark .gray{
-  background:#374151;
-  color:#fff;
-}
-
-.full{
-  width:100%;
-  margin-top:10px;
-}
-
-.actions{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-}
+.card h2,.card h3{margin-top:0}
 
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:9px;
+  gap:12px;
 }
-
 .stat{
-  background:#f8fafc;
-  border-radius:13px;
-  padding:12px;
-  border-left:5px solid #d71920;
+  background:white;
+  padding:17px;
+  border-radius:15px;
+  box-shadow:0 2px 10px #0000000b;
 }
+.stat b{font-size:27px;display:block;margin-top:6px}
+.minus{color:#c40018}
+.plus{color:#16833b}
 
-.dark .stat{
-  background:#111827;
-}
-
-.stat small{
-  font-size:10px;
-  color:#777;
-}
-
-.dark .stat small{
-  color:#aaa;
-}
-
-.stat strong{
-  display:block;
-  font-size:23px;
-  margin-top:4px;
-}
-
-.title{
-  font-size:17px;
-  font-weight:900;
-  margin:2px 0 12px;
-}
-
-.toolbar{
+.grid{
   display:grid;
-  grid-template-columns:1fr 180px;
-  gap:8px;
-  margin-bottom:10px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
-
-.cat{
-  margin-bottom:17px;
-}
-
-.cathead{
-  color:#fff;
-  padding:11px 13px;
-  border-radius:10px 10px 0 0;
-  font-weight:900;
-}
-
-.rpc{background:#d71920}
-.raw{background:#2563eb}
-.ori{background:#16a34a}
-.fresh{background:#9333ea}
-.rte{background:#ea580c}
-.ihb{background:#0891b2}
-
-.material{
-  background:#fff;
-  border:1px solid #e5e7eb;
-  border-top:0;
-  padding:11px;
-}
-
-.dark .material{
-  background:#1d2939;
-  border-color:#374151;
-}
-
-.material:last-child{
-  border-radius:0 0 10px 10px;
-}
-
-.mname{
-  font-weight:bold;
-  font-size:13px;
-  margin-bottom:8px;
-}
-
-.inputs{
-  display:grid;
-  grid-template-columns:1fr 1fr 105px;
-  gap:7px;
-}
-
-.ibox small{
-  display:block;
-  font-size:10px;
-  color:#777;
-  margin-bottom:3px;
-}
-
-.diff{
-  padding:10px 6px;
-  border-radius:9px;
-  text-align:center;
-  font-weight:900;
-  background:#dcfce7;
-  color:#15803d;
-}
-
-.diff.minus{
-  background:#fee2e2;
-  color:#dc2626;
-}
-
-.diff.zero{
-  background:#e5e7eb;
-  color:#555;
-}
-
-.diff small{
-  display:block;
-}
-
 .row{
   display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:9px 0;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.row>*{flex:1}
+.row .fit{flex:0 0 auto}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:760px;
+}
+.table-wrap{overflow:auto}
+th,td{
+  padding:9px 8px;
   border-bottom:1px solid #eee;
+  text-align:left;
   font-size:13px;
 }
+th{background:#f5f5f5}
+.qty{width:90px;padding:9px;border:1px solid #ddd;border-radius:8px}
+.diff{font-weight:900}
 
-.dark .row{
-  border-color:#374151;
-}
-
-.minus-text{
-  color:#dc2626;
-  font-weight:bold;
-}
-
-.plus-text{
-  color:#16a34a;
-  font-weight:bold;
-}
-
-.minus-box{
-  border:2px solid #fecaca;
-  background:#fff7f7;
-  border-radius:13px;
-  padding:12px;
-  margin-top:12px;
-}
-
-.dark .minus-box{
-  background:#2a1518;
-  border-color:#7f1d1d;
-}
-
-.minus-title{
-  color:#dc2626;
+.category{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:7px;
+  font-size:11px;
   font-weight:900;
-  font-size:16px;
+  background:#eee;
+}
+
+.product-item{
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:12px;
   margin-bottom:8px;
 }
+.product-name{font-weight:800}
+.product-meta{font-size:12px;color:#777;margin-top:4px}
 
-.minus-item{
-  padding:10px 0;
-  border-bottom:1px solid #fecaca;
+.notice{
+  padding:12px;
+  border-radius:10px;
+  background:#fff3cd;
+  margin-bottom:12px;
 }
-
-.minus-item:last-child{
-  border-bottom:0;
-}
-
-.minus-name{
-  font-weight:bold;
-  font-size:13px;
-}
-
-.minus-detail{
-  font-size:11px;
-  margin-top:4px;
-  color:#555;
-}
-
-.dark .minus-detail{
-  color:#ddd;
-}
-
-.nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#fff;
-  border-top:1px solid #ddd;
-  display:flex;
-  justify-content:center;
-  z-index:30;
-}
-
-.dark .nav{
-  background:#1d2939;
-  border-color:#374151;
-}
-
-.nav button{
-  border:0;
-  background:none;
-  padding:8px 15px;
-  font-size:11px;
-  font-weight:bold;
-  color:#555;
-}
-
-.dark .nav button{
-  color:#ddd;
-}
-
-.nav button.active{
-  color:#d71920;
-}
-
-.hidden{
-  display:none!important;
+.loading{
+  text-align:center;
+  padding:30px;
+  color:#777;
 }
 
 .toast{
   position:fixed;
+  bottom:20px;
   left:50%;
-  bottom:82px;
   transform:translateX(-50%);
-  background:#111827;
-  color:#fff;
-  padding:11px 17px;
-  border-radius:25px;
-  font-size:13px;
+  background:#222;
+  color:white;
+  padding:12px 18px;
+  border-radius:10px;
   z-index:100;
-  opacity:0;
-  transition:.2s;
+  display:none;
 }
 
-.toast.show{
-  opacity:1;
+@media(max-width:700px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:1fr}
+  .container{padding:12px}
+  .header-inner{align-items:flex-start}
 }
 
-.history-item{
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:12px;
-  margin:8px 0;
-  background:#fafafa;
+body.dark{
+  background:#151515;
+  color:#eee;
 }
-
-.dark .history-item{
-  background:#111827;
-  border-color:#374151;
+body.dark .card,
+body.dark .stat,
+body.dark .login-box{background:#222;color:#eee}
+body.dark .input{
+  background:#333;color:#fff;border-color:#555
 }
-
-.history-date{
-  font-weight:900;
-}
-
-.history-meta{
-  font-size:11px;
-  color:#777;
-  margin-top:4px;
-}
-
-.add-grid{
-  display:grid;
-  grid-template-columns:1fr 150px;
-  gap:8px;
-}
-
-.empty{
-  text-align:center;
-  color:#777;
-  padding:20px;
-}
-
-@media(max-width:650px){
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .inputs{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .inputs .diff{
-    grid-column:1/-1;
-  }
-
-  .toolbar{
-    grid-template-columns:1fr;
-  }
-
-  .add-grid{
-    grid-template-columns:1fr;
-  }
-
-  .actions{
-    grid-template-columns:1fr 1fr 1fr;
-  }
-}
+body.dark th{background:#333}
+body.dark td{border-color:#444}
+body.dark .btn-gray{background:#444;color:#fff}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div id="loginPage">
-  <div class="container">
-    <div class="card login">
+<!-- ================= LOGIN ================= -->
 
-      <div class="login-logo">☕</div>
+<section id="loginPage" class="login">
+  <div class="login-box">
+    <div class="logo">bean<span>!</span>spot</div>
 
-      <h1>SO MATERIAL</h1>
+    <div class="login-title">SO MATERIAL</div>
+    <div class="login-sub">KF33 • Karet Pedurenan</div>
 
-      <b style="color:#d71920;font-size:19px">
-        BEANSPOT
-      </b>
+    <input id="loginNik"
+           class="input"
+           inputmode="numeric"
+           placeholder="NIK">
 
-      <p>KF33 • Karet Pedurenan</p>
+    <input id="loginPin"
+           class="input"
+           type="password"
+           inputmode="numeric"
+           placeholder="PIN">
 
-      <label>NIK</label>
-      <input id="nik" placeholder="Masukkan NIK">
+    <button id="loginBtn"
+            class="btn btn-red"
+            style="width:100%"
+            onclick="login()">
+      MASUK
+    </button>
 
-      <label>PIN</label>
-      <input id="pin" type="password" placeholder="Masukkan PIN">
-
-      <button class="btn red full" onclick="login()">
-        LOGIN
-      </button>
-
-      <p style="font-size:12px;color:#777;margin-top:18px">
-        Sistem Kontrol Stock Material
-      </p>
-
+    <div id="loginError"
+         style="color:#c40018;text-align:center;margin-top:12px;font-size:13px">
     </div>
   </div>
-</div>
+</section>
 
 
-<!-- APP -->
-<div id="app" class="hidden page">
+<!-- ================= APP ================= -->
 
-<header class="header">
+<section id="app" class="app">
 
-  <div class="head">
+<header>
+  <div class="header-inner">
 
-    <div class="logo">
-      bean<span>!</span>spot
+    <div class="brand">
+      bean!spot • SO MATERIAL
+      <small>KF33 • Karet Pedurenan</small>
     </div>
 
-    <div class="store">
-      <b>KF33</b><br>
-      Karet Pedurenan
+    <div class="user-info">
+      <b id="userName">-</b>
+      <br>
+      <span id="userRole">-</span>
     </div>
 
   </div>
 
-  <div class="sub">
-    SO MATERIAL • Kontrol Stock & Rekap Harian
-  </div>
+  <div class="nav">
+    <button id="navDashboard" onclick="showPage('dashboard')">
+      Dashboard
+    </button>
 
+    <button id="navInput" onclick="showPage('input')">
+      Input SO
+    </button>
+
+    <button id="navReport" onclick="showPage('report')">
+      Rekap
+    </button>
+
+    <button id="navProducts"
+            onclick="showPage('products')">
+      Produk
+    </button>
+  </div>
 </header>
 
 
-<div class="container">
+<main class="container">
 
-<!-- NAV ATAS -->
-<div class="card">
+<!-- ================= DASHBOARD ================= -->
 
-  <div class="actions">
-
-    <button class="btn red"
-      onclick="showPage('dashboard')">
-      🏠 Dashboard
-    </button>
-
-    <button class="btn blue"
-      onclick="showPage('input')">
-      📝 Input SO
-    </button>
-
-    <button class="btn green"
-      onclick="showPage('report')">
-      📊 Rekap
-    </button>
-
-  </div>
-
-  <label>Tanggal SO</label>
-
-  <input
-    type="date"
-    id="tanggal"
-    onchange="loadDate()"
-  >
-
-</div>
-
-
-<!-- DASHBOARD -->
-<div id="dashboardPage">
+<section id="page-dashboard" class="page">
 
   <div class="card">
+    <div class="row">
+      <div>
+        <h2 style="margin-bottom:3px">DASHBOARD</h2>
+        <div style="color:#777">
+          SO Material • Kontrol Stock & Rekap Harian
+        </div>
+      </div>
 
-    <div class="title">
-      📊 DASHBOARD
+      <div class="fit">
+        <input id="dashDate"
+               type="date"
+               class="input"
+               style="margin:0"
+               onchange="loadDashboard()">
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      Total Item
+      <b id="statTotal">0</b>
     </div>
 
-    <div class="stats">
+    <div class="stat">
+      Minus
+      <b id="statMinus" class="minus">0</b>
+    </div>
 
-      <div class="stat">
-        <small>Total Item</small>
-        <strong id="totalItem">0</strong>
-      </div>
+    <div class="stat">
+      Plus
+      <b id="statPlus" class="plus">0</b>
+    </div>
 
-      <div class="stat"
-        style="border-color:#dc2626">
-
-        <small>Minus</small>
-        <strong id="totalMinus">0</strong>
-
-      </div>
-
-      <div class="stat"
-        style="border-color:#16a34a">
-
-        <small>Plus</small>
-        <strong id="totalPlus">0</strong>
-
-      </div>
-
-      <div class="stat"
-        style="border-color:#2563eb">
-
-        <small>Selisih</small>
-        <strong id="totalSelisih">0</strong>
-
-      </div>
-
+    <div class="stat">
+      Selisih
+      <b id="statDiff">0</b>
     </div>
 
   </div>
 
+  <div class="card" style="margin-top:15px">
+    <h3>REKAP TERSIMPAN</h3>
+    <div id="dashboardHistory">
+      <div class="loading">Memuat...</div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ================= INPUT SO ================= -->
+
+<section id="page-input" class="page">
 
   <div class="card">
 
-    <div class="title">
-      📅 REKAP TERSIMPAN
-    </div>
+    <div class="row">
+      <div>
+        <h2 style="margin-bottom:3px">INPUT STOCK</h2>
+        <div style="color:#777">
+          Masukkan stock awal dan stock akhir.
+        </div>
+      </div>
 
-    <div id="dashHistory"></div>
+      <div class="fit">
+        <input id="soDate"
+               type="date"
+               class="input"
+               style="margin:0"
+               onchange="loadSO()">
+      </div>
+    </div>
 
   </div>
 
-</div>
-
-
-<!-- INPUT -->
-<div id="inputPage" class="hidden">
 
   <div class="card">
 
-    <div class="title">
-      ➕ TAMBAH PRODUK / PLU
+    <h3>TAMBAH PRODUK / PLU</h3>
+
+    <div class="grid">
+
+      <input id="newPLU"
+             class="input"
+             placeholder="PLU (opsional)">
+
+      <input id="newName"
+             class="input"
+             placeholder="Nama produk / material / PLU">
+
     </div>
 
-    <div class="add-grid">
+    <div class="row">
 
-      <input
-        id="newName"
-        placeholder="Nama produk / material / PLU"
-      >
+      <select id="newCategory" class="input">
+        <option value="RPC">RPC</option>
+        <option value="RAW">RAW</option>
+        <option value="ORI">ORI</option>
+        <option value="FRESH MILK">FRESH MILK</option>
+        <option value="RTE">RTE</option>
+        <option value="IHB">IHB</option>
+      </select>
 
-      <select id="newCat">
+      <button class="btn btn-red fit"
+              onclick="addProductFromInput()">
+        + TAMBAH PRODUK
+      </button>
 
-        <option>RPC</option>
-        <option>RAW</option>
-        <option>ORI</option>
-        <option>FRESH MILK</option>
-        <option>RTE</option>
-        <option>IHB</option>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="row">
+
+      <input id="searchInput"
+             class="input"
+             placeholder="Cari produk / PLU..."
+             oninput="renderSO()">
+
+      <select id="filterCategory"
+              class="input"
+              onchange="renderSO()">
+
+        <option value="">SEMUA KATEGORI</option>
+        <option value="RPC">RPC</option>
+        <option value="RAW">RAW</option>
+        <option value="ORI">ORI</option>
+        <option value="FRESH MILK">FRESH MILK</option>
+        <option value="RTE">RTE</option>
+        <option value="IHB">IHB</option>
 
       </select>
 
     </div>
 
-    <button
-      class="btn yellow full"
-      onclick="addProduct()">
+    <div id="soTable">
+      <div class="loading">Memuat produk...</div>
+    </div>
 
-      ➕ Tambah Produk
-
+    <button class="btn btn-red"
+            style="width:100%;margin-top:15px"
+            onclick="saveSO()">
+      SIMPAN SO TANGGAL INI
     </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= REPORT ================= -->
+
+<section id="page-report" class="page">
+
+  <div class="card">
+
+    <h2>RIWAYAT SO PER TANGGAL</h2>
+
+    <div class="row">
+
+      <input id="reportDate"
+             type="date"
+             class="input">
+
+      <button class="btn btn-red fit"
+              onclick="loadReport()">
+        TAMPILKAN
+      </button>
+
+    </div>
 
   </div>
 
 
   <div class="card">
 
-    <div class="title">
-      📦 INPUT STOCK
+    <h3>DETAIL TANGGAL</h3>
+
+    <div id="reportDetail">
+      Pilih tanggal.
     </div>
 
-    <div class="toolbar">
+  </div>
 
-      <input
-        id="search"
-        placeholder="🔎 Cari produk..."
-        oninput="renderMaterials()"
-      >
 
-      <select
-        id="filter"
-        onchange="renderMaterials()">
+  <div class="card">
 
-        <option>ALL</option>
-        <option>RPC</option>
-        <option>RAW</option>
-        <option>ORI</option>
-        <option>FRESH MILK</option>
-        <option>RTE</option>
-        <option>IHB</option>
+    <h3>REKAP BARANG MINUS</h3>
+
+    <div id="minusReport">
+      Pilih tanggal.
+    </div>
+
+    <div class="row" style="margin-top:12px">
+
+      <button class="btn btn-green"
+              onclick="sendMinusWA()">
+        KIRIM REKAP MINUS KE WHATSAPP
+      </button>
+
+      <button class="btn btn-gray"
+              onclick="copyMinus()">
+        COPY REKAP MINUS
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h3>LAPORAN</h3>
+
+    <div class="row">
+
+      <button class="btn btn-green"
+              onclick="shareFullReport()">
+        SHARE LAPORAN LENGKAP
+      </button>
+
+      <button class="btn btn-gray"
+              onclick="copyFullReport()">
+        COPY LAPORAN
+      </button>
+
+      <button class="btn btn-yellow"
+              onclick="exportCSV()">
+        EXPORT CSV
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="row">
+
+      <button class="btn btn-gray"
+              onclick="toggleDark()">
+        MODE GELAP
+      </button>
+
+      <button class="btn btn-danger"
+              onclick="deleteCurrentDate()">
+        HAPUS SO TANGGAL INI
+      </button>
+
+      <button class="btn btn-gray"
+              onclick="logout()">
+        LOGOUT
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section id="page-products" class="page">
+
+  <div class="card">
+
+    <h2>MASTER PRODUK</h2>
+
+    <div id="adminWarning"
+         class="notice hidden">
+      Hanya ADMIN yang dapat menambah, mengubah, atau menonaktifkan produk.
+    </div>
+
+    <div class="row">
+
+      <input id="productSearch"
+             class="input"
+             placeholder="Cari PLU / nama..."
+             oninput="renderProducts()">
+
+      <select id="productFilter"
+              class="input"
+              onchange="renderProducts()">
+
+        <option value="">SEMUA</option>
+        <option value="RPC">RPC</option>
+        <option value="RAW">RAW</option>
+        <option value="ORI">ORI</option>
+        <option value="FRESH MILK">FRESH MILK</option>
+        <option value="RTE">RTE</option>
+        <option value="IHB">IHB</option>
 
       </select>
 
     </div>
 
-  </div>
-
-
-  <div id="materialList"></div>
-
-  <button
-    class="btn red full"
-    onclick="saveSO()">
-
-    💾 SIMPAN SO TANGGAL INI
-
-  </button>
-
-</div>
-
-
-<!-- REPORT -->
-<div id="reportPage" class="hidden">
-
-  <div class="card">
-
-    <div class="title">
-      📚 RIWAYAT SO PER TANGGAL
+    <div id="productsList">
+      <div class="loading">Memuat...</div>
     </div>
 
-    <div id="historyList"></div>
-
   </div>
 
+</section>
 
-  <div class="card">
-
-    <div class="title">
-      📊 DETAIL TANGGAL
-    </div>
-
-    <div id="reportSummary"></div>
-
-  </div>
-
-
-  <!-- REKAP MINUS -->
-  <div class="card">
-
-    <div class="title">
-      🔴 REKAP BARANG MINUS
-    </div>
-
-    <div id="minusList"></div>
-
-    <button
-      class="btn red full"
-      onclick="shareMinusWhatsApp()">
-
-      📱 KIRIM REKAP MINUS KE WHATSAPP
-
-    </button>
-
-    <button
-      class="btn blue full"
-      onclick="copyMinusReport()">
-
-      📋 COPY REKAP MINUS
-
-    </button>
-
-  </div>
-
-
-  <div class="card">
-
-    <button
-      class="btn green full"
-      onclick="shareWhatsApp()">
-
-      📱 SHARE LAPORAN LENGKAP
-
-    </button>
-
-    <button
-      class="btn blue full"
-      onclick="copyReport()">
-
-      📋 COPY LAPORAN
-
-    </button>
-
-    <button
-      class="btn yellow full"
-      onclick="exportCSV()">
-
-      📥 EXPORT CSV
-
-    </button>
-
-  </div>
-
-
-  <div class="card">
-
-    <button
-      class="btn gray full"
-      onclick="toggleDark()">
-
-      🌙 Mode Gelap
-
-    </button>
-
-    <button
-      class="btn red full"
-      onclick="resetCurrentDate()">
-
-      🗑️ Hapus SO Tanggal Ini
-
-    </button>
-
-    <button
-      class="btn gray full"
-      onclick="logout()">
-
-      🚪 LOGOUT
-
-    </button>
-
-  </div>
-
-</div>
-
-</div>
-
-
-<!-- BOTTOM NAV -->
-<nav class="nav">
-
-  <button
-    id="nDash"
-    class="active"
-    onclick="showPage('dashboard')">
-
-    🏠<br>
-    Dashboard
-
-  </button>
-
-  <button
-    id="nInput"
-    onclick="showPage('input')">
-
-    📝<br>
-    Input
-
-  </button>
-
-  <button
-    id="nReport"
-    onclick="showPage('report')">
-
-    📊<br>
-    Rekap
-
-  </button>
-
-</nav>
-
-</div>
+</main>
+</section>
 
 
 <div id="toast" class="toast"></div>
 
 
 <script>
+/* =====================================================
+   SUPABASE
+===================================================== */
 
-/* =========================
-   DATA PRODUK
-========================= */
+const SUPABASE_URL =
+  "https://dhubnshxivounhyexeu.supabase.co";
 
-const defaultMaterials = {
+const SUPABASE_KEY =
+  "sb_publishable_3w_q0jD-bG7zAtMhRaT7rw_821WQV9W";
 
-  RPC:[
-    "Gula pasir",
-    "Gula cair",
-    "Coffee bean",
-    "Ice cube",
-    "Fresh milk",
-    "Air mineral",
-    "Carnation",
-    "Monin Salt Crml",
-    "Palm sugar",
-    "Cheesecake syrup",
-    "Monin Hazelnut",
-    "Monin Lychee syrup",
-    "Strawberry cheese syrup",
-    "Monin Strawberry",
-    "Bobaking Syrup Whtgrp",
-    "Teh celup",
-    "Roll plastic",
-    "Max creamer"
-  ],
-
-  RAW:[
-    "Choco Hazelnut",
-    "Dark Choco",
-    "Choco Vanilla",
-    "Green Tea Latte",
-    "Creamer SAC 15g",
-    "Jelly",
-    "Cup Plastic PP Beans 16oz",
-    "Cup Hot Beans 8oz",
-    "Cup Plastic Injection Set 160oz",
-    "Paper Bowl Beanspot Set 600ml",
-    "Roll plastic",
-    "Jblosom SAC 35g",
-    "Powder Matcha SAC 45g"
-  ],
-
-  ORI:[
-    "Gula pasir SAC 100×8g",
-    "Gula cair SAC 100×20ml",
-    "Ice cube",
-    "Bobaking syrup 750ml",
-    "Gula aren 1,3L",
-    "Monin syrup Salt Caramel",
-    "Monin Lychee syrup",
-    "Monin Hazelnut syrup",
-    "Monin Cheesecake syrup",
-    "Strawberry Cream Cheese syrup",
-    "Monin Strawberry 700ml",
-    "Deli Fru Coco Mangi 1L",
-    "Bobaking Syrup Whtgrp",
-    "Krimer bag 1kg",
-    "Pistachio",
-    "Macchiato powder 30g",
-    "Powder Thai tea 40g",
-    "Frappe Base 500g",
-    "Teh Sosro 30×26",
-    "Krimer 40g",
-    "Coffee beans"
-  ],
-
-  "FRESH MILK":[
-    "Diamond UHT 1L",
-    "Greenfield UHT 1L",
-    "Omela",
-    "Carnation 360g",
-    "Max Creamer 500g"
-  ],
-
-  RTE:[
-    "459379 • RTE Familyfood NS Aym Rica 320g",
-    "459380 • RTE NS Kng Aymijo",
-    "461140 • RTE Makeiz Cheesemelt",
-    "465761 • RTE Kimbo Bakso Pentol",
-    "459794 • RTE Nasindo Nasi Soto PCH 85g",
-    "460997 • RTE Nasgor Cakalang Kcmbrg MCD",
-    "460998 • RTE Nasgor Aym Cabe Ijo MCD",
-    "461251 • RTE Nasi Kucing Aym Bmb Bali",
-    "461252 • RTE Nasi Kucing Teri Cabe Ijo",
-    "461253 • RTE Nasi Kucing Ayam Suwir BLD MD",
-    "466251 • RTE Nasi RDG Dgng Box 20g",
-    "466253 • RTE Nasi Dgng Lada Hitam Box 320g",
-    "432960 • RTE Pisang Molen",
-    "412697 • RTE Pisang Psg Cklt",
-    "442098 • RTE Risol Bolognase",
-    "442099 • RTE Risol Mac N Cheese",
-    "411691 • RTE Sosis Solo",
-    "461250 • RTE Ubi Brullee",
-    "440646 • RTE Onigiri Salmon Mayo (MCD)",
-    "440647 • RTE Onigiri Spicy Salmon (MCD)",
-    "440648 • RTE Onigiri Tuna Mayo (MCD)"
-  ],
-
-  IHB:[
-    "438072 • IHB Grissini Sweet (A)",
-    "438073 • IHB Grissini Salty (A)",
-    "461142 • IHB Obalab Cake Chs 80g",
-    "461143 • IHB Obalab Cake Str 80g",
-    "465667 • IHB Macron 6s",
-    "466181 • IHB Roti Cklt Keju",
-    "466182 • IHB Roti Keju Manis",
-    "466183 • IHB Roti Babka Cklt Kcg",
-    "466184 • IHB Roti Aym Mayo",
-    "466185 • IHB Roti Baso Aym"
-  ]
-
-};
-
-
-/* =========================
-   STORAGE
-========================= */
-
-const KEY =
-  "beanspot_so_kf33_v2";
-
-const PROD =
-  "beanspot_products_kf33";
-
-const HIST =
-  "beanspot_history_kf33";
-
-
-let products =
-  JSON.parse(
-    localStorage.getItem(PROD) || "null"
-  ) || structuredClone(defaultMaterials);
-
-
-/* Tambahkan kategori baru tanpa
-   menghapus produk lama */
-
-Object.keys(defaultMaterials).forEach(c=>{
-
-  if(!products[c]){
-    products[c]=[
-      ...defaultMaterials[c]
-    ];
-  }
-
-});
-
-
-saveProducts();
-
-
-let current = {};
-
-let histories =
-  JSON.parse(
-    localStorage.getItem(HIST) || "{}"
+const sb =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
   );
 
 
-/* =========================
+/* =====================================================
+   STATE
+===================================================== */
+
+let currentUser = null;
+let products = [];
+let soRows = [];
+let reportRows = [];
+
+const categories = [
+  "RPC",
+  "RAW",
+  "ORI",
+  "FRESH MILK",
+  "RTE",
+  "IHB"
+];
+
+
+/* =====================================================
    HELPER
-========================= */
+===================================================== */
 
 function today(){
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,"0");
+  const day = String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
 
-  return new Date()
-    .toISOString()
-    .slice(0,10);
+function esc(value){
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
 
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.style.display = "block";
+
+  setTimeout(()=>{
+    el.style.display = "none";
+  },2500);
+}
+
+function errorMessage(error){
+  console.error(error);
+  return error?.message || "Terjadi kesalahan.";
 }
 
 
-function fmt(d){
+/* =====================================================
+   LOGIN NIK + PIN
+===================================================== */
 
-  if(!d) return "-";
+async function login(){
 
-  let x =
-    new Date(d+"T00:00:00");
+  const nik =
+    document.getElementById("loginNik").value.trim();
 
-  return String(x.getDate())
-    .padStart(2,"0")
-    + "-"
-    + String(x.getMonth()+1)
-      .padStart(2,"0")
-    + "-"
-    + x.getFullYear();
+  const pin =
+    document.getElementById("loginPin").value.trim();
 
-}
+  const err =
+    document.getElementById("loginError");
 
+  err.textContent = "";
 
-function key(c,n){
-
-  return c+"__"+n;
-
-}
-
-
-function saveProducts(){
-
-  localStorage.setItem(
-    PROD,
-    JSON.stringify(products)
-  );
-
-}
-
-
-function esc(s){
-
-  return s
-    .replace(/\\/g,"\\\\")
-    .replace(/'/g,"\\'");
-
-}
-
-
-function sid(s){
-
-  return btoa(
-    unescape(
-      encodeURIComponent(s)
-    )
-  ).replace(
-    /[^a-zA-Z0-9]/g,
-    ""
-  );
-
-}
-
-
-function fd(v){
-
-  v=Number(v||0);
-
-  if(v<0)
-    return "❌ "+v;
-
-  if(v>0)
-    return "➕ "+v;
-
-  return "0";
-
-}
-
-
-function dc(v){
-
-  v=Number(v||0);
-
-  if(v<0)
-    return "minus";
-
-  if(v===0)
-    return "zero";
-
-  return "";
-
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-function login(){
-
-  if(
-    !nik.value.trim() ||
-    !pin.value.trim()
-  ){
-
-    return toast(
-      "NIK dan PIN wajib diisi"
-    );
-
+  if(!nik || !pin){
+    err.textContent = "NIK dan PIN wajib diisi.";
+    return;
   }
 
-  localStorage.setItem(
-    "beanspot_login",
-    "1"
-  );
+  const btn =
+    document.getElementById("loginBtn");
 
-  openApp();
+  btn.disabled = true;
+  btn.textContent = "MEMERIKSA...";
 
-  toast(
-    "Login berhasil ✅"
-  );
+  try{
 
+    const {data,error} =
+      await sb.rpc(
+        "login_so_user",
+        {
+          p_nik:nik,
+          p_pin:pin
+        }
+      );
+
+    if(error) throw error;
+
+    if(!data || data.length === 0){
+      throw new Error(
+        "NIK atau PIN salah / user tidak aktif."
+      );
+    }
+
+    currentUser = data[0];
+
+    localStorage.setItem(
+      "beanspot_current_user",
+      JSON.stringify(currentUser)
+    );
+
+    openApp();
+
+  }catch(e){
+
+    err.textContent =
+      errorMessage(e);
+
+  }finally{
+
+    btn.disabled = false;
+    btn.textContent = "MASUK";
+  }
 }
 
+
+/* =====================================================
+   OPEN APP
+===================================================== */
+
+async function openApp(){
+
+  document.getElementById("loginPage")
+    .style.display="none";
+
+  document.getElementById("app")
+    .style.display="block";
+
+  document.getElementById("userName")
+    .textContent=currentUser.nama;
+
+  document.getElementById("userRole")
+    .textContent=(currentUser.role || "")
+      .toUpperCase();
+
+  document.getElementById("soDate")
+    .value=today();
+
+  document.getElementById("dashDate")
+    .value=today();
+
+  document.getElementById("reportDate")
+    .value=today();
+
+  const isAdmin =
+    String(currentUser.role).toLowerCase()==="admin";
+
+  if(!isAdmin){
+    document.getElementById("navProducts")
+      .style.display="none";
+  }
+
+  await loadProducts();
+  await loadSO();
+
+  showPage("dashboard");
+}
+
+
+/* =====================================================
+   RESTORE LOGIN
+===================================================== */
+
+async function restoreLogin(){
+
+  const saved =
+    localStorage.getItem(
+      "beanspot_current_user"
+    );
+
+  if(!saved) return;
+
+  try{
+    currentUser=JSON.parse(saved);
+
+    if(
+      currentUser &&
+      currentUser.id &&
+      currentUser.nik
+    ){
+      /*
+       * Cek ulang user ke database
+       */
+      const {data,error} =
+        await sb
+        .from("so_users")
+        .select("id,nik,nama,role,aktif")
+        .eq("id",currentUser.id)
+        .eq("aktif",true)
+        .maybeSingle();
+
+      if(!error && data){
+        currentUser=data;
+        openApp();
+      }else{
+        logout();
+      }
+
+    }
+
+  }catch(e){
+    logout();
+  }
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 function logout(){
 
+  currentUser=null;
+
   localStorage.removeItem(
-    "beanspot_login"
+    "beanspot_current_user"
   );
 
-  app.classList.add(
-    "hidden"
-  );
+  document.getElementById("app")
+    .style.display="none";
 
-  loginPage.classList.remove(
-    "hidden"
-  );
+  document.getElementById("loginPage")
+    .style.display="flex";
 
+  document.getElementById("loginNik")
+    .value="";
+
+  document.getElementById("loginPin")
+    .value="";
 }
 
 
-function openApp(){
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
-  loginPage.classList.add(
-    "hidden"
-  );
+function showPage(page){
 
-  app.classList.remove(
-    "hidden"
-  );
+  document.querySelectorAll(".page")
+    .forEach(x=>x.classList.remove("active"));
 
-  tanggal.value =
-    localStorage.getItem(
-      "beanspot_date"
-    ) || today();
+  const target =
+    document.getElementById("page-"+page);
 
-  loadDate();
+  if(!target) return;
 
-}
+  target.classList.add("active");
 
+  document.querySelectorAll(".nav button")
+    .forEach(x=>x.classList.remove("active"));
 
-/* =========================
-   TANGGAL
-========================= */
+  if(page==="dashboard")
+    document.getElementById("navDashboard")
+      .classList.add("active");
 
-function loadDate(){
+  if(page==="input")
+    document.getElementById("navInput")
+      .classList.add("active");
 
-  localStorage.setItem(
-    "beanspot_date",
-    tanggal.value
-  );
+  if(page==="report")
+    document.getElementById("navReport")
+      .classList.add("active");
 
-  current =
-    JSON.parse(
-      JSON.stringify(
-        histories[
-          tanggal.value
-        ]?.items || {}
-      )
-    );
+  if(page==="products"){
+    document.getElementById("navProducts")
+      .classList.add("active");
 
-  renderMaterials();
-
-  update();
-
-  renderHistory();
-
-  renderReport();
-
-}
-
-
-/* =========================
-   NAVIGASI
-========================= */
-
-function showPage(p){
-
-  dashboardPage.classList.add(
-    "hidden"
-  );
-
-  inputPage.classList.add(
-    "hidden"
-  );
-
-  reportPage.classList.add(
-    "hidden"
-  );
-
-
-  document
-    .getElementById(
-      p+"Page"
-    )
-    .classList.remove(
-      "hidden"
-    );
-
-
-  document
-    .querySelectorAll(".nav button")
-    .forEach(
-      x=>x.classList.remove(
-        "active"
-      )
-    );
-
-
-  ({
-    dashboard:nDash,
-    input:nInput,
-    report:nReport
-  }[p]).classList.add(
-    "active"
-  );
-
-
-  update();
-
-
-  if(p==="report")
-    renderReport();
-
-
-  if(p==="dashboard")
-    renderHistory();
-
-
-  scrollTo(0,0);
-
-}
-
-
-/* =========================
-   TAMBAH PRODUK
-========================= */
-
-function addProduct(){
-
-  let n =
-    newName.value.trim();
-
-  let c =
-    newCat.value;
-
-
-  if(!n){
-
-    return toast(
-      "Nama produk wajib diisi"
-    );
-
+    renderProducts();
   }
 
+  if(page==="dashboard")
+    loadDashboard();
 
-  if(
-    products[c].some(
-      x =>
-      x.toLowerCase() ===
-      n.toLowerCase()
-    )
-  ){
-
-    return toast(
-      "Produk sudah ada"
-    );
-
-  }
-
-
-  products[c].push(n);
-
-  saveProducts();
-
-  newName.value="";
-
-  renderMaterials();
-
-  toast(
-    "Produk berhasil ditambahkan ✅"
-  );
-
+  if(page==="report")
+    loadReport();
 }
 
 
-/* =========================
-   RENDER MATERIAL
-========================= */
+/* =====================================================
+   LOAD PRODUCTS
+===================================================== */
 
-function renderMaterials(){
+async function loadProducts(){
 
-  let list =
-    materialList;
+  const {data,error} =
+    await sb
+    .from("so_products")
+    .select("*")
+    .eq("aktif",true)
+    .order("kategori",{ascending:true})
+    .order("nama",{ascending:true});
 
-  let q =
-    (search?.value || "")
+  if(error){
+    toast("Gagal memuat produk: "+errorMessage(error));
+    return;
+  }
+
+  products=data || [];
+
+  renderProducts();
+}
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+
+function renderProducts(){
+
+  const box =
+    document.getElementById("productsList");
+
+  if(!box) return;
+
+  const search =
+    (document.getElementById("productSearch")
+      ?.value || "")
       .toLowerCase();
 
-  let f =
-    filter?.value || "ALL";
+  const category =
+    document.getElementById("productFilter")
+      ?.value || "";
 
+  const filtered =
+    products.filter(p=>{
 
-  list.innerHTML="";
+      const text =
+        `${p.plu || ""} ${p.nama || ""}`
+          .toLowerCase();
 
-
-  Object.keys(products)
-  .forEach(c=>{
-
-    if(
-      f!=="ALL" &&
-      f!==c
-    )
-      return;
-
-
-    let arr =
-      products[c].filter(
-        n =>
-        n.toLowerCase()
-          .includes(q)
+      return(
+        (!search || text.includes(search)) &&
+        (!category || p.kategori===category)
       );
-
-
-    if(!arr.length)
-      return;
-
-
-    let w =
-      document.createElement(
-        "div"
-      );
-
-
-    let cls =
-      c==="RPC"
-      ? "rpc"
-      : c==="RAW"
-      ? "raw"
-      : c==="ORI"
-      ? "ori"
-      : c==="FRESH MILK"
-      ? "fresh"
-      : c==="RTE"
-      ? "rte"
-      : "ihb";
-
-
-    w.className="cat";
-
-
-    w.innerHTML =
-      '<div class="cathead '+cls+'">'
-      +c+
-      '</div>';
-
-
-    arr.forEach(n=>{
-
-      let k =
-        key(c,n);
-
-
-      if(!current[k]){
-
-        current[k]={
-          category:c,
-          name:n,
-          awal:"",
-          akhir:"",
-          selisih:0
-        };
-
-      }
-
-
-      let i =
-        current[k];
-
-
-      let d =
-        document.createElement(
-          "div"
-        );
-
-
-      d.className=
-        "material";
-
-
-      d.innerHTML=
-        '<div class="mname">'
-        +n+
-        '</div>'
-        +
-        '<div class="inputs">'
-
-        +
-
-        '<div class="ibox">'
-        +
-        '<small>AWAL</small>'
-        +
-        '<input type="number" min="0" value="'
-        +(i.awal ?? "")+
-        '" oninput="changeItem(\''
-        +esc(k)+
-        '\',\'awal\',this.value)">'
-        +
-        '</div>'
-
-        +
-
-        '<div class="ibox">'
-        +
-        '<small>AKHIR</small>'
-        +
-        '<input type="number" min="0" value="'
-        +(i.akhir ?? "")+
-        '" oninput="changeItem(\''
-        +esc(k)+
-        '\',\'akhir\',this.value)">'
-        +
-        '</div>'
-
-        +
-
-        '<div class="diff '
-        +dc(i.selisih)+
-        '">'
-
-        +
-        '<small>SELISIH</small>'
-
-        +
-        '<span id="d_'
-        +sid(k)+
-        '">'
-        +fd(i.selisih)+
-        '</span>'
-
-        +
-        '</div>'
-
-        +
-        '</div>';
-
-
-      w.appendChild(d);
 
     });
 
+  if(!filtered.length){
+    box.innerHTML=
+      `<div class="loading">Produk tidak ditemukan.</div>`;
+    return;
+  }
 
-    list.appendChild(w);
+  const isAdmin =
+    String(currentUser?.role).toLowerCase()==="admin";
+
+  box.innerHTML =
+    filtered.map(p=>`
+
+      <div class="product-item">
+
+        <div class="row">
+
+          <div>
+            <div class="product-name">
+              ${esc(p.nama)}
+            </div>
+
+            <div class="product-meta">
+              PLU: ${esc(p.plu || "-")}
+              &nbsp; • &nbsp;
+              <span class="category">
+                ${esc(p.kategori)}
+              </span>
+            </div>
+          </div>
+
+          ${
+            isAdmin
+            ? `
+              <button
+                class="btn btn-yellow fit"
+                onclick="editProduct('${p.id}')">
+                EDIT
+              </button>
+
+              <button
+                class="btn btn-danger fit"
+                onclick="deactivateProduct('${p.id}')">
+                HAPUS
+              </button>
+            `
+            : ""
+          }
+
+        </div>
+
+      </div>
+
+    `).join("");
+}
+
+
+/* =====================================================
+   ADD PRODUCT
+===================================================== */
+
+async function addProductFromInput(){
+
+  if(String(currentUser?.role).toLowerCase()!=="admin"){
+    toast("Hanya ADMIN yang boleh menambah produk.");
+    return;
+  }
+
+  const plu =
+    document.getElementById("newPLU")
+      .value.trim();
+
+  const nama =
+    document.getElementById("newName")
+      .value.trim();
+
+  const kategori =
+    document.getElementById("newCategory")
+      .value;
+
+  if(!nama){
+    toast("Nama produk wajib diisi.");
+    return;
+  }
+
+  const {error} =
+    await sb
+    .from("so_products")
+    .insert({
+      plu:plu || null,
+      nama:nama,
+      kategori:kategori,
+      aktif:true
+    });
+
+  if(error){
+    toast("Gagal tambah: "+errorMessage(error));
+    return;
+  }
+
+  document.getElementById("newPLU").value="";
+  document.getElementById("newName").value="";
+
+  toast("Produk berhasil ditambahkan.");
+
+  await loadProducts();
+}
+
+
+/* =====================================================
+   EDIT PRODUCT
+===================================================== */
+
+async function editProduct(id){
+
+  if(String(currentUser?.role).toLowerCase()!=="admin"){
+    toast("Hanya ADMIN.");
+    return;
+  }
+
+  const p =
+    products.find(x=>x.id===id);
+
+  if(!p) return;
+
+  const nama =
+    prompt("Nama produk:",p.nama);
+
+  if(nama===null) return;
+
+  const plu =
+    prompt("PLU:",p.plu || "");
+
+  if(plu===null) return;
+
+  let kategori =
+    prompt(
+      "Kategori (RPC / RAW / ORI / FRESH MILK / RTE / IHB):",
+      p.kategori
+    );
+
+  if(kategori===null) return;
+
+  kategori=kategori.toUpperCase();
+
+  if(!categories.includes(kategori)){
+    toast("Kategori tidak valid.");
+    return;
+  }
+
+  const {error} =
+    await sb
+    .from("so_products")
+    .update({
+      nama:nama.trim(),
+      plu:plu.trim() || null,
+      kategori:kategori
+    })
+    .eq("id",id);
+
+  if(error){
+    toast("Gagal edit: "+errorMessage(error));
+    return;
+  }
+
+  toast("Produk berhasil diubah.");
+
+  await loadProducts();
+  await loadSO();
+}
+
+
+/* =====================================================
+   DEACTIVATE PRODUCT
+===================================================== */
+
+async function deactivateProduct(id){
+
+  if(String(currentUser?.role).toLowerCase()!=="admin"){
+    toast("Hanya ADMIN.");
+    return;
+  }
+
+  const p =
+    products.find(x=>x.id===id);
+
+  if(!p) return;
+
+  if(!confirm(
+    `Nonaktifkan produk "${p.nama}"?`
+  )) return;
+
+  const {error} =
+    await sb
+    .from("so_products")
+    .update({aktif:false})
+    .eq("id",id);
+
+  if(error){
+    toast("Gagal hapus: "+errorMessage(error));
+    return;
+  }
+
+  toast("Produk dinonaktifkan.");
+
+  await loadProducts();
+  await loadSO();
+}
+
+
+/* =====================================================
+   LOAD SO
+===================================================== */
+
+async function loadSO(){
+
+  const tanggal =
+    document.getElementById("soDate")
+      .value || today();
+
+  if(!products.length)
+    await loadProducts();
+
+  const {data,error} =
+    await sb
+    .from("stock_opname")
+    .select("*")
+    .eq("tanggal",tanggal);
+
+  if(error){
+    toast("Gagal memuat SO: "+errorMessage(error));
+    return;
+  }
+
+  soRows=data || [];
+
+  renderSO();
+}
+
+
+/* =====================================================
+   RENDER SO
+===================================================== */
+
+function renderSO(){
+
+  const box =
+    document.getElementById("soTable");
+
+  if(!box) return;
+
+  const search =
+    (document.getElementById("searchInput")
+      ?.value || "")
+      .toLowerCase();
+
+  const category =
+    document.getElementById("filterCategory")
+      ?.value || "";
+
+  const filtered =
+    products.filter(p=>{
+
+      const text =
+        `${p.plu || ""} ${p.nama || ""}`
+          .toLowerCase();
+
+      return(
+        (!search || text.includes(search)) &&
+        (!category || p.kategori===category)
+      );
+
+    });
+
+  if(!filtered.length){
+    box.innerHTML=
+      `<div class="loading">Produk tidak ditemukan.</div>`;
+    return;
+  }
+
+  let html=`
+    <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>PLU</th>
+          <th>Produk</th>
+          <th>Kategori</th>
+          <th>Awal</th>
+          <th>Akhir</th>
+          <th>Selisih</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  filtered.forEach((p,i)=>{
+
+    const row =
+      soRows.find(x=>x.product_id===p.id);
+
+    const awal =
+      row?.awal ?? "";
+
+    const akhir =
+      row?.akhir ?? "";
+
+    const selisih =
+      (awal!=="" && akhir!=="")
+      ? Number(akhir)-Number(awal)
+      : "";
+
+    html+=`
+      <tr>
+
+        <td>${i+1}</td>
+
+        <td>${esc(p.plu || "-")}</td>
+
+        <td><b>${esc(p.nama)}</b></td>
+
+        <td>
+          <span class="category">
+            ${esc(p.kategori)}
+          </span>
+        </td>
+
+        <td>
+          <input
+            class="qty awal-input"
+            type="number"
+            step="any"
+            value="${awal}"
+            data-id="${p.id}"
+            onchange="updateDiff('${p.id}')">
+        </td>
+
+        <td>
+          <input
+            class="qty akhir-input"
+            type="number"
+            step="any"
+            value="${akhir}"
+            data-id="${p.id}"
+            onchange="updateDiff('${p.id}')">
+        </td>
+
+        <td>
+          <span
+            id="diff-${p.id}"
+            class="diff ${
+              selisih<0
+              ?"minus"
+              :selisih>0
+              ?"plus"
+              :""
+            }">
+            ${selisih==="" ? "-" : selisih}
+          </span>
+        </td>
+
+      </tr>
+    `;
 
   });
 
+  html+=`
+      </tbody>
+    </table>
+    </div>
+  `;
 
-  saveCurrentDraft();
-
+  box.innerHTML=html;
 }
 
 
-/* =========================
-   INPUT STOCK
-========================= */
+/* =====================================================
+   UPDATE DIFFERENCE
+===================================================== */
 
-function changeItem(
-  k,
-  f,
-  v
-){
+function updateDiff(id){
 
-  if(!current[k])
+  const awalEl =
+    document.querySelector(
+      `.awal-input[data-id="${id}"]`
+    );
+
+  const akhirEl =
+    document.querySelector(
+      `.akhir-input[data-id="${id}"]`
+    );
+
+  const diffEl =
+    document.getElementById("diff-"+id);
+
+  if(!awalEl || !akhirEl || !diffEl)
     return;
 
+  if(
+    awalEl.value==="" ||
+    akhirEl.value===""
+  ){
+    diffEl.textContent="-";
+    diffEl.className="diff";
+    return;
+  }
 
-  current[k][f] =
-    v===""
-    ? ""
-    : Number(v);
+  const diff =
+    Number(akhirEl.value)-
+    Number(awalEl.value);
 
+  diffEl.textContent=diff;
 
-  current[k].selisih =
-    Number(
-      current[k].akhir || 0
-    )
-    -
-    Number(
-      current[k].awal || 0
+  diffEl.className=
+    "diff "+
+    (
+      diff<0
+      ?"minus"
+      :diff>0
+      ?"plus"
+      :""
     );
+}
 
 
-  let e =
-    document.getElementById(
-      "d_"+sid(k)
-    );
+/* =====================================================
+   SAVE SO
+===================================================== */
 
+async function saveSO(){
 
-  if(e){
+  const tanggal =
+    document.getElementById("soDate")
+      .value || today();
 
-    e.parentElement.className =
-      "diff "
-      +dc(
-        current[k].selisih
+  const rows=[];
+
+  for(const p of products){
+
+    const awalEl =
+      document.querySelector(
+        `.awal-input[data-id="${p.id}"]`
       );
 
-
-    e.textContent =
-      fd(
-        current[k].selisih
+    const akhirEl =
+      document.querySelector(
+        `.akhir-input[data-id="${p.id}"]`
       );
+
+    if(!awalEl || !akhirEl) continue;
+
+    const awal =
+      awalEl.value.trim();
+
+    const akhir =
+      akhirEl.value.trim();
+
+    /*
+     * Produk yang belum diisi dilewati.
+     */
+    if(awal==="" && akhir==="")
+      continue;
+
+    if(awal==="" || akhir===""){
+      toast(
+        `Lengkapi Awal/Akhir: ${p.nama}`
+      );
+      return;
+    }
+
+    const awalNum=Number(awal);
+    const akhirNum=Number(akhir);
+
+    if(!Number.isFinite(awalNum) ||
+       !Number.isFinite(akhirNum)){
+      toast("Jumlah tidak valid.");
+      return;
+    }
+
+    const selisih =
+      akhirNum-awalNum;
+
+    rows.push({
+      tanggal:tanggal,
+      product_id:p.id,
+      awal:awalNum,
+      akhir:akhirNum,
+      selisih:selisih,
+
+      user_id:currentUser.id,
+
+      kode_barang:p.plu || null,
+      nama_barang:p.nama,
+      qty:akhirNum
+    });
 
   }
 
+  if(!rows.length){
+    toast("Belum ada stock yang diisi.");
+    return;
+  }
 
-  saveCurrentDraft();
+  /*
+   * Hapus SO lama tanggal tersebut untuk produk
+   * yang sedang disimpan, lalu insert data terbaru.
+   */
+  for(const row of rows){
 
-  update();
+    const {error:delError} =
+      await sb
+      .from("stock_opname")
+      .delete()
+      .eq("tanggal",row.tanggal)
+      .eq("product_id",row.product_id);
 
-  renderMinus();
+    if(delError){
+      toast(
+        "Gagal update SO: "+
+        errorMessage(delError)
+      );
+      return;
+    }
+  }
 
-}
+  const {error} =
+    await sb
+    .from("stock_opname")
+    .insert(rows);
 
-
-/* =========================
-   DRAFT
-========================= */
-
-function saveCurrentDraft(){
-
-  localStorage.setItem(
-    KEY,
-    tanggal.value
-    ?
-    JSON.stringify({
-      date:tanggal.value,
-      items:current
-    })
-    :
-    ""
-  );
-
-}
-
-
-/* =========================
-   SIMPAN SO
-========================= */
-
-function saveSO(){
-
-  histories[
-    tanggal.value
-  ]={
-    date:tanggal.value,
-    items:current,
-    savedAt:
-      new Date().toISOString()
-  };
-
-
-  localStorage.setItem(
-    HIST,
-    JSON.stringify(histories)
-  );
-
+  if(error){
+    toast(
+      "Gagal menyimpan SO: "+
+      errorMessage(error)
+    );
+    return;
+  }
 
   toast(
-    "SO "+fmt(tanggal.value)
-    +" tersimpan ✅"
+    `SO ${tanggal} berhasil disimpan online.`
   );
 
-
-  renderHistory();
-
-  renderReport();
-
+  await loadSO();
+  await loadDashboard();
 }
 
 
-/* =========================
+/* =====================================================
    DASHBOARD
-========================= */
+===================================================== */
 
-function update(){
+async function loadDashboard(){
 
-  let a =
-    Object.values(current);
+  const tanggal =
+    document.getElementById("dashDate")
+      .value || today();
 
+  const {data,error} =
+    await sb
+    .from("stock_opname")
+    .select("*")
+    .eq("tanggal",tanggal);
 
-  let mi =
-    a.filter(
-      x=>x.selisih<0
-    ).length;
-
-
-  let pl =
-    a.filter(
-      x=>x.selisih>0
-    ).length;
-
-
-  let s =
-    a.reduce(
-      (z,x)=>
-      z+Number(
-        x.selisih||0
-      ),
-      0
-    );
-
-
-  totalItem.textContent =
-    a.length;
-
-  totalMinus.textContent =
-    mi;
-
-  totalPlus.textContent =
-    pl;
-
-  totalSelisih.textContent =
-    s;
-
-}
-
-
-/* =========================
-   HISTORY
-========================= */
-
-function renderHistory(){
-
-  let dates =
-    Object.keys(
-      histories
-    )
-    .sort()
-    .reverse();
-
-
-  dashHistory.innerHTML =
-    dates.length
-
-    ?
-
-    dates
-    .slice(0,8)
-    .map(
-      d=>
-      '<div class="history-item">'
-      +
-      '<div class="history-date">'
-      +'📅 '+fmt(d)
-      +'</div>'
-      +
-      '<div class="history-meta">'
-      +
-      Object.keys(
-        histories[d].items
-      ).length
-      +
-      ' item • tersimpan'
-      +
-      '</div>'
-      +
-      '<button class="btn blue full" onclick="openHistory(\''
-      +d+
-      '\')">'
-      +
-      'Lihat SO'
-      +
-      '</button>'
-      +
-      '</div>'
-    )
-    .join("")
-
-    :
-
-    '<div class="empty">'
-    +'Belum ada SO tersimpan'
-    +'</div>';
-
-}
-
-
-/* =========================
-   BUKA HISTORY
-========================= */
-
-function openHistory(d){
-
-  tanggal.value=d;
-
-  current =
-    JSON.parse(
-      JSON.stringify(
-        histories[d].items
-      )
-    );
-
-
-  localStorage.setItem(
-    "beanspot_date",
-    d
-  );
-
-
-  showPage(
-    "report"
-  );
-
-
-  renderReport();
-
-}
-
-
-/* =========================
-   REPORT
-========================= */
-
-function getCurrentItems(){
-
-  return Object.values(
-    histories[
-      tanggal.value
-    ]?.items || current
-  );
-
-}
-
-
-function renderReport(){
-
-  let h =
-    histories[
-      tanggal.value
-    ];
-
-
-  let a =
-    Object.values(
-      h?.items || current
-    );
-
-
-  let mi =
-    a.filter(
-      x=>x.selisih<0
-    );
-
-
-  let total =
-    a.reduce(
-      (z,x)=>
-      z+Number(
-        x.selisih||0
-      ),
-      0
-    );
-
-
-  reportSummary.innerHTML=
-
-    '<div class="row">'
-    +
-    '<span>Tanggal</span>'
-    +
-    '<b>'+fmt(
-      tanggal.value
-    )+'</b>'
-    +
-    '</div>'
-
-    +
-
-    '<div class="row">'
-    +
-    '<span>Total Item</span>'
-    +
-    '<b>'+a.length+'</b>'
-    +
-    '</div>'
-
-    +
-
-    '<div class="row">'
-    +
-    '<span>Minus</span>'
-    +
-    '<b class="minus-text">'
-    +mi.length+
-    '</b>'
-    +
-    '</div>'
-
-    +
-
-    '<div class="row">'
-    +
-    '<span>Plus</span>'
-    +
-    '<b class="plus-text">'
-    +
-    a.filter(
-      x=>x.selisih>0
-    ).length
-    +
-    '</b>'
-    +
-    '</div>'
-
-    +
-
-    '<div class="row">'
-    +
-    '<span>Total Selisih</span>'
-    +
-    '<b>'+total+'</b>'
-    +
-    '</div>';
-
-
-  historyList.innerHTML =
-    Object.keys(
-      histories
-    )
-    .sort()
-    .reverse()
-    .map(
-      d=>
-      '<div class="history-item">'
-      +
-      '<div class="history-date">'
-      +'📅 '+fmt(d)
-      +'</div>'
-      +
-      '<div class="history-meta">'
-      +
-      Object.keys(
-        histories[d].items
-      ).length
-      +' item'
-      +
-      '</div>'
-      +
-      '<button class="btn blue full" onclick="openHistory(\''
-      +d+
-      '\')">'
-      +'Buka'
-      +'</button>'
-      +
-      '</div>'
-    )
-    .join("")
-
-    ||
-
-    '<div class="empty">'
-    +'Belum ada riwayat'
-    +'</div>';
-
-
-  renderMinus();
-
-}
-
-
-/* =========================
-   REKAP MINUS
-========================= */
-
-function renderMinus(){
-
-  let a =
-    getCurrentItems();
-
-
-  let minus =
-    a.filter(
-      x=>Number(
-        x.selisih||0
-      )<0
-    );
-
-
-  if(!minus.length){
-
-    minusList.innerHTML =
-      '<div class="minus-box">'
-      +
-      '<div style="text-align:center;font-weight:bold;color:#16a34a;padding:10px">'
-      +
-      '✅ Tidak ada barang minus pada tanggal ini'
-      +
-      '</div>'
-      +
-      '</div>';
-
+  if(error){
+    toast(errorMessage(error));
     return;
-
   }
 
+  const rows=data || [];
 
-  let totalMinus =
-    minus.reduce(
-      (z,x)=>
-      z+Number(
-        x.selisih||0
-      ),
+  const minus =
+    rows.filter(x=>Number(x.selisih)<0).length;
+
+  const plus =
+    rows.filter(x=>Number(x.selisih)>0).length;
+
+  const diff =
+    rows.reduce(
+      (sum,x)=>sum+Number(x.selisih||0),
       0
     );
 
+  document.getElementById("statTotal")
+    .textContent=rows.length;
 
-  minusList.innerHTML =
+  document.getElementById("statMinus")
+    .textContent=minus;
 
-    '<div class="minus-box">'
+  document.getElementById("statPlus")
+    .textContent=plus;
 
-    +
+  document.getElementById("statDiff")
+    .textContent=diff;
 
-    '<div class="minus-title">'
-    +
-    '🔴 '+minus.length+
-    ' BARANG MINUS'
-    +
-    '</div>'
-
-    +
-
-    minus
-    .map(
-      (x,i)=>
-      '<div class="minus-item">'
-
-      +
-
-      '<div class="minus-name">'
-      +
-      (i+1)+'. '+x.name
-      +
-      '</div>'
-
-      +
-
-      '<div class="minus-detail">'
-      +
-      'Kategori: '+x.category
-      +
-      '<br>'
-      +
-      'Awal: '+(
-        x.awal===""
-        ? "-"
-        : x.awal
-      )
-      +
-      ' | Akhir: '+(
-        x.akhir===""
-        ? "-"
-        : x.akhir
-      )
-      +
-      ' | Selisih: '
-      +
-      '<b style="color:#dc2626">'
-      +
-      x.selisih
-      +
-      '</b>'
-      +
-      '</div>'
-
-      +
-
-      '</div>'
-    )
-    .join("")
-
-    +
-
-    '<div style="margin-top:12px;padding-top:10px;border-top:2px solid #fecaca;font-weight:900">'
-    +
-    'TOTAL SELISIH MINUS: '
-    +
-    '<span style="color:#dc2626">'
-    +
-    totalMinus
-    +
-    '</span>'
-    +
-    '</div>'
-
-    +
-
-    '</div>';
-
+  loadHistoryDates();
 }
 
 
-/* =========================
-   LAPORAN LENGKAP
-========================= */
+/* =====================================================
+   HISTORY DATES
+===================================================== */
 
-function buildReport(){
+async function loadHistoryDates(){
 
-  let a =
-    getCurrentItems();
+  const box =
+    document.getElementById(
+      "dashboardHistory"
+    );
+
+  const {data,error} =
+    await sb
+    .from("stock_opname")
+    .select("tanggal");
+
+  if(error){
+    box.textContent=errorMessage(error);
+    return;
+  }
+
+  const dates =
+    [...new Set(
+      (data||[]).map(x=>x.tanggal)
+    )].sort().reverse();
+
+  if(!dates.length){
+    box.innerHTML=
+      `<div class="loading">
+        Belum ada SO tersimpan.
+      </div>`;
+    return;
+  }
+
+  box.innerHTML=
+    dates.slice(0,30).map(d=>`
+      <button
+        class="btn btn-gray"
+        style="margin:4px"
+        onclick="
+          document.getElementById('reportDate').value='${d}';
+          showPage('report');
+          loadReport();
+        ">
+        ${d}
+      </button>
+    `).join("");
+}
 
 
-  let t =
-    '*SO MATERIAL BEANSPOT*'
-    +
-    '\n*KF33 / KARET PEDURENAN*'
-    +
-    '\nTanggal: *'
-    +
-    fmt(tanggal.value)
-    +
-    '*\n\n';
+/* =====================================================
+   REPORT
+===================================================== */
+
+async function loadReport(){
+
+  const tanggal =
+    document.getElementById("reportDate")
+      .value || today();
+
+  const {data,error} =
+    await sb
+    .from("stock_opname")
+    .select("*")
+    .eq("tanggal",tanggal)
+    .order("nama_barang",{ascending:true});
+
+  if(error){
+    toast("Gagal laporan: "+errorMessage(error));
+    return;
+  }
+
+  reportRows=data || [];
+
+  const total=reportRows.length;
+
+  const minusRows =
+    reportRows.filter(
+      x=>Number(x.selisih)<0
+    );
+
+  const plusRows =
+    reportRows.filter(
+      x=>Number(x.selisih)>0
+    );
+
+  const diff =
+    reportRows.reduce(
+      (s,x)=>s+Number(x.selisih||0),
+      0
+    );
+
+  document.getElementById("reportDetail")
+    .innerHTML=`
+      <div class="stats">
+
+        <div class="stat">
+          Total
+          <b>${total}</b>
+        </div>
+
+        <div class="stat">
+          Minus
+          <b class="minus">
+            ${minusRows.length}
+          </b>
+        </div>
+
+        <div class="stat">
+          Plus
+          <b class="plus">
+            ${plusRows.length}
+          </b>
+        </div>
+
+        <div class="stat">
+          Selisih
+          <b>${diff}</b>
+        </div>
+
+      </div>
+
+      <div class="table-wrap"
+           style="margin-top:15px">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>PLU</th>
+              <th>Barang</th>
+              <th>Awal</th>
+              <th>Akhir</th>
+              <th>Selisih</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              reportRows.map((r,i)=>`
+
+                <tr>
+                  <td>${i+1}</td>
+                  <td>${esc(r.kode_barang || "-")}</td>
+                  <td>${esc(r.nama_barang || "-")}</td>
+                  <td>${r.awal}</td>
+                  <td>${r.akhir}</td>
+                  <td class="${
+                    Number(r.selisih)<0
+                    ?"minus"
+                    :Number(r.selisih)>0
+                    ?"plus"
+                    :""
+                  }">
+                    <b>${r.selisih}</b>
+                  </td>
+                </tr>
+
+              `).join("")
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+    `;
 
 
-  Object.keys(products)
-  .forEach(c=>{
+  if(!minusRows.length){
 
-    t +=
-      '*'+c+'*\n';
+    document.getElementById("minusReport")
+      .innerHTML=
+      `<div class="notice">
+        Tidak ada barang MINUS pada tanggal ini.
+      </div>`;
+
+  }else{
+
+    document.getElementById("minusReport")
+      .innerHTML=
+      `<div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>PLU</th>
+              <th>Barang</th>
+              <th>Awal</th>
+              <th>Akhir</th>
+              <th>Minus</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${
+              minusRows.map(r=>`
+                <tr>
+                  <td>${esc(r.kode_barang||"-")}</td>
+                  <td>${esc(r.nama_barang||"-")}</td>
+                  <td>${r.awal}</td>
+                  <td>${r.akhir}</td>
+                  <td class="minus">
+                    <b>${r.selisih}</b>
+                  </td>
+                </tr>
+              `).join("")
+            }
+          </tbody>
+        </table>
+      </div>`;
+
+  }
+}
 
 
-    products[c]
-    .forEach(n=>{
+/* =====================================================
+   MINUS TEXT
+===================================================== */
 
-      let i =
-        a.find(
-          x=>
-          x.name===n &&
-          x.category===c
-        )
-        || {};
+function makeMinusText(){
 
+  const tanggal =
+    document.getElementById("reportDate")
+      .value || today();
 
-      t +=
-        '[ ] '
-        +n
-        +' : '
-        +(i.awal ?? '-')
-        +' / '
-        +(i.akhir ?? '-')
-        +' / Selisih: '
-        +(Number(
-          i.selisih||0
-        )<0
-          ? '❌ '
-          : ''
-        )
-        +(i.selisih ?? 0)
-        +'\n';
+  const rows =
+    reportRows.filter(
+      x=>Number(x.selisih)<0
+    );
 
-    });
+  let text=
+    `REKAP BARANG MINUS\n`+
+    `BEANSPOT KF33\n`+
+    `Tanggal: ${tanggal}\n\n`;
+
+  if(!rows.length){
+    text+="Tidak ada barang minus.";
+    return text;
+  }
+
+  rows.forEach((r,i)=>{
+
+    text+=
+      `${i+1}. `+
+      `${r.kode_barang || "-"} | `+
+      `${r.nama_barang} | `+
+      `Awal ${r.awal} | `+
+      `Akhir ${r.akhir} | `+
+      `Minus ${r.selisih}\n`;
 
   });
 
-
-  return t
-    +
-    '\nAwal / Akhir / Selisih'
-    +
-    '\nSelisih = Akhir - Awal';
-
+  return text;
 }
 
 
-/* =========================
-   LAPORAN MINUS
-========================= */
+/* =====================================================
+   FULL REPORT TEXT
+===================================================== */
 
-function buildMinusReport(){
+function makeFullReport(){
 
-  let a =
-    getCurrentItems();
+  const tanggal =
+    document.getElementById("reportDate")
+      .value || today();
 
+  let text=
+    `SO MATERIAL BEANSPOT KF33\n`+
+    `Tanggal: ${tanggal}\n`+
+    `PIC: ${currentUser?.nama || "-"}\n\n`;
 
-  let minus =
-    a.filter(
-      x=>Number(
-        x.selisih||0
-      )<0
-    );
-
-
-  let t =
-    '*🔴 REKAP BARANG MINUS*'
-    +
-    '\n*BEANSPOT KF33*'
-    +
-    '\nKaret Pedurenan'
-    +
-    '\nTanggal: *'
-    +
-    fmt(tanggal.value)
-    +
-    '*\n\n';
-
-
-  if(!minus.length){
-
-    return t
-      +
-      '✅ Tidak ada barang minus pada tanggal ini.';
-
+  if(!reportRows.length){
+    text+="Tidak ada data.";
+    return text;
   }
 
+  reportRows.forEach((r,i)=>{
 
-  t +=
-    '*BARANG MINUS:*\n\n';
+    text+=
+      `${i+1}. `+
+      `${r.kode_barang || "-"} | `+
+      `${r.nama_barang} | `+
+      `Awal: ${r.awal} | `+
+      `Akhir: ${r.akhir} | `+
+      `Selisih: ${r.selisih}\n`;
 
+  });
 
-  minus.forEach(
-    (x,i)=>{
-
-      t +=
-        (i+1)+'. *'
-        +x.name
-        +'*\n'
-        +
-        'Kategori: '
-        +x.category
-        +'\n'
-        +
-        'Awal: '
-        +(x.awal===""
-          ? "-"
-          : x.awal)
-        +
-        ' | Akhir: '
-        +(x.akhir===""
-          ? "-"
-          : x.akhir)
-        +
-        '\nSelisih: *'
-        +x.selisih
-        +'*\n\n';
-
-    }
-  );
-
-
-  let total =
-    minus.reduce(
-      (z,x)=>
-      z+Number(
-        x.selisih||0
-      ),
-      0
-    );
-
-
-  t +=
-    'Total item minus: *'
-    +minus.length+
-    '*\n'
-    +
-    'Total selisih minus: *'
-    +total+
-    '*';
-
-
-  return t;
-
+  return text;
 }
 
 
-/* =========================
-   WHATSAPP
-========================= */
-
-function shareWhatsApp(){
-
-  open(
-    "https://wa.me/?text="
-    +
-    encodeURIComponent(
-      buildReport()
-    ),
-    "_blank"
-  );
-
-}
-
-
-function shareMinusWhatsApp(){
-
-  open(
-    "https://wa.me/?text="
-    +
-    encodeURIComponent(
-      buildMinusReport()
-    ),
-    "_blank"
-  );
-
-}
-
-
-/* =========================
+/* =====================================================
    COPY
-========================= */
+===================================================== */
 
-function copyReport(){
+async function copyText(text){
 
-  navigator.clipboard
-    .writeText(
-      buildReport()
-    )
-    .then(
-      ()=>
-      toast(
-        "Laporan dicopy 📋"
-      )
-    );
+  try{
 
+    await navigator.clipboard.writeText(text);
+    toast("Berhasil dicopy.");
+
+  }catch(e){
+
+    const ta=document.createElement("textarea");
+    ta.value=text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    ta.remove();
+
+    toast("Berhasil dicopy.");
+  }
+}
+
+function copyMinus(){
+  copyText(makeMinusText());
+}
+
+function copyFullReport(){
+  copyText(makeFullReport());
 }
 
 
-function copyMinusReport(){
+/* =====================================================
+   WHATSAPP
+===================================================== */
 
-  navigator.clipboard
-    .writeText(
-      buildMinusReport()
-    )
-    .then(
-      ()=>
-      toast(
-        "Rekap minus dicopy 📋"
-      )
+function sendMinusWA(){
+
+  const text =
+    encodeURIComponent(
+      makeMinusText()
     );
 
+  window.open(
+    "https://wa.me/?text="+text,
+    "_blank"
+  );
 }
 
 
-/* =========================
+/* =====================================================
+   SHARE
+===================================================== */
+
+async function shareFullReport(){
+
+  const text=makeFullReport();
+
+  if(navigator.share){
+
+    try{
+      await navigator.share({
+        title:"SO Material BeanSpot KF33",
+        text:text
+      });
+    }catch(e){}
+
+  }else{
+
+    copyText(text);
+
+  }
+}
+
+
+/* =====================================================
    EXPORT CSV
-========================= */
+===================================================== */
 
 function exportCSV(){
 
-  let a =
-    getCurrentItems();
-
-
-  let csv =
-    "Tanggal,Kategori,Nama Material,Awal,Akhir,Selisih\n"
-
-
-    +
-
-    a.map(
-      x=>
-      `"${tanggal.value}",`
-      +
-      `"${x.category}",`
-      +
-      `"${x.name}",`
-      +
-      `"${x.awal}",`
-      +
-      `"${x.akhir}",`
-      +
-      `"${x.selisih}"`
-    )
-    .join("\n");
-
-
-  let u =
-    URL.createObjectURL(
-      new Blob(
-        [csv],
-        {
-          type:"text/csv"
-        }
-      )
-    );
-
-
-  let ael =
-    document.createElement("a");
-
-
-  ael.href=u;
-
-  ael.download =
-    "SO_BEANSPOT_KF33_"
-    +
-    tanggal.value
-    +
-    ".csv";
-
-
-  ael.click();
-
-
-  URL.revokeObjectURL(u);
-
-}
-
-
-/* =========================
-   HAPUS TANGGAL
-========================= */
-
-function resetCurrentDate(){
-
-  if(
-    !confirm(
-      "Hapus SO tersimpan untuk "
-      +
-      fmt(tanggal.value)
-      +
-      "?"
-    )
-  )
+  if(!reportRows.length){
+    toast("Tidak ada data untuk diexport.");
     return;
+  }
 
-
-  delete histories[
-    tanggal.value
+  const rows=[
+    [
+      "Tanggal",
+      "PLU",
+      "Nama Barang",
+      "Kategori",
+      "Awal",
+      "Akhir",
+      "Selisih",
+      "Qty"
+    ]
   ];
 
+  reportRows.forEach(r=>{
 
-  localStorage.setItem(
-    HIST,
-    JSON.stringify(
-      histories
-    )
-  );
+    const p =
+      products.find(
+        x=>x.id===r.product_id
+      );
 
+    rows.push([
+      r.tanggal,
+      r.kode_barang || "",
+      r.nama_barang || "",
+      p?.kategori || "",
+      r.awal,
+      r.akhir,
+      r.selisih,
+      r.qty
+    ]);
 
-  current={};
+  });
 
+  const csv =
+    rows.map(row=>
+      row.map(v=>
+        `"${String(v??"")
+          .replaceAll('"','""')}"`
+      ).join(",")
+    ).join("\n");
 
-  renderMaterials();
+  const blob=
+    new Blob(
+      ["\ufeff"+csv],
+      {type:"text/csv;charset=utf-8"}
+    );
 
-  renderHistory();
+  const url=
+    URL.createObjectURL(blob);
 
-  renderReport();
+  const a=
+    document.createElement("a");
 
-  update();
+  a.href=url;
+  a.download=
+    `SO_BeanSpot_KF33_${
+      document.getElementById("reportDate").value
+    }.csv`;
 
+  a.click();
 
-  toast(
-    "SO tanggal ini dihapus"
-  );
-
+  URL.revokeObjectURL(url);
 }
 
 
-/* =========================
+/* =====================================================
+   DELETE SO CURRENT DATE
+===================================================== */
+
+async function deleteCurrentDate(){
+
+  const tanggal =
+    document.getElementById("reportDate")
+      .value || today();
+
+  if(!confirm(
+    `Hapus SEMUA SO tanggal ${tanggal}?`
+  )) return;
+
+  const {error} =
+    await sb
+    .from("stock_opname")
+    .delete()
+    .eq("tanggal",tanggal);
+
+  if(error){
+    toast(
+      "Gagal hapus: "+
+      errorMessage(error)
+    );
+    return;
+  }
+
+  toast("SO tanggal tersebut berhasil dihapus.");
+
+  await loadReport();
+  await loadSO();
+  await loadDashboard();
+}
+
+
+/* =====================================================
    DARK MODE
-========================= */
+===================================================== */
 
 function toggleDark(){
 
-  document.body
-    .classList
-    .toggle("dark");
-
+  document.body.classList.toggle("dark");
 
   localStorage.setItem(
-    "dark",
-    document.body
-      .classList
-      .contains("dark")
+    "beanspot_dark",
+    document.body.classList.contains("dark")
+      ? "1"
+      : "0"
   );
-
 }
 
 
-/* =========================
-   TOAST
-========================= */
+/* =====================================================
+   INIT
+===================================================== */
 
-function toast(m){
-
-  let e =
-    document.getElementById(
-      "toast"
-    );
-
-
-  e.textContent=m;
-
-  e.classList.add(
-    "show"
-  );
-
-
-  clearTimeout(
-    window.tt
-  );
-
-
-  window.tt =
-    setTimeout(
-      ()=>
-      e.classList.remove(
-        "show"
-      ),
-      2200
-    );
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-window.addEventListener(
-  "load",
+document.addEventListener(
+  "DOMContentLoaded",
   ()=>{
 
     if(
       localStorage.getItem(
-        "dark"
-      )==="true"
+        "beanspot_dark"
+      )==="1"
     ){
-
-      document.body
-        .classList
-        .add("dark");
-
+      document.body.classList.add("dark");
     }
 
-
-    if(
-      localStorage.getItem(
-        "beanspot_login"
-      )
-    ){
-
-      openApp();
-
-    }
+    restoreLogin();
 
   }
 );
-
 </script>
 
 </body>
